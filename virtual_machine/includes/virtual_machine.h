@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   virtual_machine.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/05/27 21:01:15 by ffloris          ###   ########.fr       */
+/*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
+/*   Updated: 2018/05/27 20:59:15 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtual_machine.h"
+#ifndef VIRTUAL_MACHINE_H
+# define VIRTUAL_MACHINE_H
 
-int		main(void)
-{
-	return (0);
-}
+# include "libft.h"
+#endif
