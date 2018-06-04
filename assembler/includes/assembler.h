@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/03 21:41:29 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/04 18:00:43 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ typedef char t_arg_type;
 
 typedef struct header_s
 {
-  unsigned int magic;
-  char prog_name [PROG_NAME_LENGTH + 1];
-  unsigned int prog_size;
-  char how [COMMENT_LENGTH + 1];
+	unsigned int magic;
+	char prog_name [PROG_NAME_LENGTH + 1];
+	unsigned int prog_size;
+	char how [COMMENT_LENGTH + 1];
 }				header_t;
+
+int				ft_input(int fd);
 
 #endif

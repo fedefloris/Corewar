@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/04 18:00:34 by akaseris         ###   ########.fr       */
+/*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
+/*   Updated: 2018/06/04 18:00:55 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-int		main(int ac, char **av)
+int				ft_input(int fd)
 {
-	int fd;
-
-	if (ac != 2)
-		return (ft_printf("ERROR"));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (ft_printf("Can not process file"));
-	if (!ft_input(fd))
-		return (ft_printf("ERROR"));
-	if (close(fd) == -1)
-		return ("Can not process file");
-	return (0);
+	
 }
