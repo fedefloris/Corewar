@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/04 21:33:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/04 23:30:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VIRTUAL_MACHINE_H
 
 # include "libft.h"
+# include <stdio.h>//Remove
 
 typedef struct			s_byte_code
 {
@@ -21,17 +22,26 @@ typedef struct			s_byte_code
 	struct s_byte_code	*next;
 }						t_byte_code;
 
-typedef struct			s_parser
+typedef struct			s_file
 {
+	char				*file_name;
 	struct byte_code	*byte_code;
-	struct s_parser		*next;
-}						t_parser;
+	struct s_file		*next;
+}						t_file;
 
 typedef struct			s_vm
 {
 	char				**argv;
+	int					argc;
 	
-	struct s_parser		*parser;
+	struct s_file		*file;
 }						t_vm;
+
+void					error_exit(t_vm *vm);
+
+void					virtual_machine(t_vm *vm);
+
+void					parse_handler(t_vm *vm);
+void					parse_create_file(t_vm *vm);
 
 #endif
