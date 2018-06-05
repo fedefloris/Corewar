@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/05 14:10:36 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/05 20:11:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,26 @@ static t_byte_code	*create_byte_code(t_vm *vm)
 static void			fill_bytes(t_vm *vm, t_file *file, char *buf, int read_val)
 {
 	t_byte_code		*byte_code;
+	t_byte_code		*seek;
 
+	seek = vm->file->byte_code;
+	while (seek && seek->next)
+		seek = seek->next;
 	while (read_val--)
 	{
 		byte_code = create_byte_code(vm);
-		byte_code->byte = buf[read_val];
-		if (!file->byte_code)
-			file->byte_code = byte_code;
+		byte_code->byte = *buf;
+		if (!seek)
+		{
+			vm->file->byte_code = byte_code;
+			seek = byte_code;
+		}
 		else
 		{
-			byte_code->next = file->byte_code;
-			file->byte_code = byte_code;
+			seek->next = byte_code;
+			seek = seek->next;
 		}
+		buf++;
 	}
 }
 
@@ -71,15 +79,5 @@ void				parse_read_file(t_vm *vm)
 	{
 		do_read_file(vm, file);
 		file = file->next;
-	}
-	while (vm->file)
-	{
-		while (vm->file->byte_code)
-		{
-			printf("%c", vm->file->byte_code->byte);
-			vm->file->byte_code = vm->file->byte_code->next;
-		}
-		printf("\n\n");
-		vm->file = vm->file->next;
 	}
 }
