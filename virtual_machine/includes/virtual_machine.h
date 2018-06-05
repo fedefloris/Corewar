@@ -6,12 +6,14 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/05 11:41:36 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/05 13:52:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIRTUAL_MACHINE_H
 # define VIRTUAL_MACHINE_H
+
+# define SIZE_OF_BUFF	64
 
 # include "libft.h"
 # include <stdio.h>//Remove
@@ -25,7 +27,7 @@ typedef struct			s_byte_code
 typedef struct			s_file
 {
 	char				*file_name;
-	struct byte_code	*byte_code;
+	struct s_byte_code	*byte_code;
 	struct s_file		*next;
 }						t_file;
 
