@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/04 23:30:39 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/05 11:41:36 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void					virtual_machine(t_vm *vm);
 
 void					parse_handler(t_vm *vm);
 void					parse_create_file(t_vm *vm);
+void					parse_read_file(t_vm *vm);
 
 #endif
