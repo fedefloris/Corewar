@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   free_virtual_machine.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/04 23:27:38 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 13:58:44 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/06 13:55:52 by dhojt             #+#    #+#             */
+/*   Updated: 2018/06/06 13:59:59 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void				error_exit(t_vm *vm)
+//free everything
+
+void				free_virtual_machine(t_vm *vm)
 {
-	free_virtual_machine(vm);
-	exit(1);
 }
