@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/05 00:51:43 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/06 20:44:32 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void				parse_create_file(t_vm *vm)
 	while (--vm->argc)
 	{
 		file = create_file(vm);
-		file->file_name = ft_strdup(vm->argv[vm->argc]);
+		file->file_name = vm->argv[vm->argc];
 		if (!vm->file)
 			vm->file = file;
 		else
