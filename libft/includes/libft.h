@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 13:39:16 by ffloris           #+#    #+#             */
-/*   Updated: 2018/05/20 16:06:16 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/06 15:47:06 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char					*ft_strsub(char const *s,
 char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strtrim(char const *s);
 char					**ft_strsplit(char const *s, char c);
+char					**ft_split(char const *s);
 char					*ft_itoa(int n);
 char					*ft_itoa_base(int n, int base);
 void					ft_putchar(char c);
