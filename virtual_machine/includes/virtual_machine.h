@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/06 13:58:15 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/06 22:33:37 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ typedef struct			s_vm
 {
 	char				**argv;
 	int					argc;
-	
+
 	struct s_file		*file;
 }						t_vm;
+
+typedef void			(*t_op)(t_vm *vm);
 
 void					test_print(t_vm *vm);//Remove
 
@@ -49,5 +51,24 @@ void					virtual_machine(t_vm *vm);
 void					parse_handler(t_vm *vm);
 void					parse_create_file(t_vm *vm);
 void					parse_read_file(t_vm *vm);
+
+void					do_op(t_vm *vm);
+
+void					op_live(t_vm *vm);
+void					op_ld(t_vm *vm);
+void					op_st(t_vm *vm);
+void					op_add(t_vm *vm);
+void					op_sub(t_vm *vm);
+void					op_and(t_vm *vm);
+void					op_or(t_vm *vm);
+void					op_xor(t_vm *vm);
+void					op_zjmp(t_vm *vm);
+void					op_ldi(t_vm *vm);
+void					op_sti(t_vm *vm);
+void					op_fork(t_vm *vm);
+void					op_lld(t_vm *vm);
+void					op_lldi(t_vm *vm);
+void					op_lfork(t_vm *vm);
+void					op_aff(t_vm *vm);
 
 #endif
