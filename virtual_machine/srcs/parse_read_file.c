@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/05 20:11:21 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/06 20:39:54 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void			fill_bytes(t_vm *vm, t_file *file, char *buf, int read_val)
 	t_byte_code		*byte_code;
 	t_byte_code		*seek;
 
-	seek = vm->file->byte_code;
+	seek = file->byte_code;
 	while (seek && seek->next)
 		seek = seek->next;
 	while (read_val--)
@@ -38,7 +38,7 @@ static void			fill_bytes(t_vm *vm, t_file *file, char *buf, int read_val)
 		byte_code->byte = *buf;
 		if (!seek)
 		{
-			vm->file->byte_code = byte_code;
+			file->byte_code = byte_code;
 			seek = byte_code;
 		}
 		else
