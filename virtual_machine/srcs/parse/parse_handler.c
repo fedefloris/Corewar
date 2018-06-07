@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 22:47:32 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/05 11:41:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 19:04:30 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void				parse_handler(t_vm *vm)
 {
-	parse_create_file(vm);
-	parse_read_file(vm);
+	parse_create_champ(vm);
+	parse_read_champ(vm);
 }

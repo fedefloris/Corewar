@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 21:08:22 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 19:03:22 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 void				test_print(t_vm *vm)
 {
-	while (vm->file)
+	while (vm->champ)
 	{
-		while (vm->file->byte_code)
+		while (vm->champ->byte_code)
 		{
-			printf("%c", vm->file->byte_code->byte);
-			vm->file->byte_code = vm->file->byte_code->next;
+			printf("%c", vm->champ->byte_code->byte);
+			vm->champ->byte_code = vm->champ->byte_code->next;
 		}
-		vm->file = vm->file->next;
+		vm->champ = vm->champ->next;
 	}
 }

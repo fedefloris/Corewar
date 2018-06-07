@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_create_file.c                                :+:      :+:    :+:   */
+/*   parse_create_champ.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/07 14:52:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 19:10:14 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-static t_file		*create_file(t_vm *vm)
+static t_champ		*create_champ(t_vm *vm)
 {
-	t_file			*file;
+	t_champ			*champ;
 
-	if (!(file = (t_file *)malloc(sizeof(t_file))))
+	if (!(champ = (t_champ *)malloc(sizeof(t_champ))))
 		error_exit(vm);
-	ft_bzero(file, sizeof(*file));
-	return (file);
+	ft_bzero(champ, sizeof(*champ));
+	return (champ);
 }
 
-void				parse_create_file(t_vm *vm)
+void				parse_create_champ(t_vm *vm)
 {
-	t_file			*file;
+	t_champ			*champ;
 
 	while (--vm->argc)
 	{
-		file = create_file(vm);
-		file->file_name = vm->argv[vm->argc];
-		if (!vm->file)
-			vm->file = file;
+		champ = create_champ(vm);
+		champ->file_name = vm->argv[vm->argc];
+		if (!vm->champ)
+			vm->champ = champ;
 		else
 		{
-			file->next = vm->file;
-			vm->file = file;
+			champ->next = vm->champ;
+			vm->champ = champ;
 		}
 	}
 }

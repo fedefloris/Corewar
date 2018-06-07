@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 18:39:57 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 19:09:18 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ typedef struct			s_byte_code
 	struct s_byte_code	*next;
 }						t_byte_code;
 
-typedef struct			s_file
+typedef struct			s_champ
 {
 	char				*file_name;
 	struct s_byte_code	*byte_code;
-	struct s_file		*next;
-}						t_file;
+	struct s_champ		*next;
+}						t_champ;
 
 typedef struct			s_vm
 {
 	char				**argv;
 	int					argc;
 
-	struct s_file		*file;
+	struct s_champ		*champ;
 }						t_vm;
 
 typedef void			(*t_op)(t_vm *vm);
@@ -52,8 +52,8 @@ void					free_virtual_machine(t_vm *vm);
 void					virtual_machine(t_vm *vm);
 
 void					parse_handler(t_vm *vm);
-void					parse_create_file(t_vm *vm);
-void					parse_read_file(t_vm *vm);
+void					parse_create_champ(t_vm *vm);
+void					parse_read_champ(t_vm *vm);
 
 void					do_op(t_vm *vm);
 
