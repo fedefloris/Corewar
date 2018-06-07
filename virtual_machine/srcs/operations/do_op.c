@@ -6,46 +6,62 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/07 21:10:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 00:08:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-static t_op_code		get_op(int op_code)
+static t_op_code	get_op(long op_code)
 {
-	static t_op_code	table[17];
-	int					i;
+	static t_op_code	table[7237484];
 
-	i = 0;
-	if (op_code < 1 || op_code > 16)
+	if (op_code < 1 || op_code > 7237483)
 		return (NULL);
-	table[0x00] = NULL;
-	table[0x01] = &op_live;
-	table[0x02] = &op_ld;
-	table[0x03] = &op_st;
-	table[0x04] = &op_add;
-	table[0x05] = &op_sub;
-	table[0x06] = &op_and;
-	table[0x07] = &op_or;
-	table[0x08] = &op_xor;
-	table[0x09] = &op_zjmp;
-	table[0x0a] = &op_ldi;
-	table[0x0b] = &op_sti;
-	table[0x0c] = &op_fork;
-	table[0x0d] = &op_lld;
-	table[0x0e] = &op_lldi;
-	table[0x0f] = &op_lfork;
-	table[0x10] = &op_aff;
+	bzero(table, 7237484);
+	table[0] = NULL;
+	table[454501] = &op_live;
+	table[1764] = &op_ld;
+	table[1908] = &op_st;
+	table[26468] = &op_add;
+	table[30578] = &op_sub;
+	table[26596] = &op_and;
+	table[1778] = &op_or;
+	table[32498] = &op_xor;
+	table[519920] = &op_zjmp;
+	table[28265] = &op_ldi;
+	table[30569] = &op_sti;
+	table[421739] = &op_fork;
+	table[28388] = &op_lld;
+	table[454249] = &op_lldi;
+	table[7237483] = &op_lfork;
+	table[26470] = &op_aff;
 	return (table[op_code]);
 }
 
-void				do_op(t_vm *vm)
+static long			hash_name(char *name)
 {
-	t_op_code		op_code;
+	long			hash;
 
-	//get op code to pass to below function.
-	if (!(op_code = get_op(4)))
+	hash = 0;
+	while (*name)
+	{
+		hash = hash << 4;
+		hash |= *name;
+		name++;
+	}
+	return (hash);
+}
+
+void				do_op(t_vm *vm, int op_code)
+{
+	t_op_code		op_function;
+	t_op			*seek;
+
+	seek = op_tab;
+	while (seek->op_code && seek->op_code != op_code)
+		seek++;
+	if (!(op_function = get_op(hash_name(seek->name))))
 		error_exit(vm);//invalid op code
-	op_code(vm);
+	op_function(vm);
 }
