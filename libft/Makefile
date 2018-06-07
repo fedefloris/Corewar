@@ -6,7 +6,7 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/06 15:46:39 by akaseris         ###   ########.fr        #
+#    Updated: 2018/06/07 14:45:27 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ LIBFT_STRING_OBJS = ft_strlen.o ft_strdup.o ft_strcpy.o \
 	ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o \
 	ft_strtrim.o ft_strsplit.o ft_itoa.o ft_itoa_base.o \
 	ft_wcharlen.o ft_wstrlen.o ft_wstrblen.o ft_nwstrblen.o \
-	ft_isnumber.o ft_isinteger.o ft_strrev.o ft_split.o
+	ft_isnumber.o ft_isinteger.o ft_strrev.o ft_split.o ft_strjoinfree.o
 
 LIBFT_OBJS_DIR = objs
 LIBFT_IN_OBJS_DIR = $(LIBFT_OBJS_DIR)/in

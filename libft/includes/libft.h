@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 13:39:16 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/06 15:47:06 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/07 14:45:06 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int						ft_strnequ(char const *s1, char const *s2, size_t n);
 char					*ft_strsub(char const *s,
 											unsigned int start, size_t len);
 char					*ft_strjoin(char const *s1, char const *s2);
+char					*ft_strjoinfree(char *ret, char *s1, char *s2);
 char					*ft_strtrim(char const *s);
 char					**ft_strsplit(char const *s, char c);
 char					**ft_split(char const *s);

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 14:20:25 by akaseris         ###   ########.fr       */
+/*   Created: 2018/03/15 19:49:01 by akaseris          #+#    #+#             */
+/*   Updated: 2018/06/07 14:44:46 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "assembler.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strjoinfree(char *ret, char *s1, char *s2)
 {
-	int fd;
+	char *str;
 
-	if (ac != 2)
-		return (ft_printf("ERROR"));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (ft_printf("Can not process file"));
-	if (!ft_input(fd))
-		return (ft_printf("ERROR"));
-	if (close(fd) == -1)
-		return (ft_printf("Can not process file"));
-	return (0);
+	if (!s1 && !s2)
+		return (NULL);
+	str = ft_strjoin(s1, s2);
+	if (ret)
+		free(ret);
+	return (str);
 }
