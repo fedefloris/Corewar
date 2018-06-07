@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/06 22:33:37 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 18:39:57 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SIZE_OF_BUFF	64
 
 # include "libft.h"
+# include "op.h"
 # include <stdio.h>//Remove
 
 typedef struct			s_byte_code
@@ -42,6 +43,8 @@ typedef struct			s_vm
 typedef void			(*t_op)(t_vm *vm);
 
 void					test_print(t_vm *vm);//Remove
+
+void					usage(t_vm *vm, int i);
 
 void					error_exit(t_vm *vm);
 void					free_virtual_machine(t_vm *vm);
