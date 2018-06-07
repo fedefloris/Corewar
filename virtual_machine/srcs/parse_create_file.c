@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 20:44:32 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 14:52:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_file		*create_file(t_vm *vm)
 
 	if (!(file = (t_file *)malloc(sizeof(t_file))))
 		error_exit(vm);
-	ft_memset(file, 0, sizeof(*file));
+	ft_bzero(file, sizeof(*file));
 	return (file);
 }
 
