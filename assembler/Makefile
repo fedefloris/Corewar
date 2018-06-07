@@ -6,7 +6,7 @@
 #    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/07 15:47:41 by akaseris         ###   ########.fr        #
+#    Updated: 2018/06/07 17:55:56 by akaseris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT_FILE = $(LIBFT_DIR)/libft.a
 LIBFT_INCLUDES_DIR = $(LIBFT_DIR)/includes/
 INCLUDE_DIRS = -I$(SRCS_INCLUDES_DIR) -I$(LIBFT_INCLUDES_DIR)
 
-FILES = main ft_input ft_inp_tools
+FILES = main ft_input ft_inp_tools ft_lst_tools
 
 OBJS_WITH_DIR = $(patsubst %, $(OBJS_DIR)/%.o, $(FILES))
 SRCS = $(addsuffix .c, $(FILES))

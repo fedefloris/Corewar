@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 16:17:20 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/07 18:59:44 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int		main(int ac, char **av)
 	t_frame	*frame;
 
 	if (ac != 2)
-		return (ft_printf("ERROR"));
+		return (ft_printf("ERROR\n"));
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (ft_printf("Can not process file"));
+		return (ft_printf("Can not process file\n"));
 	if (!ft_initframe(&frame))
-		return (ft_printf("ERROR"));
+		return (ft_printf("ERROR\n"));
 	if (!ft_input(fd, &frame))
-		return (ft_printf("ERROR"));
+		return (ft_printf("ERROR\n"));
 	if (close(fd) == -1)
-		return (ft_printf("Can not process file"));
-	ft_printf("***%s***\n ***%s***\n", (frame)->header->prog_name, (frame)->header->comment);
+		return (ft_printf("Can not process file\n"));
+//	ft_printf("***%s***\n***%s***\n", (frame)->lines->prog_name, (frame)->header->comment);
 	return (0);
 }

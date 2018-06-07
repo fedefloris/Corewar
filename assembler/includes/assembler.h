@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 15:50:43 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/07 17:55:42 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct	s_line
 {
 	char			*label;
 	char			*opname;
-	char			*params[3];
+	char			*param[3];
 	struct s_line	*next;
 	struct s_line	*prev;
 }				t_line;
@@ -90,5 +90,6 @@ typedef struct	s_frame
 
 int				ft_input(int fd, t_frame **frame);
 int				ft_line(char *s, t_frame **frame);
-int				ft_header(char *s, int name, int fd, t_frame **frame);
+int				ft_header(char *s, int name, t_frame **frame);
+int				ft_initline(t_line **line);
 #endif
