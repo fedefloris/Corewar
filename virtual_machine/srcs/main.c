@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 14:50:17 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 18:36:45 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ int					main(int argc, char **argv)
 {
 	t_vm			*vm;
 
-	if (argc < 2)
-	{
-		ft_putstr("No args - CREATE USAGE!!!!\n");//Create usage
-		return (0);
-	}
+	if (argc < 2 || argc > MAX_ARGS_NUMBER)
+		usage(vm, 1);
 	vm = create_virtual_machine(argc, argv);
 	virtual_machine(vm);
 	test_print(vm);//Remove
