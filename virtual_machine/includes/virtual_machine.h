@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 22:40:51 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 23:58:56 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct			s_op
 	int					has_idx;
 }						t_op;
 
+t_op					op_tab[17];
+
 typedef void			(*t_op_code)(t_vm *vm);
 
 void					test_print(t_vm *vm);//Remove
@@ -67,7 +69,7 @@ void					parse_handler(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 
-void					do_op(t_vm *vm);
+void					do_op(t_vm *vm, int op_code);
 
 void					op_live(t_vm *vm);
 void					op_ld(t_vm *vm);
