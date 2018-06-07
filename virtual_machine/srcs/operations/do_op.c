@@ -6,16 +6,16 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 22:23:21 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 21:10:12 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-static t_op			get_op(int op_code)
+static t_op_code		get_op(int op_code)
 {
-	static t_op		table[17];
-	int				i;
+	static t_op_code	table[17];
+	int					i;
 
 	i = 0;
 	if (op_code < 1 || op_code > 16)
@@ -42,10 +42,10 @@ static t_op			get_op(int op_code)
 
 void				do_op(t_vm *vm)
 {
-	t_op			op;
+	t_op_code		op_code;
 
 	//get op code to pass to below function.
-	if (!(op = get_op(4)))
+	if (!(op_code = get_op(4)))
 		error_exit(vm);//invalid op code
-	op(vm);
+	op_code(vm);
 }

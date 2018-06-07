@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 19:09:18 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/07 22:40:51 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,19 @@ typedef struct			s_vm
 	struct s_champ		*champ;
 }						t_vm;
 
-typedef void			(*t_op)(t_vm *vm);
+typedef struct			s_op
+{
+	char				*name;
+	int					params_quantity;
+	int					param_type[4];
+	int					op_code;
+	int					nb_cycles;
+	char				*description;
+	int					has_pcode;
+	int					has_idx;
+}						t_op;
+
+typedef void			(*t_op_code)(t_vm *vm);
 
 void					test_print(t_vm *vm);//Remove
 
