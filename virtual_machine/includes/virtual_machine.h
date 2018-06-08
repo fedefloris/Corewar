@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 23:58:56 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 17:00:04 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # define SIZE_OF_BUFF	64
 
-# include "libft.h"
-# include "op.h"
-# include <stdio.h>//Remove
+# include				"libft.h"
+# include 				"op.h"
+# include 				<stdio.h>//Remove
 
 typedef struct			s_byte_code
 {
@@ -28,7 +28,14 @@ typedef struct			s_byte_code
 typedef struct			s_champ
 {
 	char				*file_name;
+	int					number;
+
+	uintmax_t			r[REG_NUMBER + 1];
+	unsigned long		pc;
+	char				carry;
+
 	struct s_byte_code	*byte_code;
+
 	struct s_champ		*next;
 }						t_champ;
 
