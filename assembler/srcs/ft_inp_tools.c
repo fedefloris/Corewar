@@ -62,10 +62,92 @@ int		ft_header(char *s, int name, t_frame **frame)
 	return (ft_addheader(&tmp, name, frame));
 }
 
+int		ft_valid_arg(char *s)
+{
+	int		i;
+
+	i = 0;
+	while (s && ft_isspace(s[i]))
+		i++;
+	s += i;
+	i = 0;
+	if (s[i] == DIRECT_CHAR && s[i + 1] == LABEL_CHAR)
+	{
+		i += 2;
+		while (ft_strchr(LABEL_CHARS, s[i]) && s[i])
+			i++;
+		if (s[i] == '\0')
+			return (1);
+	}
+	else if ((ft_isdigit(s[i]) || s[i] == 'r' || s[i] == DIRECT_CHAR))
+	{
+		if (s[i] == 'r' || s[i] == DIRECT_CHAR)
+			i++;
+		if (s[i] == '-')
+			i++;
+		while (ft_isdigit(s[i]))
+			i++;
+		if (!s[i] && i > 1)
+			return (1);
+	}
+	return (0);
+}
+
+int		ft_argno(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg && arg[i])
+		i++;
+	return (i);
+}
+
+int		ft_line2(char *s, t_frame **frame, t_line *line)
+{
+	char	**arg;
+	int		len;
+	int		ret;
+	t_line	*tmp2;
+
+	ret = 1;
+	ft_printf("%s", s);
+	if (!(arg = ft_strsplit(s, SEPARATOR_CHAR)))
+		ret = 0;
+	if ((len = ft_argno(arg)) > 3)
+		ret = 0;
+	while (ret && len--)
+	{
+		if (ft_valid_arg(arg[len]))
+			line->param[len] = arg[len];
+		else
+			ret = 0;
+	}
+	// if (!ret)
+	// {
+	// 	while (len--)
+	// 		ft_strdel(&arg[len]);
+	// }
+	if (ret)
+	{
+		if ((*frame)->lines)
+		{
+			tmp2 = (*frame)->lines;
+			while (tmp2->next)
+				tmp2 = tmp2->next;
+			tmp2->next = line;
+		}
+	}
+	//free(arg);
+	ft_strdel(&s);
+	return (ret);
+}
+
 int		ft_line(char *s, t_frame **frame)
 {
 	t_line	*line;
 	int		i;
+	char	*tmp;
 
 	(*frame)->bytecount = 0;
 	if (!ft_initline(&line))
@@ -89,9 +171,13 @@ int		ft_line(char *s, t_frame **frame)
 		line->opname = ft_strsub(s, 0, ft_strlen(s) - ft_strlen(s + i++));
 	else
 		return (0);
-	while (ft_isspace(s[i]))
-		i++;
 	s = s + i;
+	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
+	{
+		tmp[0] = '\0';
+		if (*(tmp - 1) == SEPARATOR_CHAR)
+			return (0);
+	}
 	ft_printf("<%s>\n<%s>\n", line->label, line->opname);
-	return (1);
+	return (ft_line2(ft_strtrim(s), frame, line));
 }

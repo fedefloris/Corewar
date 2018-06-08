@@ -59,7 +59,9 @@ typedef char	t_arg_type;
 
 typedef struct	s_header
 {
+	unsigned int	magic;
 	char			*prog_name;
+	unsigned int	prog_size;
 	char			*comment;
 }				t_header;
 

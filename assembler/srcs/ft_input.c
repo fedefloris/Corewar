@@ -16,15 +16,19 @@ int		ft_valid_line(char *s, t_frame **frame)
 {
 	char	*str;
 	int		ret;
+	char	*namestr;
+	char	*commentstr;
 
+	namestr = NAME_CMD_STRING;
+	commentstr = COMMENT_CMD_STRING;
 	if (!s)
 		return (1);
 	if (!(str = ft_strtrim(s)))
 		return (0);
 	ret = 1;
-	if (ft_strncmp(str, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)) == 0)
+	if (ft_strncmp(str, namestr, ft_strlen(namestr)) == 0)
 		ret = ft_header(str, 1, frame);
-	else if (ft_strncmp(str, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)) == 0)
+	else if (ft_strncmp(str, commentstr, ft_strlen(commentstr)) == 0)
 		ret = ft_header(str, 0, frame);
 	else if (*str != '\0')
 		ret = ft_line(str, frame);
