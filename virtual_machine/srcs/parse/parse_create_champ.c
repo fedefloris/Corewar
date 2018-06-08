@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/07 19:10:14 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 16:57:41 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,26 @@ static t_champ		*create_champ(t_vm *vm)
 	if (!(champ = (t_champ *)malloc(sizeof(t_champ))))
 		error_exit(vm);
 	ft_bzero(champ, sizeof(*champ));
+	int i = 0;
+
+	while (i <= REG_NUMBER)
+		printf("Val %ju\n", champ->r[i++]);
 	return (champ);
+}
+
+void				get_champion_number(t_vm *vm)
+{
+	t_champ			*champ;
+
+	champ = vm->champ;
+	if (!champ)
+		error_exit(vm);//no champ
+	champ->number = 1;
+	while (champ->next)
+	{
+		champ->next->number = champ->number + 1;
+		champ = champ->next;
+	}
 }
 
 void				parse_create_champ(t_vm *vm)
@@ -38,4 +57,5 @@ void				parse_create_champ(t_vm *vm)
 			vm->champ = champ;
 		}
 	}
+	get_champion_number(vm);
 }
