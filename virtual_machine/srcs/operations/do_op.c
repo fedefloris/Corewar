@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/08 00:08:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 10:46:57 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static t_op_code	get_op(long op_code)
 
 	if (op_code < 1 || op_code > 7237483)
 		return (NULL);
-	bzero(table, 7237484);
 	table[0] = NULL;
 	table[454501] = &op_live;
 	table[1764] = &op_ld;
