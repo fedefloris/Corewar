@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/08 10:46:57 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 22:56:00 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void				do_op(t_vm *vm, int op_code)
 	while (seek->op_code && seek->op_code != op_code)
 		seek++;
 	if (!(op_function = get_op(hash_name(seek->name))))
-		error_exit(vm);//invalid op code
+		error_exit(vm, "Invalid Op Code in do_op");
 	op_function(vm);
 }

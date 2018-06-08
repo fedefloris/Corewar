@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/07 19:10:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/08 23:51:28 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_byte_code	*create_byte_code(t_vm *vm)
 	t_byte_code		*byte_code;
 
 	if (!(byte_code = (t_byte_code *)malloc(sizeof(t_byte_code))))
-		error_exit(vm);
+		error_exit(vm, "Byte Code creation failed.");
 	ft_bzero(byte_code, sizeof(*byte_code));
 	return (byte_code);
 }
@@ -57,13 +57,13 @@ static void			do_read_champ(t_vm *vm, t_champ *champ)
 	char			buf[SIZE_OF_BUFF];
 
 	if ((fd = open(champ->file_name, O_RDONLY)) < 0)
-		error_exit(vm);//Failed_to_open.
+		error_exit(vm, "Failed to open file");
 	while (1)
 	{
 		ft_bzero(buf, SIZE_OF_BUFF);
 		read_val = read(fd, buf, SIZE_OF_BUFF);
 		if (read_val < 0)
-			error_exit(vm);//Failed to read.
+		error_exit(vm, "Failed to open file");
 		if (!read_val)
 			break ;
 		fill_bytes(vm, champ, buf, read_val);
