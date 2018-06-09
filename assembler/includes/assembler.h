@@ -70,6 +70,7 @@ typedef struct	s_line
 	char			*label;
 	char			*opname;
 	char			*param[3];
+	int				*param_type[3];
 	struct s_line	*next;
 	struct s_line	*prev;
 }				t_line;
@@ -91,11 +92,11 @@ typedef struct	s_frame
 }				t_frame;
 
 int				ft_input(int fd, t_frame **frame);
-int				ft_line(char *s, t_frame **frame);
+int				ft_line(char *s, t_frame *frame);
 int				ft_header(char *s, int name, t_frame **frame);
 int				ft_initline(t_line **line);
 int				ft_get_opname(char **s, char **opname);
 int 			ft_get_label(char **s, char **label);
 void			ft_push_line(t_line *line, t_frame *frame);
-int				ft_get_arguments(char *s, t_frame **frame, t_line *line);
+int				ft_get_arguments(char *s, t_line *line);
 #endif

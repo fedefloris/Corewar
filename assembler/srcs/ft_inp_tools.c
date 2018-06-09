@@ -62,12 +62,11 @@ int		ft_header(char *s, int name, t_frame **frame)
 	return (ft_addheader(&tmp, name, frame));
 }
 
-int		ft_line(char *s, t_frame **frame)
+int		ft_line(char *s, t_frame *frame)
 {
 	t_line	*line;
 	char	*tmp;
 
-	(*frame)->bytecount = 0;
 	if (!ft_initline(&line))
 		return (0);
 	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
@@ -82,8 +81,9 @@ int		ft_line(char *s, t_frame **frame)
 		return (0);
 	if (!ft_get_opname(&s, &(line->opname)))
 		return (0);
-	if (!ft_get_arguments(s, frame, line))
+	if (!ft_get_arguments(s, line))
 		return (0);
 	ft_strdel(&tmp);
+	ft_push_line(line, frame);
 	return (1);
 }

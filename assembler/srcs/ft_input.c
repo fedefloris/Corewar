@@ -31,7 +31,7 @@ int		ft_valid_line(char *s, t_frame **frame)
 	else if (ft_strncmp(str, commentstr, ft_strlen(commentstr)) == 0)
 		ret = ft_header(str, 0, frame);
 	else if (*str != '\0')
-		ret = ft_line(str, frame);
+		ret = ft_line(str, *frame);
 	ft_strdel(&str);
 	return (ret);
 }

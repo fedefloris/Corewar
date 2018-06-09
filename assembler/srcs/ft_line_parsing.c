@@ -90,7 +90,7 @@ int		ft_valid_arg(char *s)
 	return (0);
 }
 
-int		ft_get_arguments(char *s, t_frame **frame, t_line *line)
+int		ft_get_arguments(char *s, t_line *line)
 {
 	char	**arg;
 	int		len;
@@ -98,20 +98,17 @@ int		ft_get_arguments(char *s, t_frame **frame, t_line *line)
 
 	ret = 1;
 	if (!(arg = ft_strsplit(s, SEPARATOR_CHAR)))
-		ret = 0;
+		return (0);
 	if ((len = ft_argno(arg)) > 3)
 		ret = 0;
 	while (ret && len--)
 	{
 		if (ft_valid_arg(arg[len]))
-			line->param[len] = arg[len];
+			line->param[len] = ft_strtrim(arg[len]);
 		else
 			ret = 0;
+        ft_strdel(&arg[len]);
 	}
-	while (!ret && len--)
-		ft_strdel(&arg[len]);
-	if (ret)
-		ft_push_line(line, *frame);
 	free(arg);
 	return (ret);
 }

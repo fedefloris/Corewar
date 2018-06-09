@@ -45,6 +45,10 @@ int		main(int ac, char **av)
 		return (ft_printf("ERROR\n"));
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
-//	ft_printf("***%s***\n***%s***\n", (frame)->lines->prog_name, (frame)->header->comment);
+	while (frame->lines)
+	{
+		ft_printf("%s: %s %s,%s,%s\n", frame->lines->label, frame->lines->opname, frame->lines->param[0], frame->lines->param[1], frame->lines->param[2]);
+		frame->lines = frame->lines->next;
+	}
 	return (0);
 }
