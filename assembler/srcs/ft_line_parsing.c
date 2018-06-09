@@ -12,43 +12,43 @@
 
 #include "assembler.h"
 
-int     ft_get_label(char **s, char **label)
+int		ft_get_label(char **s, char **label)
 {
-    int     i;
+	int	i;
 
-    i = 0;
-    while (s[0][i] && ft_strchr(LABEL_CHARS, s[0][i]))
+	i = 0;
+	while (s[0][i] && ft_strchr(LABEL_CHARS, s[0][i]))
 		i++;
 	if (s[0][i] == LABEL_CHAR && i)
 	{
 		if (!(*label = ft_strsub(*s, 0, ft_strlen(*s) - ft_strlen(*s + i++))))
-            return (0);
+			return (0);
 		while (ft_isspace(s[0][i]))
 			i++;
 		*s += i;
 	}
-    if (!i)
-        return (0);
-    return (1);
+	if (!i)
+		return (0);
+	return (1);
 }
 
-int     ft_get_opname(char **s, char **opname)
+int		ft_get_opname(char **s, char **opname)
 {
-    int     i;
+	int	i;
 
-    i = 0;
-    while (s[0][i] && ft_strchr(LABEL_CHARS, s[0][i]))
+	i = 0;
+	while (s[0][i] && ft_strchr(LABEL_CHARS, s[0][i]))
 		i++;
 	if (s[0][i] == DIRECT_CHAR || ft_isspace(s[0][i]))
-    {
+	{
 		if (!(*opname = ft_strsub(*s, 0, ft_strlen(*s) - ft_strlen(*s + i++))))
-            return (0);
-        while (ft_isspace(s[0][i]))
-            i++;
-        *s += i;
-        return (1);
-    }
-    return (0);
+			return (0);
+		while (ft_isspace(s[0][i]))
+			i++;
+		*s += i;
+		return (1);
+	}
+	return (0);
 }
 
 int		ft_argno(char **arg)
@@ -107,7 +107,7 @@ int		ft_get_arguments(char *s, t_line *line)
 			line->param[len] = ft_strtrim(arg[len]);
 		else
 			ret = 0;
-        ft_strdel(&arg[len]);
+		ft_strdel(&arg[len]);
 	}
 	free(arg);
 	return (ret);
