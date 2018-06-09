@@ -23,7 +23,7 @@ LIBFT_FILE = $(LIBFT_DIR)/libft.a
 LIBFT_INCLUDES_DIR = $(LIBFT_DIR)/includes/
 INCLUDE_DIRS = -I$(SRCS_INCLUDES_DIR) -I$(LIBFT_INCLUDES_DIR)
 
-FILES = main ft_input ft_inp_tools ft_lst_tools
+FILES = main ft_input ft_inp_tools ft_lst_tools ft_line_parsing ft_frame_tools
 
 OBJS_WITH_DIR = $(patsubst %, $(OBJS_DIR)/%.o, $(FILES))
 SRCS = $(addsuffix .c, $(FILES))
