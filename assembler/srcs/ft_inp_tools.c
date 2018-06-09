@@ -66,24 +66,28 @@ int		ft_line(char *s, t_frame *frame)
 {
 	t_line	*line;
 	char	*tmp;
+	int		ret;
 
-	if (!ft_initline(&line))
-		return (0);
+	ret = 1;
 	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
-	{
 		tmp[0] = '\0';
-		if (*(tmp - 1) == SEPARATOR_CHAR)
-			return (0);
-	}
-	s = ft_strtrim(s);
+	if (!(s = ft_strtrim(s)))
+		return (0);
+	if (s[ft_strlen(s) - 1] == SEPARATOR_CHAR)
+		ret = 0;
 	tmp = s;
-	if (!ft_get_label(&s, &(line->label)))
-		return (0);
-	if (!ft_get_opname(&s, &(line->opname)))
-		return (0);
-	if (!ft_get_arguments(s, line))
-		return (0);
+	if (ret && !ft_initline(&line))
+		ret = 0;
+	if (ret && !ft_get_label(&s, &(line->label)))
+		ret = 0;
+	if (ret && !ft_get_opname(&s, &(line->opname)))
+		ret = 0;
+	if (ret && !ft_get_arguments(s, line))
+		ret = 0;
 	ft_strdel(&tmp);
-	ft_push_line(line, frame);
-	return (1);
+	if (ret)
+		ft_push_line(line, frame);
+	else
+		ft_free_lines(line);
+	return (ret);
 }

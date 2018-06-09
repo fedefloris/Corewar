@@ -70,7 +70,8 @@ typedef struct	s_line
 	char			*label;
 	char			*opname;
 	char			*param[3];
-	int				*param_type[3];
+	int				param_type[3];
+	int				param_count;
 	struct s_line	*next;
 	struct s_line	*prev;
 }				t_line;

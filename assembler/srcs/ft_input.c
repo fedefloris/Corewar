@@ -51,5 +51,5 @@ int		ft_input(int fd, t_frame **frame)
 	}
 	if (str)
 		ft_strdel(&str);
-	return ((str) ? 1 : 1);
+	return (1);
 }

@@ -62,7 +62,7 @@ int		ft_valid_arg(char *s)
 		while (ft_strchr(LABEL_CHARS, s[i]) && s[i])
 			i++;
 		if (s[i] == '\0')
-			return (1);
+			return (2);
 	}
 	else if ((ft_isdigit(s[i]) || s[i] == 'r' || s[i] == DIRECT_CHAR))
 	{
@@ -72,8 +72,10 @@ int		ft_valid_arg(char *s)
 			i++;
 		while (ft_isdigit(s[i]))
 			i++;
-		if (!s[i] && i && ft_isdigit(s[i - 1]))
+		if (!s[i] && i && ft_isdigit(s[i - 1]) && s[0] == 'r')
 			return (1);
+		else if (!s[i] && i && ft_isdigit(s[i - 1]))
+			return (s[0] == DIRECT_CHAR ? 2 : 3);
 	}
 	return (0);
 }
@@ -89,9 +91,11 @@ int		ft_get_arguments(char *s, t_line *line)
 		return (0);
 	if ((len = ft_argno(arg)) > 3)
 		ret = 0;
+	else
+		line->param_count = len;
 	while (ret && len--)
 	{
-		if (ft_valid_arg(arg[len]))
+		if ((line->param_type[len] = ft_valid_arg(arg[len])))
 			line->param[len] = ft_strtrim(arg[len]);
 		else
 			ret = 0;
