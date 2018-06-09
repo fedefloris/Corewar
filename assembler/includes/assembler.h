@@ -99,4 +99,6 @@ int				ft_get_opname(char **s, char **opname);
 int 			ft_get_label(char **s, char **label);
 void			ft_push_line(t_line *line, t_frame *frame);
 int				ft_get_arguments(char *s, t_line *line);
+void			ft_free_lines(t_line *line);
+void			ft_free_frame(t_frame *frame);
 #endif

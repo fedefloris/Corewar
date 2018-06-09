@@ -25,3 +25,18 @@ int		ft_initline(t_line **line)
 	(*line)->prev = NULL;
 	return (1);
 }
+
+void	ft_push_line(t_line *line, t_frame *frame)
+{
+	t_line	*tmp;
+
+	if (!frame->lines)
+		frame->lines = line;
+	else
+	{
+		tmp = frame->lines;
+		while (tmp && tmp->next)
+			tmp = tmp->next;
+		tmp->next = line;
+	}
+}

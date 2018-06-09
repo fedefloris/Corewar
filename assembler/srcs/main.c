@@ -34,6 +34,7 @@ int		main(int ac, char **av)
 {
 	int		fd;
 	t_frame	*frame;
+	t_line	*tmp;
 
 	if (ac != 2)
 		return (ft_printf("ERROR\n"));
@@ -45,10 +46,12 @@ int		main(int ac, char **av)
 		return (ft_printf("ERROR\n"));
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
-	while (frame->lines)
+	tmp = frame->lines;
+	while (tmp)
 	{
-		ft_printf("%s: %s %s,%s,%s\n", frame->lines->label, frame->lines->opname, frame->lines->param[0], frame->lines->param[1], frame->lines->param[2]);
-		frame->lines = frame->lines->next;
+		ft_printf("%s: %s %s,%s,%s\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2]);
+		tmp = tmp->next;
 	}
+	ft_free_frame(frame);
 	return (0);
 }
