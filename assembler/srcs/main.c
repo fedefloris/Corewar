@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/10 18:55:58 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 22:32:51 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		main(int ac, char **av)
 	int		fd;
 	t_frame	*frame;
 	t_line	*tmp;
+	t_label *label1;
+	t_label *label2;	
 
 	if (ac != 2)
 		return (ft_printf("ERROR\n"));
@@ -47,12 +49,24 @@ int		main(int ac, char **av)
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
 	tmp = frame->lines;
-	while (tmp)
-	{
-		ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
-		tmp = tmp->next;
-	}
+	// while (tmp)
+	// {
+	// 	ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
+	// 	tmp = tmp->next;
+	// }
+	label1 = frame->request;
+	// while (label1)
+	// {
+	// 	ft_printf("request:%s\n", label1->name);
+	// 	label1 = label1->next;
+	// }
+	label2 = frame->declare;
+	// while (label2)
+	// {
+	// 	ft_printf("decl:%s\n", label2->name);
+	// 	label2 = label2->next;
+	// }
 	ft_error_output(frame->errors);
-	ft_free_frame(frame);
+	ft_free_frame(&frame);
 	return (0);
 }

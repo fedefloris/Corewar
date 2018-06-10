@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 19:26:08 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 19:35:37 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 20:21:46 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int			ft_valid_arg(char *s)
 	while (ft_isspace(*s))
 		s++;
 	if (ft_valid_registry(s))
-		return (1);
+		return (T_REG);
 	else if (ft_valid_direct(s))
-		return (2);
+		return (T_DIR);
 	else if (ft_valid_indirect(s))
-		return (3);
+		return (T_IND);
 	else
 		return (0);
 }
