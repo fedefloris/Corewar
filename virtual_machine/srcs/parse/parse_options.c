@@ -6,16 +6,34 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/10 21:26:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 22:11:31 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
+static void			create_name(t_vm *vm, int num, int pos)
+{
+	t_name			*name;
+
+	if (!(name = (t_name *)malloc(sizeof(t_name))))
+		error_exit(vm, "Malloc failed, num creation");
+	bzero(name, sizeof(*name));
+	name->num = num;
+	name->pos = pos;
+	if (!vm->name)
+		vm->name = name;
+	else
+	{
+		name->next = vm->name;
+		vm->name = name;
+	}
+}
+
 static void			parse_n(t_vm *vm)
 {
 	int				i;
-	int				tmp;
+	int				num;
 	char			**argv;
 
 	i = 1;
@@ -26,17 +44,16 @@ static void			parse_n(t_vm *vm)
 		if (!ft_strcmp(argv[i], "-n"))
 		{
 			if (argv[i + 1] && (argv[i + 2] && (ft_strcmp(argv[i + 2], "-dump") && ft_strcmp(argv[i + 2], "-n"))))
-				tmp = ft_atoi(argv[i + 1]);
+				num = ft_atoi(argv[i + 1]);
 			else
 				error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
-			if (tmp < 1)
+			if (num < 1)
 				error_exit(vm, "Declare player number greater than 0");
-			if (tmp)
-				printf("N is %d\n", tmp);
-				//create_name(vm, tmp, i);
+			if (num)
+				create_name(vm, num, i + 2);
 		}
 		i++;
-		tmp = 0;
+		num = 0;
 	}
 }
 

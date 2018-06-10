@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/10 17:52:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 22:10:38 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,42 @@ static t_champ		*create_champ(t_vm *vm)
 	return (champ);
 }
 
-void				get_champion_number(t_vm *vm)
-{
-	t_champ			*champ;
-
-	champ = vm->champ;
-	if (!champ)
-		error_exit(vm, "No Champ");
-	champ->number = 1;
-	while (champ->next)
-	{
-		champ->next->number = champ->number + 1;
-		champ = champ->next;
-	}
-}
+//void				get_champion_number(t_vm *vm)
+//{
+//	t_champ			*champ;
+//
+//	champ = vm->champ;
+//	if (!champ)
+//		error_exit(vm, "No Champ");
+//	champ->number = 1;
+//	while (champ->next)
+//	{
+//		champ->next->number = champ->number + 1;
+//		champ = champ->next;
+//	}
+//}
 
 void				parse_create_champ(t_vm *vm)
 {
 	t_champ			*champ;
+	t_name			*name;
 
 	while (--vm->argc)
 	{
-		if (vm->argc > 1 && !ft_strcmp(vm->argv[vm->argc - 1], "-dump"))
+		name = vm->name;
+		if (vm->argc > 1 && (!ft_strcmp(vm->argv[vm->argc - 1], "-dump") ||
+					!ft_strcmp(vm->argv[vm->argc - 1], "-n")))
 			vm->argc -= 1;
 		else
 		{
 			champ = create_champ(vm);
 			champ->file_name = vm->argv[vm->argc];
+			while (name)
+			{
+				if (vm->argc == name->pos)
+					champ->number = name->num;
+				name = name->next;
+			}
 			if (!vm->champ)
 				vm->champ = champ;
 			else
@@ -59,5 +68,5 @@ void				parse_create_champ(t_vm *vm)
 			}
 		}
 	}
-	get_champion_number(vm);
+	//get_champion_number(vm);
 }
