@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/10 18:43:37 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 22:12:09 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ char	*ft_line(char *s, t_frame *frame)
 	if (!ret)
 		ft_push_line(line, frame);
 	else
-		ft_free_lines(line);
+		ft_free_lines(&line);
 	return (ret);
 }

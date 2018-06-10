@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/10 19:35:57 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 22:08:48 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,28 @@ typedef struct	s_header
 	char			*comment;
 }				t_header;
 
+typedef struct	s_op
+{
+	char		*opname;
+	int			param_count;
+	int			param_type[3];
+	int			opcode;
+	int			cycles;
+	char		*description;
+	int			acb;
+	int			half_size;
+}				t_op;
+
 typedef struct	s_line
 {
 	char			*label;
 	char			*opname;
+	int				opcode;
 	char			*param[3];
 	int				param_type[3];
 	int				param_count;
 	struct s_line	*next;
-	struct s_line	*prev;
+	struct s_line	*last;
 }				t_line;
 
 typedef struct	s_label
@@ -109,11 +122,15 @@ char			*ft_get_opname(char **s, char **opname);
 char			*ft_get_label(char **s, char **label);
 void			ft_push_line(t_line *line, t_frame *frame);
 char			*ft_get_arguments(char *s, t_line *line);
-void			ft_free_lines(t_line *line);
-void			ft_free_frame(t_frame *frame);
 int				ft_error(char *line, char *msg, int line_nb,
 					t_error **err_list);
 void			ft_error_output(t_error *error);
 int				ft_valid_arg(char *s);
 int				ft_argno(char **arg);
+char			*ft_produce_line(t_frame *frame);
+char			*ft_push_declaration(char *name, int dist, t_frame **frame);
+char			*ft_push_request(char *name, int dist, t_frame **frame);
+void			ft_free_label(t_label **labels);
+void			ft_free_lines(t_line **lines);
+void			ft_free_frame(t_frame **frames);
 #endif
