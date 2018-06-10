@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 00:28:27 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 01:07:09 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,29 @@ static t_champ		*create_champ(t_vm *vm)
 	if (!(champ = (t_champ *)malloc(sizeof(t_champ))))
 		error_exit(vm, "Malloc failed (Create Champ)");
 	ft_bzero(champ, sizeof(*champ));
-	int i = 0;
 	return (champ);
 }
 
-void				get_champion_number(t_vm *vm)
+static void			check_duplicate_names(t_vm *vm)
+{
+	t_champ			*seek;
+	t_champ			*compare;
+
+	compare = vm->champ;
+	while (compare->next)
+	{
+		seek = compare->next;
+		while (seek)
+		{
+			if (compare->number == seek->number)
+				error_exit(vm, "Duplicate names");
+			seek = seek->next;
+		}
+		compare = compare->next;
+	}
+}
+
+static void			get_champion_number(t_vm *vm)
 {
 	t_champ			*champ;
 	t_name			*name;
@@ -32,31 +50,24 @@ void				get_champion_number(t_vm *vm)
 
 	champ = vm->champ;
 	number = 1;
-	if (!champ)
-		error_exit(vm, "No Champ");
-	while (champ)
+	(!champ) ? error_exit(vm, "No Champ") : 0;
+	while (champ && !(flag = 0))
 	{
-		flag = 0;
-		while (!flag)
+		while (!flag && (name = vm->name))
 		{
-			name = vm->name;
 			flag = 1;
 			while (name)
 			{
-				if (number == name->num)
-					flag = 0;
+				(number == name->num) ? flag = 0 : 0;
 				name = name->next;
 			}
 			if (!flag)
 				number++;
 		}
-		if (!champ->number)
-		{
-			champ->number = number;
-			number++;
-		}
+		(!champ->number) ? champ->number = number++ : 0;
 		champ = champ->next;
 	}
+	check_duplicate_names(vm);
 }
 
 void				parse_create_champ(t_vm *vm)
@@ -64,9 +75,8 @@ void				parse_create_champ(t_vm *vm)
 	t_champ			*champ;
 	t_name			*name;
 
-	while (--vm->argc)
+	while (--vm->argc && (name = vm->name))
 	{
-		name = vm->name;
 		if (vm->argc > 1 && (!ft_strcmp(vm->argv[vm->argc - 1], "-dump") ||
 					!ft_strcmp(vm->argv[vm->argc - 1], "-n")))
 			vm->argc -= 1;
@@ -80,12 +90,11 @@ void				parse_create_champ(t_vm *vm)
 			{
 				champ->next = vm->champ;
 				vm->champ = champ;
-				while (name)
-				{
-					if (vm->argc == name->pos)
-						champ->number = name->num;
-					name = name->next;
-				}
+			}
+			while (name)
+			{
+				(vm->argc == name->pos) ? champ->number = name->num : 0;
+				name = name->next;
 			}
 		}
 	}

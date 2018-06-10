@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 00:23:14 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 01:10:23 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ static void			parse_n(t_vm *vm)
 
 	i = 1;
 	argv = vm->argv;
-
 	while (argv[i])
 	{
 		if (!ft_strcmp(argv[i], "-n"))
 		{
-			if (argv[i + 1] && (argv[i + 2] && (ft_strcmp(argv[i + 2], "-dump") && ft_strcmp(argv[i + 2], "-n"))))
+			if (argv[i + 1] && (argv[i + 2] &&
+						(ft_strcmp(argv[i + 2], "-dump") &&
+						ft_strcmp(argv[i + 2], "-n"))))
 				num = ft_atoi(argv[i + 1]);
 			else
 				error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
@@ -64,7 +65,6 @@ static void			parse_dump(t_vm *vm)
 
 	i = 1;
 	argv = vm->argv;
-
 	while (argv[i])
 	{
 		if (!ft_strcmp(argv[i], "-dump"))
@@ -82,7 +82,6 @@ static void			parse_dump(t_vm *vm)
 	}
 	printf("-dump %d\n", vm->dump);
 }
-
 
 void				parse_options(t_vm *vm)
 {
