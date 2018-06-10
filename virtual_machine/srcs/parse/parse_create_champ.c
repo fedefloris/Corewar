@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/10 14:57:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 16:57:47 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,19 @@ void				parse_create_champ(t_vm *vm)
 
 	while (--vm->argc)
 	{
-		champ = create_champ(vm);
-		champ->file_name = vm->argv[vm->argc];
-		if (!vm->champ)
-			vm->champ = champ;
+		if (vm->argc > 1 && !ft_strcmp(vm->argv[vm->argc - 1], "-dump"))
+			vm->argc -= 2;
 		else
 		{
-			champ->next = vm->champ;
-			vm->champ = champ;
+			champ = create_champ(vm);
+			champ->file_name = vm->argv[vm->argc];
+			if (!vm->champ)
+				vm->champ = champ;
+			else
+			{
+				champ->next = vm->champ;
+				vm->champ = champ;
+			}
 		}
 	}
 	get_champion_number(vm);
