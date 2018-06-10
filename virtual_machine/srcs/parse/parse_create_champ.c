@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/10 22:10:38 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 22:37:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ static t_champ		*create_champ(t_vm *vm)
 	return (champ);
 }
 
-//void				get_champion_number(t_vm *vm)
-//{
-//	t_champ			*champ;
-//
-//	champ = vm->champ;
-//	if (!champ)
-//		error_exit(vm, "No Champ");
-//	champ->number = 1;
-//	while (champ->next)
-//	{
-//		champ->next->number = champ->number + 1;
-//		champ = champ->next;
-//	}
-//}
+void				get_champion_number(t_vm *vm)
+{
+	t_champ			*champ;
+
+	champ = vm->champ;
+	if (!champ)
+		error_exit(vm, "No Champ");
+	champ->number = 1;
+	while (champ->next)
+	{
+		champ->next->number = champ->number + 1;
+		champ = champ->next;
+	}
+}
 
 void				parse_create_champ(t_vm *vm)
 {
