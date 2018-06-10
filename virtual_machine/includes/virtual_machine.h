@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/10 15:19:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 21:43:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include				"libft.h"
 # include 				"op.h"
 # include 				<stdio.h>//Remove
+
+typedef struct			s_name
+{
+	int					num;
+	int					pos;
+	struct s_name		*next;
+}						t_name;
 
 typedef struct			s_byte_code
 {
@@ -56,6 +63,8 @@ typedef struct			s_vm
 	int					argc;
 	int					cycle;
 	int					dump;
+
+	struct s_name		*name;
 	struct s_champ		*champ;
 	struct s_process	*process;
 }						t_vm;
