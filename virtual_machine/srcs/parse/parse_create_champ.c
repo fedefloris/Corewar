@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/09 00:40:04 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 14:57:45 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ static t_champ		*create_champ(t_vm *vm)
 		error_exit(vm, "Malloc failed (Create Champ)");
 	ft_bzero(champ, sizeof(*champ));
 	int i = 0;
-
-	while (i <= REG_NUMBER)
-		printf("Val %ju\n", champ->r[i++]);
 	return (champ);
 }
 
