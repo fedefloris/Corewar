@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/09 00:38:03 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 15:19:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct			s_vm
 	char				**argv;
 	int					argc;
 
+	int					dump;
+
 	struct s_champ		*champ;
 }						t_vm;
 
@@ -73,6 +75,7 @@ void					free_virtual_machine(t_vm *vm);
 void					virtual_machine(t_vm *vm);
 
 void					parse_handler(t_vm *vm);
+void					parse_options(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 
