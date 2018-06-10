@@ -5,10 +5,9 @@ void	ft_free_lines(t_line *line)
 	t_line	*tmp;
 	int		i;
 
-	while (line)
+	while (line != NULL)
 	{
 		i = 0;
-		tmp = line;
 		if (line->label)
 			ft_strdel(&line->label);
 		if (line->opname)
@@ -19,6 +18,7 @@ void	ft_free_lines(t_line *line)
 				ft_strdel(&line->param[i]);
 			i++;
 		}
+		tmp = line;		
 		line = line->next;
 		free(tmp);
 	}

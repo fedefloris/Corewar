@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inp_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/07 19:01:57 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/10 15:26:12 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		ft_line(char *s, t_frame *frame)
 	int		ret;
 
 	ret = 1;
+	line = NULL;
 	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
 		tmp[0] = '\0';
 	if (!(s = ft_strtrim(s)))
@@ -76,14 +77,10 @@ int		ft_line(char *s, t_frame *frame)
 	if (s[ft_strlen(s) - 1] == SEPARATOR_CHAR)
 		ret = 0;
 	tmp = s;
-	if (ret && !ft_initline(&line))
-		ret = 0;
-	if (ret && !ft_get_label(&s, &(line->label)))
-		ret = 0;
-	if (ret && !ft_get_opname(&s, &(line->opname)))
-		ret = 0;
-	if (ret && !ft_get_arguments(s, line))
-		ret = 0;
+	ret = ((ret && !ft_initline(&line)) ? 0 : ret);
+	ret = ((ret && !ft_get_label(&s, &line->label)) ? 0 : ret);
+	ret = ((ret && !ft_get_opname(&s, &line->opname)) ? 0 : ret);
+	ret = ((ret && !ft_get_arguments(s, line)) ? 0 : ret);
 	ft_strdel(&tmp);
 	if (ret)
 		ft_push_line(line, frame);

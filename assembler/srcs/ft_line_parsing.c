@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_line_parsing.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
+/*   Updated: 2018/06/10 15:00:24 by mfiguera         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assembler.h"
 
 int		ft_get_label(char **s, char **label)
@@ -34,7 +46,8 @@ int		ft_get_opname(char **s, char **opname)
 		while (ft_isspace(s[0][i]))
 			i++;
 		*s += i;
-		return (1);
+		if (**s != SEPARATOR_CHAR)
+			return (1);
 	}
 	return (0);
 }
