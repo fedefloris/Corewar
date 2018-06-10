@@ -6,11 +6,16 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 18:59:44 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/10 16:19:00 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
+
+int		ft_error(char *msg, int ret)
+{
+
+}
 
 int		ft_initframe(t_frame **frame)
 {
