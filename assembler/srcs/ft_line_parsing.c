@@ -6,13 +6,13 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 15:00:24 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 18:45:12 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-int		ft_get_label(char **s, char **label)
+char	*ft_get_label(char **s, char **label)
 {
 	int	i;
 
@@ -22,17 +22,17 @@ int		ft_get_label(char **s, char **label)
 	if (s[0][i] == LABEL_CHAR && i)
 	{
 		if (!(*label = ft_strsub(*s, 0, ft_strlen(*s) - ft_strlen(*s + i++))))
-			return (0);
+			return (ft_strdup("Failed to malloc label"));
 		while (ft_isspace(s[0][i]))
 			i++;
 		*s += i;
 	}
 	if (!i)
-		return (0);
-	return (1);
+		return (ft_strdup("Label starts with a char not in LABEL_CHARS"));
+	return (NULL);
 }
 
-int		ft_get_opname(char **s, char **opname)
+char	*ft_get_opname(char **s, char **opname)
 {
 	int	i;
 
@@ -42,14 +42,14 @@ int		ft_get_opname(char **s, char **opname)
 	if (s[0][i] == DIRECT_CHAR || ft_isspace(s[0][i]))
 	{
 		if (!(*opname = ft_strsub(*s, 0, ft_strlen(*s) - ft_strlen(*s + i++))))
-			return (0);
+			return (ft_strdup("Failed to malloc operation name"));
 		while (ft_isspace(s[0][i]))
 			i++;
 		*s += i;
 		if (**s != SEPARATOR_CHAR)
-			return (1);
+			return (NULL);
 	}
-	return (0);
+	return (ft_strdup("Invalid character after operation name"));
 }
 
 int		ft_argno(char **arg)
@@ -79,10 +79,8 @@ int		ft_valid_arg(char *s)
 	}
 	else if ((ft_isdigit(s[i]) || s[i] == 'r' || s[i] == DIRECT_CHAR))
 	{
-		if (s[i] == 'r' || s[i] == DIRECT_CHAR)
-			i++;
-		if (s[i] == '-')
-			i++;
+		i = (s[i] == 'r' || s[i] == DIRECT_CHAR) ? i + 1 : i;
+		i = (s[i] == '-') ? i + 1 : i;
 		while (ft_isdigit(s[i]))
 			i++;
 		if (!s[i] && i && ft_isdigit(s[i - 1]) && s[0] == 'r')
@@ -93,25 +91,25 @@ int		ft_valid_arg(char *s)
 	return (0);
 }
 
-int		ft_get_arguments(char *s, t_line *line)
+char	*ft_get_arguments(char *s, t_line *line)
 {
 	char	**arg;
 	int		len;
-	int		ret;
+	char	*ret;
 
-	ret = 1;
+	ret = NULL;
 	if (!(arg = ft_strsplit(s, SEPARATOR_CHAR)))
-		return (0);
+		return (ft_strdup("Failed to malloc parameters"));
 	if ((len = ft_argno(arg)) > 3)
-		ret = 0;
+		ret = ft_strdup("Too many parameters");
 	else
 		line->param_count = len;
-	while (ret && len--)
+	while (!ret && len--)
 	{
 		if ((line->param_type[len] = ft_valid_arg(arg[len])))
 			line->param[len] = ft_strtrim(arg[len]);
 		else
-			ret = 0;
+			ret = ft_strdup("Invalid parameter formatting");
 		ft_strdel(&arg[len]);
 	}
 	free(arg);

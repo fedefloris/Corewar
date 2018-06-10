@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/07 17:55:42 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/10 18:34:58 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ typedef struct	s_label
 	struct s_label	*next;
 }				t_label;
 
+typedef struct	s_error
+{
+	char			*description;
+	char			*line;
+	int				line_nb;
+	struct s_error	*next;
+}				t_error;
+
 typedef struct	s_frame
 {
 	t_header	*header;
@@ -90,16 +98,19 @@ typedef struct	s_frame
 	t_label		*request;
 	t_label		*declare;
 	size_t		bytecount;
+	t_error		*errors;
 }				t_frame;
 
-int				ft_input(int fd, t_frame **frame);
-int				ft_line(char *s, t_frame *frame);
-int				ft_header(char *s, int name, t_frame **frame);
-int				ft_initline(t_line **line);
-int				ft_get_opname(char **s, char **opname);
-int 			ft_get_label(char **s, char **label);
+int				ft_input(int fd, t_frame *frame);
+char			*ft_line(char *s, t_frame *frame);
+char			*ft_header(char *s, int name, t_frame *frame);
+char			*ft_initline(t_line **line);
+char			*ft_get_opname(char **s, char **opname);
+char			*ft_get_label(char **s, char **label);
 void			ft_push_line(t_line *line, t_frame *frame);
-int				ft_get_arguments(char *s, t_line *line);
+char			*ft_get_arguments(char *s, t_line *line);
 void			ft_free_lines(t_line *line);
 void			ft_free_frame(t_frame *frame);
+int				ft_error(char *line, char *msg, int line_nb, t_error **err_list);
+void			ft_error_output(t_error *error);
 #endif
