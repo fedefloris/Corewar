@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   virtual_machine.c                                  :+:      :+:    :+:   */
+/*   exec_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/04 22:28:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/04 22:46:55 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/10 16:52:56 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void				virtual_machine(t_vm *vm)
+void				exec_vm(t_vm *vm)
 {
-	parse_handler(vm);
-	exec_vm(vm);
+	while (1)
+	{
+		// execute every process
+		vm->cycle++;
+		if (vm->cycle % CYCLE_TO_DIE == 0)
+		{
+			// if one process didn't call live delete it
+		}
+		// if ()
+	}
 }
