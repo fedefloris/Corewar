@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 18:45:12 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 19:34:12 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,45 +50,6 @@ char	*ft_get_opname(char **s, char **opname)
 			return (NULL);
 	}
 	return (ft_strdup("Invalid character after operation name"));
-}
-
-int		ft_argno(char **arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg && arg[i])
-		i++;
-	return (i);
-}
-
-int		ft_valid_arg(char *s)
-{
-	int		i;
-
-	i = 0;
-	while (*s && ft_isspace(s[i]))
-		s++;
-	if (s[i] == DIRECT_CHAR && s[i + 1] == LABEL_CHAR)
-	{
-		i += 2;
-		while (ft_strchr(LABEL_CHARS, s[i]) && s[i])
-			i++;
-		if (s[i] == '\0')
-			return (2);
-	}
-	else if ((ft_isdigit(s[i]) || s[i] == 'r' || s[i] == DIRECT_CHAR))
-	{
-		i = (s[i] == 'r' || s[i] == DIRECT_CHAR) ? i + 1 : i;
-		i = (s[i] == '-') ? i + 1 : i;
-		while (ft_isdigit(s[i]))
-			i++;
-		if (!s[i] && i && ft_isdigit(s[i - 1]) && s[0] == 'r')
-			return (1);
-		else if (!s[i] && i && ft_isdigit(s[i - 1]))
-			return (s[0] == DIRECT_CHAR ? 2 : 3);
-	}
-	return (0);
 }
 
 char	*ft_get_arguments(char *s, t_line *line)

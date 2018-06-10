@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/10 18:34:58 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/10 19:35:57 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ void			ft_push_line(t_line *line, t_frame *frame);
 char			*ft_get_arguments(char *s, t_line *line);
 void			ft_free_lines(t_line *line);
 void			ft_free_frame(t_frame *frame);
-int				ft_error(char *line, char *msg, int line_nb, t_error **err_list);
+int				ft_error(char *line, char *msg, int line_nb,
+					t_error **err_list);
 void			ft_error_output(t_error *error);
+int				ft_valid_arg(char *s);
+int				ft_argno(char **arg);
 #endif
