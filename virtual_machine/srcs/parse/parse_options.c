@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 01:10:23 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 12:08:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void			parse_dump(t_vm *vm)
 		}
 		i++;
 	}
-	printf("-dump %d\n", vm->dump);
 }
 
 void				parse_options(t_vm *vm)
