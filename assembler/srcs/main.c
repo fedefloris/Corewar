@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 23:00:29 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 00:08:58 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,34 @@ int		ft_initframe(t_frame **frame)
 	return (1);
 }
 
+int		ft_open(char *file)
+{
+	int		fd;
+	char	*tmp;
+	char	*s;
+
+	s = NULL;
+	tmp = file;
+	while ((tmp = ft_strchr(tmp, '.')))
+		s = tmp++;
+	if (!s)
+	{
+		ft_printf("<%s> is not a file\n", file);
+		return (-1);
+	}
+	if (!(s[1] == 's' && s[2] == '\0'))
+	{
+		ft_printf("<%s> is not a correct file type\n", file);
+		return (-1);
+	}
+	if ((fd = open(file, O_RDONLY)) == -1)
+	{
+		ft_printf("Can not open file <%s>\n", file);
+		return (-1);
+	}
+	return (fd);
+}
+
 int		main(int ac, char **av)
 {
 	int		fd;
@@ -42,8 +70,8 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_printf("Usage: %s <sourcefile.s>\n", av[0]));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (ft_printf("Can not open file: %s\n", av[1]));
+	if ((fd = ft_open(av[1])) == -1)
+		return (0);
 	if (!ft_initframe(&frame))
 		return (ft_printf("ERROR\n"));
 	ft_input(fd, frame);

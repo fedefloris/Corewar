@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 23:10:42 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 23:37:04 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_get_arg_val(char *param, int param_type, t_label *req)
 		{
 			if (!ft_strcmp(req->name, label))
 				return (req->dist);
-			req =req->next;
+			req = req->next;
 		}
 	}
 	if (param_type == IND_CODE)
@@ -80,7 +80,8 @@ void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 
 	if (ft_strchr(line->param[nb], LABEL_CHAR))
 		return ;
-	val = (unsigned int)ft_get_arg_val(line->param[nb], line->param_type[nb], req);
+	val = (unsigned int)ft_get_arg_val(line->param[nb], line->param_type[nb],
+			req);
 	mask = 0xff;
 	i = 0;
 	max = ft_get_nb_bytes(line->param_type[nb], half);
