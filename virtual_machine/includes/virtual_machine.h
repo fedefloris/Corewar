@@ -115,7 +115,7 @@ void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 void					parse_bytes(t_vm *vm);
 
-void					load_champions(t_vm *vm);
+void					load_processes(t_vm *vm);
 void					exec_vm(t_vm *vm);
 void					do_op(t_vm *vm, int op_code);
 
