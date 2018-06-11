@@ -53,7 +53,6 @@ typedef struct			s_champ
 {
 	char				*file_name;
 
-	int					program_size;
 	int					number;
 	char				*name;
 	char				*bytes;
@@ -78,6 +77,7 @@ typedef struct			s_vm
 	int					argc;
 	int					dump;
 	int					cycle;
+	int					cycle_to_die;
 	int					live_calls;
 	char				*memory;
 
