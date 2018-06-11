@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 11:08:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 12:14:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:12:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,34 @@ static void			do_corewar_logo(void)
 	ft_printf("\\____/  \\____/\\/_/    \\___/____/|__/  \\___/ /_/     \n");
 	usleep(100000);
 	ft_printf(WHITE);
-	ft_printf("                                             USAGE\n");
+	ft_printf("                               VIRTUAL MACHINE\n");
 	ft_printf(RESET);
 }
 
-//static void			do_read(void)
-//{
-//	ft_printf(B_PINK);
-//	usleep(100000);
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("READ FILE\n");
-//	ft_printf(RESET);
-//	ft_printf(PINK);
-//	usleep(100000);
-//	ft_printf("$>./lem-in < maps/test1.map\n");
-//	ft_printf(B_PINK);
-//	usleep(100000);
-//}
-//
+static void			do_usage(void)
+{
+	ft_printf(B_PINK);
+	usleep(100000);
+	ft_printf("\n");
+	usleep(100000);
+	ft_printf("\n");
+	usleep(100000);
+	ft_printf("USAGE\n");
+	ft_printf(RESET);
+	ft_printf(PINK);
+	usleep(100000);
+	ft_printf("$> ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
+	ft_printf(B_PINK);
+	usleep(100000);
+}
+
 //static void			do_stdin(void)
 //{
 //	ft_printf("\n");
 //	usleep(100000);
 //	ft_printf("\n");
 //	usleep(100000);
-//	ft_printf("STDIN\n");
+//	ft_printf("DESCRIPTION\n");
 //	ft_printf(RESET);
 //	ft_printf(PINK);
 //	usleep(100000);
@@ -80,7 +80,7 @@ static void			do_corewar_logo(void)
 //	usleep(100000);
 //	ft_printf("Room42-Room27\n");
 //}
-//
+
 //static void			do_flags(void)
 //{
 //	ft_printf(B_PINK);
@@ -109,7 +109,7 @@ static void			do_corewar_logo(void)
 void				display_usage(t_vm *vm, int i)
 {
 	do_corewar_logo();
-//	do_read();
+	do_usage();
 //	do_stdin();
 //	do_flags();
 	free_vm(vm);
