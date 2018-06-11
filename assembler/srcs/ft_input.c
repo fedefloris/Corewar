@@ -6,34 +6,34 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 15:24:22 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 15:52:35 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	*ft_valid_line(char *s, t_frame *frame, int line_nb)
+char	*ft_valid_line(char *s, t_frame *frame, int nb)
 {
 	char	*str;
 	char	*ret;
-	char	*namestr;
-	char	*commentstr;
 
-	namestr = NAME_CMD_STRING;
-	commentstr = COMMENT_CMD_STRING;
 	if (!s)
 		return (NULL);
 	if (!(str = ft_strtrim(s)))
 		return (ft_strdup("Failed to malloc trimmed line"));
 	ret = NULL;
-	if (!frame->lines && ft_strncmp(str, namestr, ft_strlen(namestr)) == 0)
+	if (!frame->lines && ft_strncmp(str, NAME_CMD_STRING,
+			ft_strlen(NAME_CMD_STRING)) == 0)
 		ret = ft_header(str, 1, frame);
-	else if (!frame->lines && ft_strncmp(str, commentstr, ft_strlen(commentstr)) == 0)
+	else if (!frame->lines && ft_strncmp(str, COMMENT_CMD_STRING,
+			ft_strlen(COMMENT_CMD_STRING)) == 0)
 		ret = ft_header(str, 0, frame);
 	else if (*str != '\0')
 	{
-		if (!frame->lines && (!frame->header || !frame->header->prog_name || !frame->header->comment))
-			ft_error(ft_strdup(s), ft_strdup("No name or comment"), line_nb, &frame->errors);
+		if (!frame->lines && (!frame->header || !frame->header->prog_name ||
+				!frame->header->comment))
+			ft_error(ft_strdup(s), ft_strdup("No name or comment"), nb,
+					&frame->errors);
 		ret = ft_line(str, frame);
 	}
 	ft_strdel(&str);

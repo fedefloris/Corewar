@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 00:01:21 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/11 16:05:03 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_init_label(t_label **label, char *name, int dist)
 	return (NULL);
 }
 
-char	*ft_push_declaration(char *name, int dist, t_frame **frame)
+char	*ft_push_decl(char *name, int dist, t_frame **frame)
 {
 	t_label	*label;
 	t_label *tmp;

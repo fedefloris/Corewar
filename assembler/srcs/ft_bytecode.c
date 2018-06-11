@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 14:41:25 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 16:02:25 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_line_bytes(t_line *line, t_op *op)
 	bytecount = 0;
 	line->bytecode = NULL;
 	if (!ft_push_bytecode(&line->bytecode, line->opcode))
-		return (0);	
+		return (0);
 	bytecount++;
 	if (op->acb)
 	{

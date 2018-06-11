@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 19:26:08 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 01:31:02 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/11 15:58:10 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 static int	ft_valid_registry(char *s)
 {
 	int	i;
+	int	val;
 
 	i = 0;
 	if (s[i] == 'r')
 	{
+		val = ft_atoi(&s[1]);
 		while (ft_isdigit(s[++i]))
 			(void)i;
-		if (i != 1 && !s[i])
+		if (i != 1 && !s[i] && val && val <= REG_NUMBER)
 			return (1);
 	}
 	return (0);
