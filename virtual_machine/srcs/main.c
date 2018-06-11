@@ -17,11 +17,13 @@ static t_vm			*create_virtual_machine(int argc, char **argv)
 	t_vm			*vm;
 
 	if (!(vm = (t_vm *)malloc(sizeof(t_vm))))
-		exit(1);
+		error_exit(vm, "Malloc failed, virtual machine creation");
 	ft_bzero(vm, sizeof(*vm));
 	vm->argv = argv;
 	vm->argc = argc;
 	vm->dump = -1;
+	if (!(vm->memory = ft_strnew(MEM_SIZE)))
+		error_exit(vm, "Malloc failed, memory space creation");
 	return (vm);
 }
 
@@ -35,8 +37,9 @@ int					main(int argc, char **argv)
 		display_usage(vm, 1);
 	}
 	vm = create_virtual_machine(argc, argv);
-	virtual_machine(vm);
-	test_print(vm);//Remove
+	parse_handler(vm);
+	exec_vm(vm);
+	test_print(vm); //Remove
 	free_virtual_machine(vm);
 	return (0);
 }

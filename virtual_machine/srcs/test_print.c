@@ -16,7 +16,6 @@
 
 void				test_print(t_vm *vm)
 {
-	do_op(vm, 16);
 	while (vm->champ)
 	{
 		printf("NUMBER:     %d\n", vm->champ->number);
