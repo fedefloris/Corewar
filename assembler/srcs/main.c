@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 12:39:28 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 14:37:28 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int		main(int ac, char **av)
 	int		fd;
 	t_frame	*frame;
 	t_line	*tmp;
-	t_label *label1;
-	t_label *label2;	
+		t_label *label1;
+		t_label *label2;
+		t_list	*binary;
 
 	if (ac != 2)
 		return (ft_printf("Usage: %s <sourcefile.s>\n", av[0]));
@@ -49,11 +50,17 @@ int		main(int ac, char **av)
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
 	tmp = frame->lines;
-	// while (tmp)
-	// {
-	// 	ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
-	// 	tmp = tmp->next;
-	// }
+	while (tmp)
+	{
+		// ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
+		binary = tmp->bytecode;
+		while (binary)
+		{
+			ft_printf("%c", ((char*)binary->content)[0]);
+			binary = binary->next;
+		}
+		tmp = tmp->next;
+	}
 	label1 = frame->request;
 	// while (label1)
 	// {
