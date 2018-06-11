@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 12:25:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 20:07:16 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:01:53 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,27 @@ void				get_program_size(t_vm *vm, t_champ *champ)
 	}
 }
 
+void				get_magic_number(t_vm *vm, t_champ *champ)
+{
+	int				i;
+	t_byte_code		*byte_code;
+
+	i = 0;
+	byte_code = champ->byte_code;
+	while (byte_code && i < 4)
+	{
+		if ((i == 0 && byte_code->byte == 0x0) ||
+				(i == 1 && (unsigned char)byte_code->byte == 0xea) ||
+				(i == 2 && (unsigned char)byte_code->byte == 0x83) ||
+				(i == 3 && (unsigned char)byte_code->byte == 0xf3))
+			;
+		else
+			error_exit(vm, "Bad magic number");
+		byte_code = byte_code->next;
+		i++;
+	}
+}
+
 void				parse_bytes(t_vm *vm)
 {
 	t_champ			*champ;
@@ -91,6 +112,7 @@ void				parse_bytes(t_vm *vm)
 		get_program_size(vm, champ);
 		get_name(vm, champ);
 		get_bytes(vm, champ);
+		get_magic_number(vm, champ);
 		champ = champ->next;
 	}
 }
