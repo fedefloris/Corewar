@@ -22,7 +22,7 @@ static t_vm			*create_vm(int argc, char **argv)
 	vm->argv = argv;
 	vm->argc = argc;
 	vm->dump = -1;
-	if (!(vm->memory = ft_strnew(MEM_SIZE)))
+	if (!(vm->memory = (char*)malloc(sizeof(char) * MEM_SIZE)))
 		error_exit(vm, "Malloc failed, memory space creation");
 	return (vm);
 }
