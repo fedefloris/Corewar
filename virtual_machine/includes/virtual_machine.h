@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 00:20:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 11:26:33 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,23 @@
 # include				"libft.h"
 # include 				"op.h"
 # include 				<stdio.h>//Remove
+
+# define B_RED		"\x1b[1m\x1b[31m"
+# define B_GREEN	"\x1b[1m\x1b[32m"
+# define B_YELLOW	"\x1b[1m\x1b[33m"
+# define B_BLUE		"\x1b[1m\x1b[34m"
+# define B_PINK		"\x1b[1m\x1b[35m"
+# define B_CYAN    	"\x1b[1m\x1b[36m"
+# define B_WHITE   	"\x1b[1m\x1b[37m"
+
+# define RED		"\x1b[31m"
+# define GREEN		"\x1b[32m"
+# define YELLOW		"\x1b[33m"
+# define BLUE		"\x1b[34m"
+# define PINK		"\x1b[35m"
+# define CYAN    	"\x1b[36m"
+# define WHITE   	"\x1b[37m"
+# define RESET   	"\x1b[0m"
 
 typedef struct          s_name
 {
@@ -81,7 +98,7 @@ typedef void			(*t_op_code)(t_vm *vm);
 
 void					test_print(t_vm *vm);//Remove
 
-void					usage(t_vm *vm, int i);
+void					display_usage(t_vm *vm, int i);
 
 void					error_exit(t_vm *vm, char *string);
 void					free_vm(t_vm *vm);
