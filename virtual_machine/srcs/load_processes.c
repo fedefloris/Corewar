@@ -37,7 +37,7 @@ static void			copy_program(t_vm *vm, size_t pos, t_champ *champ)
 	i = 0;
 	while (i < champ->program_size)
 	{
-	// 	vm[pos + i] = champ[i];
+		vm->memory[pos + i] = champ->bytes[i];
 		i++;
 	}
 }
