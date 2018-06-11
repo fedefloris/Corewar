@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 01:08:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 12:06:15 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void				parse_read_champ(t_vm *vm)
 	champ = vm->champ;
 	while (champ)
 	{
+		if (!ft_strstr(champ->file_name, ".cor"))
+			error_exit(vm, "Files must be .cor");
 		do_read_champ(vm, champ);
 		champ = champ->next;
 	}
