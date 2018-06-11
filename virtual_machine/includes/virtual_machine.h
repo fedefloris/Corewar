@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 21:17:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:32:05 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void					parse_options(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 void					parse_bytes(t_vm *vm);
+void					parse_count_champions(t_vm *vm);
 
 void					load_processes(t_vm *vm);
 void					exec_vm(t_vm *vm);
