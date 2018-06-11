@@ -21,26 +21,15 @@ static void			create_name(t_vm *vm, int num, int pos)
 	bzero(name, sizeof(*name));
 	name->num = num;
 	name->pos = pos;
-	if (!vm->name)
-		vm->name = name;
-	else
-	{
-		name->next = vm->name;
-		vm->name = name;
-	}
+	name->next = vm->name;
+	vm->name = name;
 }
 
-static void			parse_n(t_vm *vm)
+static void			parse_n(t_vm *vm, char **argv, int i)
 {
-	int				i;
 	int				num;
-	char			**argv;
 
-	i = 1;
-	argv = vm->argv;
-	while (argv[i])
-	{
-		if (!ft_strcmp(argv[i], "-n"))
+	if (!ft_strcmp(argv[i], "-n"))
 		{
 			if (argv[i + 1] && (argv[i + 2] &&
 						(ft_strcmp(argv[i + 2], "-dump") &&
@@ -53,12 +42,24 @@ static void			parse_n(t_vm *vm)
 			if (num)
 				create_name(vm, num, i + 2);
 		}
-		i++;
-		num = 0;
+}
+
+static void			parse_dump(t_vm *vm, char **argv, int i)
+{
+	if (!ft_strcmp(argv[i], "-dump"))
+	{
+		if (vm->dump != -1)
+			error_exit(vm, "Declare -dump once only. See usage with -u");
+		if (argv[i + 1])
+			vm->dump = ft_atoi(argv[i + 1]);
+		else
+			error_exit(vm, "No nbr_cycles ./corewar [-dump nbr_cycles]");
+		if (vm->dump < 1)
+			error_exit(vm, "Declare nbr_cycles greater than 0");
 	}
 }
 
-static void			parse_dump(t_vm *vm)
+void				parse_options(t_vm *vm)
 {
 	int				i;
 	char			**argv;
@@ -67,23 +68,8 @@ static void			parse_dump(t_vm *vm)
 	argv = vm->argv;
 	while (argv[i])
 	{
-		if (!ft_strcmp(argv[i], "-dump"))
-		{
-			if (vm->dump != -1)
-				error_exit(vm, "Declare -dump once only. See usage with -u");
-			if (argv[i + 1])
-				vm->dump = ft_atoi(argv[i + 1]);
-			else
-				error_exit(vm, "No nbr_cycles ./corewar [-dump nbr_cycles]");
-			if (vm->dump < 1)
-				error_exit(vm, "Declare nbr_cycles greater than 0");
-		}
+		parse_dump(vm, argv, i);
+		parse_n(vm, argv, i);
 		i++;
 	}
-}
-
-void				parse_options(t_vm *vm)
-{
-	parse_dump(vm);
-	parse_n(vm);
 }
