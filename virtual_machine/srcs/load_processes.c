@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_champions.c                                   :+:      :+:    :+:   */
+/*   load_processes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -42,7 +42,23 @@ static void			copy_program(t_vm *vm, size_t pos, t_champ *champ)
 	}
 }
 
-void				load_champions(t_vm *vm)
+static void			add_process(t_vm *vm, t_champ *champ, size_t pc)
+{
+	t_process	*process;
+
+	if (!(process = (t_process*)malloc(sizeof(t_process))))
+		error_exit(vm, "Malloc failed, process creation.");
+	process->number = champ->number;
+	ft_bzero(process->r, REG_NUMBER + 1);
+	process->r[1] = process->number;
+	process->pc = pc;
+	process->carry = 0;
+	process->next = NULL;
+	process->next = vm->process;
+	vm->process = process;
+}
+
+void				load_processes(t_vm *vm)
 {
 	t_champ		*champ;
 	size_t		gap;
@@ -53,6 +69,7 @@ void				load_champions(t_vm *vm)
 	gap = get_gap_between_champs(vm);
 	while (champ)
 	{
+		add_process(vm, champ, pos);
 		copy_program(vm, pos, champ);
 		pos += champ->program_size + gap;
 		champ = champ->next;
