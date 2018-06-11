@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 12:08:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 16:03:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ static void			parse_n(t_vm *vm, char **argv, int i)
 	int				num;
 
 	if (!ft_strcmp(argv[i], "-n"))
-		{
-			if (argv[i + 1] && (argv[i + 2] &&
-						(ft_strcmp(argv[i + 2], "-dump") &&
-						ft_strcmp(argv[i + 2], "-n"))))
-				num = ft_atoi(argv[i + 1]);
-			else
-				error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
-			if (num < 1)
-				error_exit(vm, "Declare player number greater than 0");
-			if (num)
-				create_name(vm, num, i + 2);
-		}
+	{
+		if (argv[i + 1] && (argv[i + 2] &&
+					(ft_strcmp(argv[i + 2], "-dump") &&
+					 ft_strcmp(argv[i + 2], "-n"))))
+			num = ft_atoi(argv[i + 1]);
+		else
+			error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
+		if (num < 1)
+			error_exit(vm, "Declare player number greater than 0");
+		if (num)
+			create_name(vm, num, i + 2);
+	}
 }
 
 static void			parse_dump(t_vm *vm, char **argv, int i)
