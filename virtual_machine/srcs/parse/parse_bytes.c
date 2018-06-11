@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 12:25:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 21:01:53 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:18:03 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void				get_bytes(t_vm *vm, t_champ *champ)
 	byte_code = champ->byte_code;
 	while (byte_code && i++ < 2192)
 		byte_code = byte_code->next;
-	if (!(champ->bytes = (char *)malloc(sizeof(char) * champ->program_size)))
+	if (!(champ->bytes = (char *)malloc(sizeof(char) * champ->prog_size)))
 		error_exit(vm, "Malloc failed (champ name)");
 	i = 0;
-	while (byte_code && i < champ->program_size)
+	while (byte_code && i < champ->prog_size)
 	{
 		champ->bytes[i++] = byte_code->byte;
 		byte_code = byte_code->next;
@@ -63,7 +63,7 @@ void				get_name(t_vm *vm, t_champ *champ)
 	}
 }
 
-void				get_program_size(t_vm *vm, t_champ *champ)
+void				get_prog_size(t_vm *vm, t_champ *champ)
 {
 	int				i;
 	t_byte_code		*byte_code;
@@ -75,8 +75,8 @@ void				get_program_size(t_vm *vm, t_champ *champ)
 	i = 0;
 	while (byte_code && i++ < 4)
 	{
-		champ->program_size <<= 8;
-		champ->program_size += (unsigned char)byte_code->byte;
+		champ->prog_size <<= 8;
+		champ->prog_size += (unsigned char)byte_code->byte;
 		byte_code = byte_code->next;
 	}
 }
@@ -109,7 +109,7 @@ void				parse_bytes(t_vm *vm)
 	champ = vm->champ;
 	while (champ)
 	{
-		get_program_size(vm, champ);
+		get_prog_size(vm, champ);
 		get_name(vm, champ);
 		get_bytes(vm, champ);
 		get_magic_number(vm, champ);

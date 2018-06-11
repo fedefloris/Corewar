@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 11:18:39 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 11:18:44 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/11 21:17:18 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static size_t		get_gap_between_champs(t_vm *vm)
 	while (champ)
 	{
 		count_of_champs++;
-		total_champs_size += champ->number_of_bytes;
+		total_champs_size += champ->prog_size;
 		champ = champ->next;
 	}
 	return ((MEM_SIZE - total_champs_size) / count_of_champs);
@@ -35,7 +35,7 @@ static void			copy_program(t_vm *vm, size_t pos, t_champ *champ)
 	size_t		i;
 
 	i = 0;
-	while (i < champ->number_of_bytes)
+	while (i < champ->prog_size)
 	{
 		vm->memory[pos + i] = champ->bytes[i];
 		i++;
@@ -71,7 +71,7 @@ void				load_processes(t_vm *vm)
 	{
 		add_process(vm, champ, pos);
 		copy_program(vm, pos, champ);
-		pos += champ->number_of_bytes + gap;
+		pos += champ->prog_size + gap;
 		champ = champ->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 20:06:00 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:18:27 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void				test_print(t_vm *vm)
 		//printf("NUMBER:     %d\n", vm->champ->number);
 		//printf("NAME  :     %s\n", vm->champ->name);
 		//printf("NUMBY :     %d\n", vm->champ->program_size);
-		while (vm->champ->program_size--)
+		while (vm->champ->prog_size--)
 		{
 			printf("%c", *vm->champ->bytes);
 			vm->champ->bytes++;
