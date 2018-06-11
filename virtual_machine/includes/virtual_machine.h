@@ -84,13 +84,14 @@ void					test_print(t_vm *vm);//Remove
 void					usage(t_vm *vm, int i);
 
 void					error_exit(t_vm *vm, char *string);
-void					free_virtual_machine(t_vm *vm);
+void					free_vm(t_vm *vm);
 
 void					parse_handler(t_vm *vm);
 void					parse_options(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 
+void					load_champions(t_vm *vm);
 void					exec_vm(t_vm *vm);
 void					do_op(t_vm *vm, int op_code);
 

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usage.c                                            :+:      :+:    :+:   */
+/*   free_virtual_machine.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 17:39:18 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/10 15:32:42 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/06 13:55:52 by dhojt             #+#    #+#             */
+/*   Updated: 2018/06/06 13:59:59 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void				usage(t_vm *vm, int i)
+void				free_vm(t_vm *vm)
 {
-	//Actually write a real usage.
-	ft_putstr("This is usage\n");
-	free_vm(vm);
-	exit(i);
+	if (!vm)
+		return ;
+	if (vm->memory)
+		ft_strdel(&vm->memory);
+	// free => vm->name, vm->champ, vm->process;
+	free(vm);
 }

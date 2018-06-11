@@ -14,8 +14,7 @@
 
 void				error_exit(t_vm *vm, char *string)
 {
-	ft_putstr(string);
-	ft_putstr("\n");
-	free_virtual_machine(vm);
+	ft_putendl(string);
+	free_vm(vm);
 	exit(1);
 }
