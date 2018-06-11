@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 11:08:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 11:28:38 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 12:14:45 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ void				display_usage(t_vm *vm, int i)
 //	do_read();
 //	do_stdin();
 //	do_flags();
-	free_virtual_machine(vm);
+	free_vm(vm);
 	exit(i);
 }
