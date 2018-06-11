@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 22:07:21 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 12:33:17 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_get_arguments(char *s, t_line *line)
 	ret = NULL;
 	if (!(arg = ft_strsplit(s, SEPARATOR_CHAR)))
 		return (ft_strdup("Failed to malloc parameters"));
-	if ((len = ft_argno(arg)) > 3)
+	if ((len = ft_argno(arg)) > MAX_ARGS_NUMBER)
 		ret = ft_strdup("Too many parameters");
 	else
 		line->param_count = len;

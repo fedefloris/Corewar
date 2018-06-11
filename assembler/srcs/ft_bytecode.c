@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 01:57:07 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/11 12:28:45 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ char	ft_get_acb_byte(t_line *line)
 	return (byte);
 }
 
-int		ft_line_bytes(t_line **line, t_op *op)
+int		ft_line_bytes(t_line *line, t_op *op)
 {
 	int		bytecount;
 	char	byte;
 
 	bytecount = 0;
-	(*line)->bytecode = NULL;
-	if (!ft_push_bytecode(&(*line)->bytecode, (*line)->opcode))
+	line->bytecode = NULL;
+	if (!ft_push_bytecode(&line->bytecode, line->opcode))
 		return (0);
 	bytecount++;
 	if (op->acb)
 	{
-		byte = ft_get_acb_byte(*line);
-		if (!ft_push_bytecode(&(*line)->bytecode, byte))
+		byte = ft_get_acb_byte(line);
+		if (!ft_push_bytecode(&line->bytecode, byte))
 			return (0);
 		bytecount++;
 	}

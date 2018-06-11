@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 01:40:33 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/11 12:33:26 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,5 @@ char			*ft_push_request(char *name, int dist, t_frame **frame);
 void			ft_free_label(t_label **labels);
 void			ft_free_lines(t_line **lines);
 void			ft_free_frame(t_frame **frames);
-int				ft_line_bytes(t_line **line, t_op *op);
+int				ft_line_bytes(t_line *line, t_op *op);
 #endif
