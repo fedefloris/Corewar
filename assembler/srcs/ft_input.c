@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 15:52:35 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:45:43 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_input(int fd, t_frame *frame)
 	{
 		if ((err_msg = ft_valid_line(str, frame, line_nb)))
 			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
-		else if (str && (err_msg = ft_produce_line(frame)))
+		else if (str && (err_msg = ft_produce_line(frame, str, line_nb)))
 			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
 		ft_strdel(&str);
 		line_nb++;

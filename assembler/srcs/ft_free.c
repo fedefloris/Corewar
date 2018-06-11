@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:31:39 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 14:43:47 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:46:23 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	ft_free_label(t_label **labels)
 		tmp = label;
 		if (label->name)
 			ft_strdel(&label->name);
+		if (label->line)
+			ft_strdel(&label->line);
 		label = label->next;
 		free(tmp);
 	}

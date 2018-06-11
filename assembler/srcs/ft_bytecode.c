@@ -6,50 +6,89 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 16:02:25 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:21:56 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-int		ft_push_bytecode(t_list **bytecode, char c)
-{
-	t_list	*tmp;
-	t_list	*new;
-
-	if (!(new = (t_list*)malloc(sizeof(t_list))))
-		return (0);
-	new->content = ft_strdup(&c);
-	new->content_size = 1;
-	new->next = NULL;
-	tmp = *bytecode;
-	if (tmp)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-	else
-		*bytecode = new;
-	return (1);
-}
-
 char	ft_get_acb_byte(t_line *line)
 {
 	char	byte;
+	int		value1;
+	int		value2;
+	int		value3;
 
-	byte = line->param_type[0] << 6;
+	value1 = 0;
+	value2 = 0;
+	value3 = 0;
+	value1 = (line->param_type[0] == T_REG) ? REG_CODE : value1;
+	value1 = (line->param_type[0] == T_IND) ? IND_CODE : value1;
+	value1 = (line->param_type[0] == T_DIR) ? DIR_CODE : value1;
+	value2 = (line->param_type[1] == T_REG) ? REG_CODE : value2;
+	value2 = (line->param_type[1] == T_IND) ? IND_CODE : value2;
+	value2 = (line->param_type[1] == T_REG) ? REG_CODE : value2;
+	value3 = (line->param_type[2] == T_REG) ? REG_CODE : value3;
+	value3 = (line->param_type[2] == T_IND) ? IND_CODE : value3;
+	value3 = (line->param_type[2] == T_DIR) ? DIR_CODE : value3;
+	byte = value1 << 6;
 	if (line->param_count >= 2)
-		byte = byte | line->param_type[1] << 4;
+		byte = byte | value2 << 4;
 	if (line->param_count == 3)
-		byte = byte | line->param_type[2] << 2;
+		byte = byte | value3 << 2;
 	return (byte);
 }
 
-int		ft_line_bytes(t_line *line, t_op *op)
+int		ft_get_arg_val(char *param, int param_type)
+{
+	if (ft_strchr(param, LABEL_CHAR))
+	{
+		
+	}
+	if (param_type == IND_CODE)
+		return (ft_atoi(param));
+	else
+		return (ft_atoi(param + 1));
+}
+
+int		ft_get_nb_bytes(int param_type, int half)
+{
+	if (param_type == T_DIR)
+		return (half ? 2 : 4);
+	else if (param_type == T_REG)
+		return (1);
+	else if (param_type == T_IND)
+		return (half ? 1 : 2);
+	return (0);
+}
+
+void	ft_get_arg_byte(char *param, int param_type, t_list *list, int half)
+{
+	unsigned int	val;
+	unsigned int	mask;
+	int				i;
+	char			out;
+	int				max;
+
+	if (ft_strchr(param, LABEL_CHAR))
+		return ;
+	val = (unsigned int)ft_get_arg_val(param, param_type);
+	mask = 0xff;
+	i = 0;
+	max = ft_get_nb_bytes(param_type, half);
+	while (i < max && i < 4)
+	{
+		out = (val & (mask << ((8 * (max - 1 - i))))) >> ((8 * (max - 1 - i)));
+		ft_lstappend(&list, ft_lstcpy(ft_strdup(&out), 1));
+		i++;
+	}
+}
+
+int		ft_line_bytes(t_line *line, t_op *op, t_frame *f)
 {
 	int		bytecount;
 	char	byte;
+	int		i;
 
 	bytecount = 0;
 	line->bytecode = NULL;
@@ -63,6 +102,12 @@ int		ft_line_bytes(t_line *line, t_op *op)
 			return (0);
 		bytecount++;
 	}
-	//fill the remaining parameter bytes
+	i = 0;
+	while (i < line->param_count)
+	{
+		bytecount += ft_get_nb_bytes(line->param_type[i], op->half_size);
+		i++;
+	}
+	f->bytecount += bytecount;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 15:15:01 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:13:36 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*ft_addheader(char **tmp, int name, t_frame *frame)
 			return (ft_strdup("Name is duplicated or too big"));
 		}
 		head->prog_name = *tmp;
-		frame->bytecount += PROG_NAME_LENGTH;
 	}
 	else
 	{
@@ -35,7 +34,6 @@ char	*ft_addheader(char **tmp, int name, t_frame *frame)
 			return (ft_strdup("Comment is duplicated or too big"));
 		}
 		head->comment = *tmp;
-		frame->bytecount += COMMENT_LENGTH;
 	}
 	return (NULL);
 }

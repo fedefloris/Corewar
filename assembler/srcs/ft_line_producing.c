@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 20:26:41 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 16:08:27 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:39:12 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_get_opcode(char *opname)
 	return (0);
 }
 
-char	*ft_produce_line(t_frame *f)
+char	*ft_produce_line(t_frame *f, char *str, int line_nb)
 {
 	t_line	*line;
 	int		i;
@@ -71,11 +71,11 @@ char	*ft_produce_line(t_frame *f)
 			return (ft_strdup("Argument type does not match"));
 		if (ft_strchr(line->param[i++], LABEL_CHAR))
 			ft_push_request(ft_strchr(line->param[i - 1], LABEL_CHAR) + 1,
-				f->bytecount, &f);
+			&f, str, line_nb);
 	}
 	if (line->label && (ret = ft_push_decl(line->label, f->bytecount, &f)))
 		return (ret);
-	if (!ft_line_bytes(line, &g_op_tab[line->opcode - 1]))
+	if (!ft_line_bytes(line, &g_op_tab[line->opcode - 1], f))
 		return (ft_strdup("Failed to allocate bytecode"));
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 15:53:51 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 23:00:29 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,21 @@ int		main(int ac, char **av)
 	if (!ft_initframe(&frame))
 		return (ft_printf("ERROR\n"));
 	ft_input(fd, frame);
+	ft_fill_dist(frame->request, frame->declare, frame->errors);
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
 	tmp = frame->lines;
-	// while (tmp)
-	// {
-	// 	ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
+	while (tmp)
+	{
+		// ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
 		binary = tmp->bytecode;
-	// 	while (binary)
-	// 	{
-	// 		ft_printf("%c", ((char*)binary->content)[0]);
-	//		binary = binary->next;
-	// 	}
-	// 	tmp = tmp->next;
-	// }
+		while (binary)
+		{
+			ft_printf("%c", ((char*)binary->content)[0]);
+			binary = binary->next;
+		}
+		tmp = tmp->next;
+	}
 	label1 = frame->request;
 	// while (label1)
 	// {

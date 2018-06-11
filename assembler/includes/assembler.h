@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 16:04:55 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:56:23 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct	s_label
 {
 	char			*name;
 	size_t			dist;
+	char			*line;
+	int				line_nb;
 	struct s_label	*next;
 }				t_label;
 
@@ -122,17 +124,19 @@ char			*ft_initline(t_line **line);
 char			*ft_get_opname(char **s, char **opname);
 char			*ft_get_label(char **s, char **label);
 void			ft_push_line(t_line *line, t_frame *frame);
+int				ft_push_bytecode(t_list **bytecode, char c);
 char			*ft_get_arguments(char *s, t_line *line);
 int				ft_error(char *line, char *msg, int line_nb,
 					t_error **err_list);
 void			ft_error_output(t_error *error);
 int				ft_valid_arg(char *s);
 int				ft_argno(char **arg);
-char			*ft_produce_line(t_frame *frame);
+char			*ft_produce_line(t_frame *frame, char *str, int nb);
 char			*ft_push_decl(char *name, int dist, t_frame **frame);
-char			*ft_push_request(char *name, int dist, t_frame **frame);
+char			*ft_push_request(char *name, t_frame **frame, char *str, int nb);
 void			ft_free_label(t_label **labels);
 void			ft_free_lines(t_line **lines);
 void			ft_free_frame(t_frame **frames);
-int				ft_line_bytes(t_line *line, t_op *op);
+int				ft_line_bytes(t_line *line, t_op *op, t_frame *f);
+int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
 #endif

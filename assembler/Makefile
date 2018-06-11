@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
+#    By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/11 01:37:35 by akaseris         ###   ########.fr        #
+#    Updated: 2018/06/11 21:50:41 by mfiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT_INCLUDES_DIR = $(LIBFT_DIR)/includes/
 INCLUDE_DIRS = -I$(SRCS_INCLUDES_DIR) -I$(LIBFT_INCLUDES_DIR)
 
 FILES = main ft_input ft_inp_tools ft_lst_tools ft_line_parsing ft_free \
-		ft_error ft_output ft_valid_arg ft_line_producing ft_bytecode
+		ft_error ft_output ft_valid_arg ft_line_producing ft_bytecode ft_bytecode2
 
 OBJS_WITH_DIR = $(patsubst %, $(OBJS_DIR)/%.o, $(FILES))
 SRCS = $(addsuffix .c, $(FILES))

@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 16:05:03 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:44:19 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_push_line(t_line *line, t_frame *frame)
 	frame->lines->last = line;
 }
 
-char	*ft_init_label(t_label **label, char *name, int dist)
+char	*ft_init_label(t_label **label, char *name, int dist, char *str)
 {
 	if (!(*label = (t_label*)malloc(sizeof(t_label))))
 		return (ft_strdup("Failed to malloc label declaration"));
@@ -56,6 +56,7 @@ char	*ft_init_label(t_label **label, char *name, int dist)
 	}
 	(*label)->dist = dist;
 	(*label)->next = NULL;
+	(*label)->line = str;
 	return (NULL);
 }
 
@@ -65,7 +66,7 @@ char	*ft_push_decl(char *name, int dist, t_frame **frame)
 	t_label *tmp;
 	char	*ret;
 
-	if ((ret = ft_init_label(&label, ft_strdup(name), dist)))
+	if ((ret = ft_init_label(&label, ft_strdup(name), dist, NULL)))
 		return (ret);
 	if (!(*frame)->declare)
 		(*frame)->declare = label;
@@ -87,19 +88,21 @@ char	*ft_push_decl(char *name, int dist, t_frame **frame)
 	return (NULL);
 }
 
-char	*ft_push_request(char *name, int dist, t_frame **frame)
+char	*ft_push_request(char *name, t_frame **f, char *str, int nb)
 {
 	t_label	*label;
 	t_label *tmp;
 	char	*ret;
 
-	if ((ret = ft_init_label(&label, ft_strdup(name), dist)))
+	if ((ret = ft_init_label(&label, ft_strdup(name), (*f)->bytecount,
+			ft_strdup(str))))
 		return (ret);
-	if (!(*frame)->request)
-		(*frame)->request = label;
+	label->line_nb = nb;
+	if (!(*f)->request)
+		(*f)->request = label;
 	else
 	{
-		tmp = (*frame)->request;
+		tmp = (*f)->request;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = label;
