@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 19:26:08 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 20:21:46 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 01:31:02 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int			ft_valid_arg(char *s)
 	while (ft_isspace(*s))
 		s++;
 	if (ft_valid_registry(s))
-		return (T_REG);
+		return (REG_CODE);
 	else if (ft_valid_direct(s))
-		return (T_DIR);
+		return (DIR_CODE);
 	else if (ft_valid_indirect(s))
-		return (T_IND);
+		return (IND_CODE);
 	else
 		return (0);
 }

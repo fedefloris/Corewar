@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/10 22:33:50 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 00:01:21 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*ft_push_declaration(char *name, int dist, t_frame **frame)
 		}
 		tmp->next = label;
 	}
-	return (NULL);	
+	return (NULL);
 }
 
 char	*ft_push_request(char *name, int dist, t_frame **frame)
