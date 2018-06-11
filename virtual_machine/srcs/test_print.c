@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 01:10:58 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 13:28:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void				test_print(t_vm *vm)
 	while (vm->champ)
 	{
 		printf("NUMBER:     %d\n", vm->champ->number);
+		printf("NAME  :     %s\n", vm->champ->name);
 		while (vm->champ->byte_code)
 		{
 			printf("%c", vm->champ->byte_code->byte);
