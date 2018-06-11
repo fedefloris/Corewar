@@ -27,7 +27,7 @@ LIBFT_MEMORY_OBJS = ft_memset.o ft_bzero.o ft_memcpy.o \
 	ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o \
 	ft_memalloc.o ft_memdel.o ft_is_sorted.o \
 	ft_strdel_table.o ft_quicksort.o ft_swap.o \
-	ft_struct_del.o
+	ft_struct_del.o ft_strtable.o
 
 LIBFT_OUT_OBJS = ft_putchar.o ft_putwchar.o \
 	ft_putstr.o ft_putwstr.o ft_putendl.o ft_putnbr.o \

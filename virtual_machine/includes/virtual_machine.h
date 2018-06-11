@@ -53,9 +53,10 @@ typedef struct			s_vm
 {
 	char				**argv;
 	int					argc;
+	int					dump;
 	int					cycle;
 	int					live_calls;
-	int					dump;
+	char				*memory;
 
 	struct s_name		*name;
 	struct s_champ		*champ;
@@ -84,8 +85,6 @@ void					usage(t_vm *vm, int i);
 
 void					error_exit(t_vm *vm, char *string);
 void					free_virtual_machine(t_vm *vm);
-
-void					virtual_machine(t_vm *vm);
 
 void					parse_handler(t_vm *vm);
 void					parse_options(t_vm *vm);

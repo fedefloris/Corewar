@@ -45,6 +45,7 @@ int						ft_memcmp(const void *s1, const void *s2, size_t n);
 void					ft_swap(int *a, int *b);
 void					ft_quicksort(int *a, int a_size);
 int						ft_is_sorted(int *a, int a_size);
+char					**ft_strtable(size_t row_size, size_t col_size);
 void					ft_strdel_table(char **arr);
 void					ft_struct_del(void *el, size_t el_size);
 size_t					ft_strlen(const char *s);
