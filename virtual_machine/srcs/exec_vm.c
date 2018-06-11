@@ -14,6 +14,7 @@
 
 void				exec_vm(t_vm *vm)
 {
+	load_champions(vm);
 /*	while (1)
 	{
 		if there aren't processes

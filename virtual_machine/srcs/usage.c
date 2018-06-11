@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_print.c                                       :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 01:10:58 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/07 17:39:18 by dhojt             #+#    #+#             */
+/*   Updated: 2018/06/10 15:32:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Testprint
-
 #include "virtual_machine.h"
 
-void				test_print(t_vm *vm)
+void				usage(t_vm *vm, int i)
 {
-	// ft_putstr(vm->memory);
-	while (vm->champ)
-	{
-		printf("NUMBER:     %d\n", vm->champ->number);
-		while (vm->champ->byte_code)
-		{
-			printf("%c", vm->champ->byte_code->byte);
-			vm->champ->byte_code = vm->champ->byte_code->next;
-		}
-		vm->champ = vm->champ->next;
-	}
+	//Actually write a real usage.
+	ft_putstr("This is usage\n");
+	free_vm(vm);
+	exit(i);
 }

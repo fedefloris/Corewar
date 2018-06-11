@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-static t_vm			*create_virtual_machine(int argc, char **argv)
+static t_vm			*create_vm(int argc, char **argv)
 {
 	t_vm			*vm;
 
@@ -36,10 +36,10 @@ int					main(int argc, char **argv)
 		ft_putstr("Provide 1 or more arguments\n");
 		display_usage(vm, 1);
 	}
-	vm = create_virtual_machine(argc, argv);
+	vm = create_vm(argc, argv);
 	parse_handler(vm);
 	exec_vm(vm);
 	test_print(vm); //Remove
-	free_virtual_machine(vm);
+	free_vm(vm);
 	return (0);
 }

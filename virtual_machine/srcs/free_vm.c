@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_print.c                                       :+:      :+:    :+:   */
+/*   free_virtual_machine.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 01:10:58 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/06 13:55:52 by dhojt             #+#    #+#             */
+/*   Updated: 2018/06/06 13:59:59 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Testprint
-
 #include "virtual_machine.h"
 
-void				test_print(t_vm *vm)
+void				free_vm(t_vm *vm)
 {
-	// ft_putstr(vm->memory);
-	while (vm->champ)
-	{
-		printf("NUMBER:     %d\n", vm->champ->number);
-		while (vm->champ->byte_code)
-		{
-			printf("%c", vm->champ->byte_code->byte);
-			vm->champ->byte_code = vm->champ->byte_code->next;
-		}
-		vm->champ = vm->champ->next;
-	}
+	if (!vm)
+		return ;
+	if (vm->memory)
+		ft_strdel(&vm->memory);
+	// free => vm->name, vm->champ, vm->process;
+	free(vm);
 }
