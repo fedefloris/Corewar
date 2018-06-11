@@ -29,24 +29,16 @@ typedef struct			s_champ
 {
 	char				*file_name;
 	int					number;
-
-	uintmax_t			r[REG_NUMBER + 1];
-	unsigned long		pc;
-	char				carry;
-
 	struct s_byte_code	*byte_code;
-
 	struct s_champ		*next;
 }						t_champ;
 
 typedef struct			s_process
 {
 	int					number;
-	int					live_called;
-	uintmax_t			r[REG_NUMBER + 1];
+	intmax_t			r[REG_NUMBER + 1];
 	unsigned long		pc;
 	char				carry;
-	struct s_process	*next_sub;
 	struct s_process	*next;
 }						t_process;
 
@@ -55,6 +47,7 @@ typedef struct			s_vm
 	char				**argv;
 	int					argc;
 	int					cycle;
+	int					live_calls;
 	int					dump;
 	struct s_champ		*champ;
 	struct s_process	*process;
@@ -90,6 +83,7 @@ void					parse_options(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 
+void					exec_vm(t_vm *vm);
 void					do_op(t_vm *vm, int op_code);
 
 void					op_live(t_vm *vm);

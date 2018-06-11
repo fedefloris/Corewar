@@ -14,5 +14,5 @@
 
 void				op_add(t_vm *vm)
 {
-	printf("Inside op_add\n");
+	ft_printf("Inside op_add\n");
 }

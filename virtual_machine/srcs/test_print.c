@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 23:22:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/08 16:54:57 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/10 18:29:23 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 void				test_print(t_vm *vm)
 {
+	do_op(vm, 16);
 	while (vm->champ)
 	{
 		printf("NUMBER:     %d\n", vm->champ->number);

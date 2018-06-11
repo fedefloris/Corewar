@@ -14,5 +14,5 @@
 
 void				op_aff(t_vm *vm)
 {
-	printf("Inside op_aff\n");
+	ft_printf("Inside op_aff\n");
 }

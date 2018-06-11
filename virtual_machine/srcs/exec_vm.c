@@ -14,14 +14,25 @@
 
 void				exec_vm(t_vm *vm)
 {
-	while (1)
+/*	while (1)
 	{
-		// execute every process
+		if there aren't processes
+				break;
+		execute every process
+		
 		vm->cycle++;
-		if (vm->cycle % CYCLE_TO_DIE == 0)
+		
+		if (vm->cycle % vm->cycle_to_die == 0)
 		{
-			// if one process didn't call live delete it
+			if one process didn't call live delete it
 		}
-		// if ()
+		
+		If CYCLE_TO_DIE wasn’t decreased since MAX_CHECKS checkups, decrease it.
+		
+		if (vm->live_calls % NBR_LIVE == 0 &&
+			(vm->cycle_to_die -= CYCLE_DELTA) <= 0)
+			break ;
 	}
+	// The winner is the last player reported to be “alive”
+*/
 }

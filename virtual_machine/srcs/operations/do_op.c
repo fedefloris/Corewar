@@ -18,7 +18,6 @@ static t_op_code	get_op(long op_code)
 
 	if (op_code < 1 || op_code > 7237483)
 		return (NULL);
-	table[0] = NULL;
 	table[454501] = &op_live;
 	table[1764] = &op_ld;
 	table[1908] = &op_st;

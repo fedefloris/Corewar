@@ -14,5 +14,13 @@
 
 void				op_live(t_vm *vm)
 {
-	printf("Inside op_live\n");
+	// t_process	*ps;
+
+	// ft_printf("Inside op_live\n");
+	// ps = vm->process;
+	// while (ps)
+	// {
+	// 	if (ps->number == ft_atoi())
+	// 	ps = ps->next;
+	// }
 }
