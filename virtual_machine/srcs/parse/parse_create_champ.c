@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 10:52:53 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:23:36 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,8 @@ void				parse_create_champ(t_vm *vm)
 		{
 			champ = create_champ(vm);
 			champ->file_name = vm->argv[vm->argc];
-			if (!vm->champ)
-				vm->champ = champ;
-			else
-			{
-				champ->next = vm->champ;
-				vm->champ = champ;
-			}
+			champ->next = vm->champ;
+			vm->champ = champ;
 			while (name)
 			{
 				(vm->argc == name->pos) ? champ->number = name->num : 0;

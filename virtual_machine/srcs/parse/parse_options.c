@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 16:03:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:20:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			parse_n(t_vm *vm, char **argv, int i)
 	{
 		if (argv[i + 1] && (argv[i + 2] &&
 					(ft_strcmp(argv[i + 2], "-dump") &&
-					 ft_strcmp(argv[i + 2], "-n"))))
+					ft_strcmp(argv[i + 2], "-n"))))
 			num = ft_atoi(argv[i + 1]);
 		else
 			error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
