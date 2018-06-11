@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 11:26:33 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 12:17:45 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ typedef struct			s_byte_code
 typedef struct			s_champ
 {
 	char				*file_name;
+
+	int					program_size;
 	int					number;
+	char				*name;
+
 	struct s_byte_code	*byte_code;
 	struct s_champ		*next;
 }						t_champ;
