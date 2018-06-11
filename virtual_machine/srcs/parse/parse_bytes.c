@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 12:25:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 21:18:03 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 21:36:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void				get_prog_size(t_vm *vm, t_champ *champ)
 		champ->prog_size += (unsigned char)byte_code->byte;
 		byte_code = byte_code->next;
 	}
+	if (champ->prog_size > CHAMP_MAX_SIZE)
+		error_exit(vm, "A champion is too big");
 }
 
 void				get_magic_number(t_vm *vm, t_champ *champ)
