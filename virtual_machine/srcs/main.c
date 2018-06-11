@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/10 15:32:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 11:21:03 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int					main(int argc, char **argv)
 	if (argc < 2)
 	{
 		ft_putstr("Provide 1 or more arguments\n");
-		usage(vm, 1);
+		display_usage(vm, 1);
 	}
 	vm = create_virtual_machine(argc, argv);
 	virtual_machine(vm);
