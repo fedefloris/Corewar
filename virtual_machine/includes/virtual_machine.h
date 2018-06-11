@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 15:15:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 19:54:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct			s_champ
 {
 	char				*file_name;
 
+	int					program_size;
 	int					number;
 	char				*name;
 	char				*bytes;
