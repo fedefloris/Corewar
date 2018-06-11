@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 22:21:56 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 23:10:42 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,19 @@ char	ft_get_acb_byte(t_line *line)
 	return (byte);
 }
 
-int		ft_get_arg_val(char *param, int param_type)
+int		ft_get_arg_val(char *param, int param_type, t_label *req)
 {
-	if (ft_strchr(param, LABEL_CHAR))
+	char *label;
+
+	if ((label = ft_strchr(param, LABEL_CHAR)))
 	{
-		
+		++label;
+		while (req)
+		{
+			if (!ft_strcmp(req->name, label))
+				return (req->dist);
+			req =req->next;
+		}
 	}
 	if (param_type == IND_CODE)
 		return (ft_atoi(param));
@@ -62,7 +70,7 @@ int		ft_get_nb_bytes(int param_type, int half)
 	return (0);
 }
 
-void	ft_get_arg_byte(char *param, int param_type, t_list *list, int half)
+void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 {
 	unsigned int	val;
 	unsigned int	mask;
@@ -70,16 +78,16 @@ void	ft_get_arg_byte(char *param, int param_type, t_list *list, int half)
 	char			out;
 	int				max;
 
-	if (ft_strchr(param, LABEL_CHAR))
+	if (ft_strchr(line->param[nb], LABEL_CHAR))
 		return ;
-	val = (unsigned int)ft_get_arg_val(param, param_type);
+	val = (unsigned int)ft_get_arg_val(line->param[nb], line->param_type[nb], req);
 	mask = 0xff;
 	i = 0;
-	max = ft_get_nb_bytes(param_type, half);
+	max = ft_get_nb_bytes(line->param_type[nb], half);
 	while (i < max && i < 4)
 	{
 		out = (val & (mask << ((8 * (max - 1 - i))))) >> ((8 * (max - 1 - i)));
-		ft_lstappend(&list, ft_lstcpy(ft_strdup(&out), 1));
+		ft_lstappend(&line->bytecode, ft_lstcpy(ft_strdup(&out), 1));
 		i++;
 	}
 }
