@@ -6,13 +6,13 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/10 22:36:10 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 15:24:22 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	*ft_valid_line(char *s, t_frame *frame)
+char	*ft_valid_line(char *s, t_frame *frame, int line_nb)
 {
 	char	*str;
 	char	*ret;
@@ -26,12 +26,16 @@ char	*ft_valid_line(char *s, t_frame *frame)
 	if (!(str = ft_strtrim(s)))
 		return (ft_strdup("Failed to malloc trimmed line"));
 	ret = NULL;
-	if (ft_strncmp(str, namestr, ft_strlen(namestr)) == 0)
+	if (!frame->lines && ft_strncmp(str, namestr, ft_strlen(namestr)) == 0)
 		ret = ft_header(str, 1, frame);
-	else if (ft_strncmp(str, commentstr, ft_strlen(commentstr)) == 0)
+	else if (!frame->lines && ft_strncmp(str, commentstr, ft_strlen(commentstr)) == 0)
 		ret = ft_header(str, 0, frame);
 	else if (*str != '\0')
+	{
+		if (!frame->lines && (!frame->header || !frame->header->prog_name || !frame->header->comment))
+			ft_error(ft_strdup(s), ft_strdup("No name or comment"), line_nb, &frame->errors);
 		ret = ft_line(str, frame);
+	}
 	ft_strdel(&str);
 	return (ret);
 }
@@ -47,7 +51,7 @@ int		ft_input(int fd, t_frame *frame)
 	line_nb = 1;
 	while (get_next(fd, &str, '\n'))
 	{
-		if ((err_msg = ft_valid_line(str, frame)))
+		if ((err_msg = ft_valid_line(str, frame, line_nb)))
 			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
 		else if (str && (err_msg = ft_produce_line(frame)))
 			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);

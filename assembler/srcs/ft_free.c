@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:31:39 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 13:37:49 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 14:43:47 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_free_lines(t_line **lines)
 				ft_strdel(&line->param[i]);
 			i++;
 		}
+		ft_lstdel(&line->bytecode, &ft_struct_del);
 		tmp = line;
 		line = line->next;
 		free(tmp);
