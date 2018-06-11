@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/08 23:51:28 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/11 01:08:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_byte_code	*create_byte_code(t_vm *vm)
 	return (byte_code);
 }
 
-static void			fill_bytes(t_vm *vm, t_champ *champ, char *buf, int read_val)
+static void			fill(t_vm *vm, t_champ *champ, char *buf, int read_val)
 {
 	t_byte_code		*byte_code;
 	t_byte_code		*seek;
@@ -63,10 +63,10 @@ static void			do_read_champ(t_vm *vm, t_champ *champ)
 		ft_bzero(buf, SIZE_OF_BUFF);
 		read_val = read(fd, buf, SIZE_OF_BUFF);
 		if (read_val < 0)
-		error_exit(vm, "Failed to open file");
+			error_exit(vm, "Failed to open file");
 		if (!read_val)
 			break ;
-		fill_bytes(vm, champ, buf, read_val);
+		fill(vm, champ, buf, read_val);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_line_producing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 20:26:41 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 22:40:32 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/11 01:58:49 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ char	*ft_produce_line(t_frame *frame)
 	}
 	if (line->label && (ret = ft_push_declaration(line->label, frame->bytecount, &frame)))
 		return (ret);
+	if (!ft_line_bytes(&line, &op_tab[line->opcode - 1]))
+		return (ft_strdup("Failed to allocate bytecode"));
 	return (NULL);
 }
