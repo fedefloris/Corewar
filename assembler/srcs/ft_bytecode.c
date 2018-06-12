@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 23:37:04 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/12 13:00:36 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 	}
 }
 
-int		ft_line_bytes(t_line *line, t_op *op, t_frame *f)
+int		ft_line_bytes(t_line *line, t_op op, t_frame *f)
 {
 	int		bytecount;
 	char	byte;
@@ -104,7 +104,7 @@ int		ft_line_bytes(t_line *line, t_op *op, t_frame *f)
 	if (!ft_push_bytecode(&line->bytecode, line->opcode))
 		return (0);
 	bytecount++;
-	if (op->acb)
+	if (op.acb)
 	{
 		byte = ft_get_acb_byte(line);
 		if (!ft_push_bytecode(&line->bytecode, byte))
@@ -114,7 +114,7 @@ int		ft_line_bytes(t_line *line, t_op *op, t_frame *f)
 	i = 0;
 	while (i < line->param_count)
 	{
-		bytecount += ft_get_nb_bytes(line->param_type[i], op->half_size);
+		bytecount += ft_get_nb_bytes(line->param_type[i], op.half_size);
 		i++;
 	}
 	f->bytecount += bytecount;

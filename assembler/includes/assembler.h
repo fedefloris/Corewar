@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 22:56:23 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 13:00:04 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ char			*ft_push_request(char *name, t_frame **frame, char *str, int nb);
 void			ft_free_label(t_label **labels);
 void			ft_free_lines(t_line **lines);
 void			ft_free_frame(t_frame **frames);
-int				ft_line_bytes(t_line *line, t_op *op, t_frame *f);
+int				ft_line_bytes(t_line *line, t_op op, t_frame *f);
 int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
+void			ft_output(int fd, t_frame *f, t_op *op);
+void			ft_get_arg_byte(t_line *line, int nb, int half, t_label *req);
 #endif
