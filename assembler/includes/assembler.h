@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 13:00:04 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 16:11:32 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,10 @@ typedef struct	s_line
 typedef struct	s_label
 {
 	char			*name;
-	size_t			dist;
+	int				dist;
 	char			*line;
 	int				line_nb;
+	int				used;
 	struct s_label	*next;
 }				t_label;
 

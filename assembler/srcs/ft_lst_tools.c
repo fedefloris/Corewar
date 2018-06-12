@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 22:44:19 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 16:12:37 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_init_label(t_label **label, char *name, int dist, char *str)
 	(*label)->dist = dist;
 	(*label)->next = NULL;
 	(*label)->line = str;
+	(*label)->used = 0;
 	return (NULL);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/12 13:39:32 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 16:15:28 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,21 @@ char	ft_get_acb_byte(t_line *line)
 {
 	char	byte;
 	int		i;
+	int		value;
 
 	i = 0;
 	byte = 0;
 	while (i < 3 && line->param_type[i])
 	{
-		byte = byte | (line->param_type[i] << (6 - i * 2));
+		value = (line->param_type[i] == T_REG) ? REG_CODE : value;
+		value = (line->param_type[i] == T_IND) ? IND_CODE : value;
+		value = (line->param_type[i] == T_DIR) ? DIR_CODE : value;
+		byte = byte | (value << (6 - i * 2));
 		i++;
 	}
 	return (byte);
 }
-/*
-char	ft_get_acb_byte(t_line *line)
-{
-	char	byte;
-	int		value1;
-	int		value2;
-	int		value3;
 
-	value1 = 0;
-	value2 = 0;
-	value3 = 0;
-	value1 = (line->param_type[0] == T_REG) ? REG_CODE : value1;
-	value1 = (line->param_type[0] == T_IND) ? IND_CODE : value1;
-	value1 = (line->param_type[0] == T_DIR) ? DIR_CODE : value1;
-	value2 = (line->param_type[1] == T_REG) ? REG_CODE : value2;
-	value2 = (line->param_type[1] == T_IND) ? IND_CODE : value2;
-	value2 = (line->param_type[1] == T_REG) ? REG_CODE : value2;
-	value3 = (line->param_type[2] == T_REG) ? REG_CODE : value3;
-	value3 = (line->param_type[2] == T_IND) ? IND_CODE : value3;
-	value3 = (line->param_type[2] == T_DIR) ? DIR_CODE : value3;
-	byte = value1 << 6;
-	if (line->param_count >= 2)
-		byte = byte | value2 << 4;
-	if (line->param_count == 3)
-		byte = byte | value3 << 2;
-	return (byte);
-}
-*/
 int		ft_get_arg_val(char *param, int param_type, t_label *req)
 {
 	char *label;
@@ -64,12 +41,15 @@ int		ft_get_arg_val(char *param, int param_type, t_label *req)
 		++label;
 		while (req)
 		{
-			if (!ft_strcmp(req->name, label))
+			if (!ft_strcmp(req->name, label) && !req->used)
+			{
+				req->used = 1;
 				return (req->dist);
+			}
 			req = req->next;
 		}
 	}
-	if (param_type == IND_CODE)
+	if (param_type == T_IND)
 		return (ft_atoi(param));
 	else
 		return (ft_atoi(param + 1));
@@ -82,7 +62,7 @@ int		ft_get_nb_bytes(int param_type, int half)
 	else if (param_type == T_REG)
 		return (1);
 	else if (param_type == T_IND)
-		return (half ? 1 : 2);
+		return (half ? 2 : 2);
 	return (0);
 }
 
