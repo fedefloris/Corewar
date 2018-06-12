@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 20:26:41 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 22:39:12 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 12:51:33 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_produce_line(t_frame *f, char *str, int line_nb)
 	}
 	if (line->label && (ret = ft_push_decl(line->label, f->bytecount, &f)))
 		return (ret);
-	if (!ft_line_bytes(line, &g_op_tab[line->opcode - 1], f))
+	if (!ft_line_bytes(line, g_op_tab[line->opcode - 1], f))
 		return (ft_strdup("Failed to allocate bytecode"));
 	return (NULL);
 }
