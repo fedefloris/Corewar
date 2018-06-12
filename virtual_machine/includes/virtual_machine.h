@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 19:14:46 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/12 22:07:12 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct			s_op
 	int					has_idx;
 }						t_op;
 
-t_op					op_tab[17];
+t_op					g_op_tab[17];
 
 typedef void			(*t_op_code)(t_vm *vm, t_process *ps);
 

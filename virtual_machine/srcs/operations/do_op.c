@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/08 22:56:00 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/12 22:09:14 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void				do_op(t_vm *vm, t_process *ps, int op_code)
 	t_op_code		op_function;
 	t_op			*seek;
 
-	seek = op_tab;
+	seek = g_op_tab;
 	while (seek->op_code && seek->op_code != op_code)
 		seek++;
 	if (!(op_function = get_op(hash_name(seek->name))))
