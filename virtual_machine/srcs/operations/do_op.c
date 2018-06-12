@@ -51,7 +51,7 @@ static long			hash_name(char *name)
 	return (hash);
 }
 
-void				do_op(t_vm *vm, int op_code)
+void				do_op(t_vm *vm, t_process *ps, int op_code)
 {
 	t_op_code		op_function;
 	t_op			*seek;
@@ -61,5 +61,5 @@ void				do_op(t_vm *vm, int op_code)
 		seek++;
 	if (!(op_function = get_op(hash_name(seek->name))))
 		error_exit(vm, "Invalid Op Code in do_op");
-	op_function(vm);
+	op_function(vm, ps);
 }

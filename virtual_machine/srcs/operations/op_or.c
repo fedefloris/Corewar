@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-void				op_or(t_vm *vm)
+void				op_or(t_vm *vm, t_process *ps)
 {
 	printf("Inside op_or\n");
 }

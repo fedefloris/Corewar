@@ -16,7 +16,6 @@ void				free_vm(t_vm *vm)
 {
 	if (!vm)
 		return ;
-	ft_strdel(&vm->memory);
 	// free => vm->name, vm->champ, vm->process;
 	free(vm);
 }

@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-void				op_xor(t_vm *vm)
+void				op_xor(t_vm *vm, t_process *ps)
 {
 	printf("Inside op_xor\n");
 }

@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-void				op_add(t_vm *vm)
+void				op_add(t_vm *vm, t_process *ps)
 {
 	ft_printf("Inside op_add\n");
 }
