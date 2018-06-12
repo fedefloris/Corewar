@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 21:32:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/12 19:14:46 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
+void					modify_pc(t_process *process, int modify);
+
 void					do_op(t_vm *vm, t_process *ps, int op_code);
 
 void					op_live(t_vm *vm, t_process *ps);
