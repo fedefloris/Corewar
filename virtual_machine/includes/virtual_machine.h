@@ -52,12 +52,10 @@ typedef struct			s_byte_code
 typedef struct			s_champ
 {
 	char				*file_name;
-
 	int					prog_size;
 	int					number;
 	char				*name;
 	char				*bytes;
-
 	struct s_byte_code	*byte_code;
 	struct s_champ		*next;
 }						t_champ;
@@ -66,7 +64,7 @@ typedef struct			s_process
 {
 	int					number;
 	intmax_t			r[REG_NUMBER + 1];
-	unsigned long		pc;
+	int					pc;
 	char				carry;
 	struct s_process	*next;
 }						t_process;
@@ -79,8 +77,7 @@ typedef struct			s_vm
 	int					cycle;
 	int					cycle_to_die;
 	int					live_calls;
-	char				*memory;
-
+	char				memory[MEM_SIZE];
 	struct s_name		*name;
 	struct s_champ		*champ;
 	struct s_process	*process;
@@ -100,7 +97,7 @@ typedef struct			s_op
 
 t_op					op_tab[17];
 
-typedef void			(*t_op_code)(t_vm *vm);
+typedef void			(*t_op_code)(t_vm *vm, t_process *ps);
 
 void					test_print(t_vm *vm);//Remove
 
@@ -119,23 +116,24 @@ void					parse_count_champions(t_vm *vm);
 void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
-void					do_op(t_vm *vm, int op_code);
+void					exec_processes(t_vm *vm);
+void					do_op(t_vm *vm, t_process *ps, int op_code);
 
-void					op_live(t_vm *vm);
-void					op_ld(t_vm *vm);
-void					op_st(t_vm *vm);
-void					op_add(t_vm *vm);
-void					op_sub(t_vm *vm);
-void					op_and(t_vm *vm);
-void					op_or(t_vm *vm);
-void					op_xor(t_vm *vm);
-void					op_zjmp(t_vm *vm);
-void					op_ldi(t_vm *vm);
-void					op_sti(t_vm *vm);
-void					op_fork(t_vm *vm);
-void					op_lld(t_vm *vm);
-void					op_lldi(t_vm *vm);
-void					op_lfork(t_vm *vm);
-void					op_aff(t_vm *vm);
+void					op_live(t_vm *vm, t_process *ps);
+void					op_ld(t_vm *vm, t_process *ps);
+void					op_st(t_vm *vm, t_process *ps);
+void					op_add(t_vm *vm, t_process *ps);
+void					op_sub(t_vm *vm, t_process *ps);
+void					op_and(t_vm *vm, t_process *ps);
+void					op_or(t_vm *vm, t_process *ps);
+void					op_xor(t_vm *vm, t_process *ps);
+void					op_zjmp(t_vm *vm, t_process *ps);
+void					op_ldi(t_vm *vm, t_process *ps);
+void					op_sti(t_vm *vm, t_process *ps);
+void					op_fork(t_vm *vm, t_process *ps);
+void					op_lld(t_vm *vm, t_process *ps);
+void					op_lldi(t_vm *vm, t_process *ps);
+void					op_lfork(t_vm *vm, t_process *ps);
+void					op_aff(t_vm *vm, t_process *ps);
 
 #endif

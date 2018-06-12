@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-void				op_live(t_vm *vm)
+void				op_live(t_vm *vm, t_process *ps)
 {
 	// t_process	*ps;
 
