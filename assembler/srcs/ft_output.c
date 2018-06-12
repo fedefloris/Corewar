@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/12 13:01:32 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 13:48:36 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_output(int fd, t_frame *f, t_op *op)
 			ft_putchar_fd(((char*)tmp->content)[0], fd);
 			tmp = tmp->next;
 		}
+		ft_putchar_fd(0xaa, fd);
 		line = line->next;
 	}
 }
