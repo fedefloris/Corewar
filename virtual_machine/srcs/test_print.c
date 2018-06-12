@@ -28,10 +28,10 @@ void				test_print(t_vm *vm)
 	// 	}
 	// 	vm->champ = vm->champ->next;
 	// }
-	// while (vm->process)
-	// {
-		// ft_printf();
-		// vm->process = vm->process->next;
-	// }
-	ft_putnstr(vm->memory, MEM_SIZE);
+	while (vm->process)
+	{
+		ft_printf("Ps n. %d, pc = %d\n", vm->process->number, vm->process->pc);
+		vm->process = vm->process->next;
+	}
+	// ft_putnstr(vm->memory, MEM_SIZE);
 }

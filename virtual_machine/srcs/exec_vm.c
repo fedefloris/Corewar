@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-static void			exec_processes(t_vm *vm)
+static void		exec_processes(t_vm *vm)
 {
 	t_process	*ps;
 
@@ -24,7 +24,7 @@ static void			exec_processes(t_vm *vm)
 	}
 }
 
-void				exec_vm(t_vm *vm)
+void			exec_vm(t_vm *vm)
 {
 	load_processes(vm);
 /*	while (1)

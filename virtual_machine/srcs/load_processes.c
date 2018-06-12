@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-static size_t		get_gap_between_champs(t_vm *vm)
+static size_t	get_gap_between_champs(t_vm *vm)
 {
 	size_t		count_of_champs;
 	t_champ		*champ;
@@ -27,35 +27,26 @@ static size_t		get_gap_between_champs(t_vm *vm)
 	return (MEM_SIZE / count_of_champs);
 }
 
-static void			copy_program(t_vm *vm, size_t pos, t_champ *champ)
+static void		move_last_process_to_top(t_vm *vm)
 {
-	size_t		i;
+	t_process	*last;
+	t_process	*prev;
 
-	i = 0;
-	while (i < champ->prog_size)
+	last = vm->process;
+	while (last->next)
 	{
-		vm->memory[pos + i] = champ->bytes[i];
-		i++;
+		prev = last;
+		last = last->next;
+	}
+	if (prev)
+	{
+		prev->next = NULL;
+		last->next = vm->process;
+		vm->process = last;
 	}
 }
 
-static void			add_process(t_vm *vm, t_champ *champ, size_t pc)
-{
-	t_process	*process;
-
-	if (!(process = (t_process*)malloc(sizeof(t_process))))
-		error_exit(vm, "Malloc failed, process creation.");
-	process->number = champ->number;
-	ft_bzero(process->r, REG_NUMBER + 1);
-	process->r[1] = process->number;
-	process->pc = pc;
-	process->carry = 0;
-	process->next = NULL;
-	process->next = vm->process;
-	vm->process = process;
-}
-
-void				load_processes(t_vm *vm)
+void			load_processes(t_vm *vm)
 {
 	t_champ		*champ;
 	size_t		gap;
@@ -66,9 +57,9 @@ void				load_processes(t_vm *vm)
 	gap = get_gap_between_champs(vm);
 	while (champ)
 	{
-		add_process(vm, champ, pos);
-		copy_program(vm, pos, champ);
+		load_process(vm, champ, pos);
 		pos += gap;
 		champ = champ->next;
 	}
+	move_last_process_to_top(vm);
 }
