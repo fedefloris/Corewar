@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 13:01:00 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 13:07:58 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int		main(int ac, char **av)
 	// 	label2 = label2->next;
 	// }
 	if (!frame->errors)
-		ft_output(0, frame, g_op_tab2);
+		ft_output(1, frame, g_op_tab2);
 	ft_error_output(frame->errors);
 	ft_free_frame(&frame);
 	return (0);

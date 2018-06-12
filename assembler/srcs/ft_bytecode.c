@@ -6,12 +6,28 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/12 13:00:36 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/12 13:39:32 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
+
+char	ft_get_acb_byte(t_line *line)
+{
+	char	byte;
+	int		i;
+
+	i = 0;
+	byte = 0;
+	while (i < 3 && line->param_type[i])
+	{
+		byte = byte | (line->param_type[i] << (6 - i * 2));
+		i++;
+	}
+	return (byte);
+}
+/*
 char	ft_get_acb_byte(t_line *line)
 {
 	char	byte;
@@ -38,7 +54,7 @@ char	ft_get_acb_byte(t_line *line)
 		byte = byte | value3 << 2;
 	return (byte);
 }
-
+*/
 int		ft_get_arg_val(char *param, int param_type, t_label *req)
 {
 	char *label;
@@ -78,8 +94,6 @@ void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 	char			out;
 	int				max;
 
-	if (ft_strchr(line->param[nb], LABEL_CHAR))
-		return ;
 	val = (unsigned int)ft_get_arg_val(line->param[nb], line->param_type[nb],
 			req);
 	mask = 0xff;
