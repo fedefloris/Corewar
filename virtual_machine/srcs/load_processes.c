@@ -15,7 +15,6 @@
 static size_t		get_gap_between_champs(t_vm *vm)
 {
 	size_t		count_of_champs;
-	size_t		total_gap_size;
 	t_champ		*champ;
 
 	champ = vm->champ;
@@ -25,8 +24,7 @@ static size_t		get_gap_between_champs(t_vm *vm)
 		count_of_champs++;
 		champ = champ->next;
 	}
-	total_gap_size = MEM_SIZE - (CHAMP_MAX_SIZE * count_of_champs);
-	return (total_gap_size / count_of_champs);
+	return (MEM_SIZE / count_of_champs);
 }
 
 static void			copy_program(t_vm *vm, size_t pos, t_champ *champ)
@@ -70,7 +68,7 @@ void				load_processes(t_vm *vm)
 	{
 		add_process(vm, champ, pos);
 		copy_program(vm, pos, champ);
-		pos += CHAMP_MAX_SIZE + gap;
+		pos += gap;
 		champ = champ->next;
 	}
 }
