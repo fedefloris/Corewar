@@ -16,16 +16,22 @@
 
 void				test_print(t_vm *vm)
 {
-	while (vm->champ)
-	{
+	// while (vm->champ)
+	// {
 		//printf("NUMBER:     %d\n", vm->champ->number);
 		//printf("NAME  :     %s\n", vm->champ->name);
 		//printf("NUMBY :     %d\n", vm->champ->program_size);
-		while (vm->champ->prog_size--)
-		{
-			printf("%c", *vm->champ->bytes);
-			vm->champ->bytes++;
-		}
-		vm->champ = vm->champ->next;
-	}
+	// 	while (vm->champ->prog_size--)
+	// 	{
+	// 		printf("%c", *vm->champ->bytes);
+	// 		vm->champ->bytes++;
+	// 	}
+	// 	vm->champ = vm->champ->next;
+	// }
+	// while (vm->process)
+	// {
+		// ft_printf();
+		// vm->process = vm->process->next;
+	// }
+	ft_putnstr(vm->memory, MEM_SIZE);
 }
