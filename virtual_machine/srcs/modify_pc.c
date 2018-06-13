@@ -12,40 +12,10 @@
 
 #include "virtual_machine.h"
 
-static void			modify_negative(t_process *process, int modify)
-{
-	int				pc;
-
-	pc = process->pc;
-	while (modify++)
-	{
-		if (pc == 0)
-			pc = MEM_SIZE - 1;
-		else
-			pc--;
-	}
-	process->pc = pc;
-}
-
-static void			modify_positive(t_process *process, int modify)
-{
-	int				pc;
-
-	pc = process->pc;
-	while (modify--)
-	{
-		if (pc == MEM_SIZE - 1)
-			pc = 0;
-		else
-			pc++;
-	}
-	process->pc = pc;
-}
-
-void				modify_pc(t_process *process, int modify)
+void				modify_pc(t_process *ps, int modify)
 {
 	if (modify > 0)
-		modify_positive(process, modify);
-	if (modify < 0)
-		modify_negative(process, modify);
+		ps->pc = (ps->pc + modify) % MEM_SIZE;
+	else if (modify < 0)
+		ps->pc = ((ps->pc + modify) % MEM_SIZE) + MEM_SIZE;
 }
