@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:41 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/13 16:49:30 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 17:05:04 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void				op_zjmp(t_vm *vm, t_process *ps)
 		modify <<= 8;
 		modify_pc(ps, 1);
 		modify += vm->memory[ps->pc];
-		modify_pc(ps, modify);
+		modify_pc(ps, modify % IDX_MOD);
 	}
 	modify_pc(ps, 1);
 }
