@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/13 14:53:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 14:58:12 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void				op_live(t_vm *vm, t_process *ps)
 	i = 0;
 	while (i++ < 4)
 	{
+		modify_pc(ps, 1);
 		player_number <<= 8;
 		player_number += vm->memory[ps->pc];
-		modify_pc(ps, 1);
 	}
 }
