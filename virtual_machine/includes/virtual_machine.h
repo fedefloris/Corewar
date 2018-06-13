@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/13 00:52:58 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 14:39:20 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct			s_vm
 	int					cycle;
 	int					cycle_to_die;
 	int					live_calls;
+	int					last_live;
 	char				memory[MEM_SIZE];
 	struct s_name		*name;
 	struct s_champ		*champ;

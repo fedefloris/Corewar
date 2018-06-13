@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 23:03:30 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 14:53:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void				op_live(t_vm *vm, t_process *ps)
 {
-	// t_process	*ps;
+	int				player_number;
+	int				i;
 
-	// ft_printf("Inside op_live\n");
-	// ps = vm->process;
-	// while (ps)
-	// {
-	// 	if (ps->number == ft_atoi())
-	// 	ps = ps->next;
-	// }
+	player_number = 0;
+	i = 0;
+	while (i++ < 4)
+	{
+		player_number <<= 8;
+		player_number += vm->memory[ps->pc];
+		modify_pc(ps, 1);
+	}
 }
