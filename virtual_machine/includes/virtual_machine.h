@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/13 21:56:25 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 22:06:05 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
 void					modify_pc(t_process *process, int modify);
 char					decode_byte(t_vm *vm, unsigned char *encoded, int pair);
-int						get_next_byte(t_vm *vm, t_process *ps, int num);
+void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
 
 void					do_op(t_vm *vm, t_process *ps, int op_code);
 
