@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/13 16:09:51 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/13 20:45:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void				op_live(t_vm *vm, t_process *ps)
 		player_number <<= 8;
 		player_number += vm->memory[ps->pc];
 	}
-	vm->live_calls++;
-	vm->last_live = player_number;
+	if (vm->live_hash[player_number])
+	{
+		vm->live_calls++;
+		vm->last_live = player_number;
+	}
 	modify_pc(ps, 1);
 }
