@@ -25,5 +25,6 @@ void				op_zjmp(t_vm *vm, t_process *ps)
 		modify += vm->memory[ps->pc];
 		modify_pc(ps, modify % IDX_MOD);
 	}
-	modify_pc(ps, 1);
+	else
+		modify_pc(ps, 3);
 }
