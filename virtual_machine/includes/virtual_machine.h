@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/14 23:00:46 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 00:35:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct			s_process
 	int					number;
 	intmax_t			r[256];
 	int					pc;
-	int					tmp_pc;
+	int					pc_tmp;
 	char				carry;
 	struct s_process	*next;
 }						t_process;
@@ -121,10 +121,12 @@ void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
 void					modify_pc(t_process *process, int modify);
+void					modify_pc_tmp(t_process *process, int modify);
 void					get_address(t_process *ps, int modify, int *address);
 char					decode_byte(unsigned char encoded, int pair);
 void					calc_bytes(unsigned char encoded, int pair, int *bytes);
 void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
+void					iterate_pc(t_process *ps);
 
 void					do_op(t_vm *vm, t_process *ps, int op_code);
 
