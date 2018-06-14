@@ -14,8 +14,9 @@
 
 void				modify_pc(t_process *ps, int modify)
 {
-	if (modify > 0)
-		ps->pc = (ps->pc + modify) % MEM_SIZE;
-	else if (modify < 0)
-		ps->pc = ((ps->pc + modify) % MEM_SIZE) + MEM_SIZE;
+	ps->pc = ps->pc + modify;
+	if (ps->pc > 0)
+		ps->pc %= MEM_SIZE;
+	else if (ps->pc < 0)
+		ps->pc = (ps->pc % MEM_SIZE) + MEM_SIZE;
 }

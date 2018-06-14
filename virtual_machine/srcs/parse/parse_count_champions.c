@@ -17,7 +17,7 @@ static void			create_live_hash(t_vm *vm, int largest_num)
 	t_champ			*champ;
 
 	champ = vm->champ;
-	if (!(vm->live_hash = (int *)malloc(sizeof(int) * largest_num + 1)))
+	if (!(vm->live_hash = (int *)malloc(sizeof(int) * (largest_num + 1))))
 		error_exit(vm, "Malloc failed (name hash)");
 	ft_bzero(vm->live_hash, largest_num + 1);
 	while (champ)

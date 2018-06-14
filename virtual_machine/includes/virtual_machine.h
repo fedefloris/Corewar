@@ -63,7 +63,7 @@ typedef struct			s_champ
 typedef struct			s_process
 {
 	int					number;
-	intmax_t			r[REG_NUMBER + 1];
+	intmax_t			r[256];
 	int					pc;
 	char				carry;
 	struct s_process	*next;

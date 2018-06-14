@@ -41,6 +41,8 @@ static long			hash_name(char *name)
 {
 	long			hash;
 
+	if (!name)
+		return (0);
 	hash = 0;
 	while (*name)
 	{
