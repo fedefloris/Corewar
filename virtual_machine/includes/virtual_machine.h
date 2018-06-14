@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/14 22:52:30 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/14 23:00:46 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct			s_process
 	int					number;
 	intmax_t			r[256];
 	int					pc;
-	int					tmp->pc;
+	int					tmp_pc;
 	char				carry;
 	struct s_process	*next;
 }						t_process;
