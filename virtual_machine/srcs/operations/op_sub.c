@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 23:04:28 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/14 18:23:06 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 void				op_sub(t_vm *vm, t_process *ps)
 {
-	printf("Inside op_sub\n");
+	printf("Inside op_sub\n");//
+	get_next_bytes(vm, ps, &r1, 1);
+	get_next_bytes(vm, ps, &r2, 1);
+	get_next_bytes(vm, ps, &r3, 1);
+	ps->r[r3] = ps->r[r1] - ps->r[r2];
+	modify_pc(ps, 1);
+	if (!r3)
+		ps->carry = 1;
 }
