@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/13 22:06:32 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 00:31:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ void				op_live(t_vm *vm, t_process *ps)
 		vm->live_calls++;
 		vm->last_live = player_number;
 	}
-	modify_pc(ps, 1);
-	// ft_printf("A process shows that player %d (%s) is alive",
-	// 				player_number, vm->live_hash[player_number - 1]);
+	iterate_pc(ps);
 }
