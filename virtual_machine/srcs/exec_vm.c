@@ -29,9 +29,10 @@ void		exec_vm(t_vm *vm)
 		if (vm->live_calls > 0 && vm->live_calls % NBR_LIVE == 0 &&
 			(vm->cycle_to_die -= CYCLE_DELTA) <= 0)
 			break ;
-
+		sleep(1);
 		// If CYCLE_TO_DIE wasn’t decreased since MAX_CHECKS checkups, decrease it.
 	}
 	// The winner is the last player reported to be “alive”
-	
+	// ft_printf("Player %s (%s) won", vm->last_live,
+	// 						vm->live_hash[vm->last_live]);
 }

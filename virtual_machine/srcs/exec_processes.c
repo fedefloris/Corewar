@@ -14,8 +14,7 @@
 
 static void		exec_process(t_vm *vm, t_process *ps)
 {
-	// check nb_cycles previous instruction
-	// do_op(vm, ps, (int) vm->memory[ps->pc]);
+	do_op(vm, ps, (int) vm->memory[ps->pc]);
 }
 
 void			exec_processes(t_vm *vm)

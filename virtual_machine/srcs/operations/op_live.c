@@ -16,6 +16,7 @@ void				op_live(t_vm *vm, t_process *ps)
 {
 	int				player_number;
 
+	ft_printf("Inside op_live\n");
 	get_next_bytes(vm, ps, &player_number, 4);
 	if (vm->live_hash[player_number])
 	{
@@ -23,4 +24,6 @@ void				op_live(t_vm *vm, t_process *ps)
 		vm->last_live = player_number;
 	}
 	modify_pc(ps, 1);
+	// ft_printf("A process shows that player %s (%s) is alive",
+	// 				player_number, vm->live_hash[player_number]);
 }

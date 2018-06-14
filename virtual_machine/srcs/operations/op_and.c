@@ -15,4 +15,5 @@
 void				op_and(t_vm *vm, t_process *ps)
 {
 	ft_printf("Inside op_and\n");
+	modify_pc(ps, 8);
 }

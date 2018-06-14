@@ -15,4 +15,5 @@
 void				op_sti(t_vm *vm, t_process *ps)
 {
 	printf("Inside op_sti\n");
+	modify_pc(ps, 7);
 }
