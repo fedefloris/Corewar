@@ -24,7 +24,7 @@ void			exec_processes(t_vm *vm)
 	ps = vm->process;
 	while (ps)
 	{
-		ft_printf("Executing process %d\n", ps->number);
+		ft_printf("Executing process %d, pc => %d\n", ps->number, ps->pc);
 		exec_process(vm, ps);
 		ps = ps->next;
 	}

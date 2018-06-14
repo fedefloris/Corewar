@@ -15,5 +15,6 @@
 void				op_and(t_vm *vm, t_process *ps)
 {
 	ft_printf("Inside op_and\n");
+	ps->carry = 1;
 	modify_pc(ps, 8);
 }

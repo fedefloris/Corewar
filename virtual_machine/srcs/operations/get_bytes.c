@@ -23,6 +23,6 @@ void				get_next_bytes(t_vm *vm, t_process *ps, int *value, int n)
 	{
 		modify_pc(ps, 1);
 		*value <<= 8;
-		*value += vm->memory[ps->pc];
+		*value |= vm->memory[ps->pc];
 	}
 }
