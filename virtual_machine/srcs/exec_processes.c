@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 14:54:49 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 14:54:50 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/14 23:18:25 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void		exec_process(t_vm *vm, t_process *ps)
 {
 	ft_printf("Executing process %d, pc => %d\n", ps->number, ps->pc);
+	ps->tmp_pc = ps->pc;
 	do_op(vm, ps, (int) vm->memory[ps->pc]);
 }
 
