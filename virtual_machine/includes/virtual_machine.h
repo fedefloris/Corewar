@@ -62,12 +62,14 @@ typedef struct			s_champ
 
 typedef struct			s_process
 {
+	char				*name;
 	int					number;
 	intmax_t			r[256];
 	int					pc;
 	int					pc_tmp;
 	char				carry;
 	int					live_calls;
+	int					sleep_cycles;
 	struct s_process	*next;
 }						t_process;
 
@@ -80,6 +82,7 @@ typedef struct			s_vm
 	int					cycle_to_die;
 	int					live_calls;
 	int					last_live;
+	char				*last_name;
 	int					*live_hash;
 	char				memory[MEM_SIZE];
 	struct s_name		*name;
@@ -121,6 +124,7 @@ void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
+void					remove_dead_processes(t_vm *vm);
 void					modify_pc(t_process *process, int modify);
 void					modify_pc_tmp(t_process *process, int modify);
 void					iterate_pc(t_process *ps);

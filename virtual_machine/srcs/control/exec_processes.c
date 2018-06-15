@@ -14,9 +14,12 @@
 
 static void		exec_process(t_vm *vm, t_process *ps)
 {
-	printf("Executing %x | pc  %d | carry %d\n", ps->number, ps->pc, ps->carry);//
+	printf("Executing %x | pc  %d | carry %d | op_code %d\n",
+			ps->number, ps->pc, ps->carry, (int) vm->memory[ps->pc]);//
 	ps->pc_tmp = ps->pc;
 	do_op(vm, ps, (int) vm->memory[ps->pc]);
+	printf("Finished %x | pc  %d | carry %d | sleep_cycles %d | op_code %d\n",
+			ps->number, ps->pc, ps->carry, ps->sleep_cycles, (int) vm->memory[ps->pc]);//
 }
 
 void			exec_processes(t_vm *vm)
@@ -26,7 +29,10 @@ void			exec_processes(t_vm *vm)
 	ps = vm->process;
 	while (ps)
 	{
-		exec_process(vm, ps);
+		if (!ps->sleep_cycles)
+			exec_process(vm, ps);
+		else
+			ps->sleep_cycles--;
 		ps = ps->next;
 	}
 }

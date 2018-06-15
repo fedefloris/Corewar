@@ -23,6 +23,9 @@ void				op_live(t_vm *vm, t_process *ps)
 		vm->live_calls++;
 		ps->live_calls++;
 		vm->last_live = player_number;
+		vm->last_name = ps->name;
+		ft_printf("A process shows that player %d (%s) is alive\n",
+					ps->number, ps->name);
 	}
 	iterate_pc(ps);
 }

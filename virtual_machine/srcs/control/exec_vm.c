@@ -12,44 +12,29 @@
 
 #include "virtual_machine.h"
 
-// static void	kill_processes(t_vm *vm)
-// {
-// 	t_process	*ps;
-
-// 	ps = vm->process;
-// 	while (ps)
-// 	{
-// 		if (ps->live_calls == 0)
-// 		{
-// 			ft_printf("Process n.%d didn't call live\n", ps->number);
-// 		}
-// 		else
-// 			ps->live_calls = 0;
-// 		ps = ps->next;
-// 	}
-// }
-
 void		exec_vm(t_vm *vm)
 {
 	load_processes(vm);
 	while (1)
 	{
-		if (!vm->process)
+		if (!vm->process || vm->cycle_to_die <= 0)
 			break ;
 		exec_processes(vm);
 		vm->cycle++;
+		ft_printf("Cycle %d | cycle_to_die %d | live_calls %d\n",
+			vm->cycle, vm->cycle_to_die, vm->live_calls);
 		if (vm->cycle % vm->cycle_to_die == 0)
 		{
-			// if one process didn't call live delete it (bonus sound)
 			ft_printf("Every CYCLE_TO_DIE cycles: cycles = %d\n", vm->cycle);
-			// kill_processes(vm);
+			remove_dead_processes(vm);
 		}
-		if (vm->live_calls > 0 && vm->live_calls % NBR_LIVE == 0 &&
-			(vm->cycle_to_die -= CYCLE_DELTA) <= 0)
-			break ;
-		usleep(1000);
+		if (vm->live_calls > 0 && vm->live_calls % NBR_LIVE == 0)
+		{
+			vm->cycle_to_die -= CYCLE_DELTA;
+			vm->live_calls = 0;
+		}
+		usleep(100000);
 		// If CYCLE_TO_DIE wasn’t decreased since MAX_CHECKS checkups, decrease it.
 	}
-	// The winner is the last player reported to be “alive”
-	ft_printf("Player %d (player-name) won", vm->last_live);
+	ft_printf("Player %d (%s) won\n", vm->last_live, vm->last_name);
 }

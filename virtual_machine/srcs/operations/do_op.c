@@ -12,12 +12,8 @@
 
 #include "virtual_machine.h"
 
-static t_op_code	get_op(long op_code)
+static void			setup_ops(t_op_code *table)
 {
-	static t_op_code	table[7237484];
-
-	if (op_code < 1 || op_code > 7237483)
-		return (NULL);
 	table[454501] = &op_live;
 	table[1764] = &op_ld;
 	table[1908] = &op_st;
@@ -34,6 +30,16 @@ static t_op_code	get_op(long op_code)
 	table[454249] = &op_lldi;
 	table[7237483] = &op_lfork;
 	table[26470] = &op_aff;
+}
+
+static t_op_code	get_op(long op_code)
+{
+	static t_op_code	table[7237484];
+
+	if (op_code < 1 || op_code > 7237483)
+		return (NULL);
+	if (!table[1764])
+		setup_ops(table);
 	return (table[op_code]);
 }
 
@@ -64,4 +70,5 @@ void				do_op(t_vm *vm, t_process *ps, int op_code)
 	if (!(op_function = get_op(hash_name(seek->name))))//Remove after debug
 		error_exit(vm, "Invalid Op Code in do_op");
 	op_function(vm, ps);
+	ps->sleep_cycles = seek->nb_cycles;
 }
