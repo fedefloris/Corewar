@@ -21,6 +21,7 @@ void				op_live(t_vm *vm, t_process *ps)
 	if (vm->live_hash[player_number])
 	{
 		vm->live_calls++;
+		ps->live_calls++;
 		vm->last_live = player_number;
 	}
 	iterate_pc(ps);

@@ -67,6 +67,7 @@ typedef struct			s_process
 	int					pc;
 	int					pc_tmp;
 	char				carry;
+	int					live_calls;
 	struct s_process	*next;
 }						t_process;
 

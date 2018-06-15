@@ -41,12 +41,10 @@ static void		add_process(t_vm *vm, t_champ *champ, size_t pc)
 
 	if (!(ps = (t_process*)malloc(sizeof(t_process))))
 		error_exit(vm, "Malloc failed, process creation.");
+	ft_bzero(ps, sizeof(t_process));
 	ps->number = champ->number;
-	ft_bzero(ps->r, REG_NUMBER + 1);
 	ps->r[1] = ps->number;
 	ps->pc = pc;
-	ps->carry = 0;
-	ps->next = NULL;
 	if (vm->process)
 		append_process(vm, ps);
 	else
