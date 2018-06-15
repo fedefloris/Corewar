@@ -6,22 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:02:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 03:06:10 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 03:09:05 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
-
-static void			get_value(t_vm *vm, t_process *ps, unsigned char encoded,
-		int *parameter)
-{
-	if (encoded == REG_CODE)
-		*parameter = ps->r[*parameter];
-	if (encoded == DIR_CODE)
-		;
-	if (encoded == IND_CODE)
-		*parameter = vm->memory[ps->pc + *parameter];
-}
 
 void				op_and(t_vm *vm, t_process *ps)
 {
