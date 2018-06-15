@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:41 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/13 22:05:53 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 02:26:16 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				op_zjmp(t_vm *vm, t_process *ps)
 	if (ps->carry)
 	{
 		get_next_bytes(vm, ps, &modify, 2);
-		modify_pc(ps, (modify - 2) % IDX_MOD);
+		modify_pc(ps, modify % IDX_MOD);
 	}
 	else
 		modify_pc(ps, 3);
