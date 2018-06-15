@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtable.c                                      :+:      :+:    :+:   */
+/*   remove_dead_processes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 17:41:14 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/11 10:18:43 by ffloris          ###   ########.fr       */
+/*   Created: 2018/06/15 17:16:27 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/15 17:16:28 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "virtual_machine.h"
 
-char		**ft_strtable(size_t row_size, size_t col_size)
+void		remove_dead_processes(t_vm *vm)
 {
-	char	**res;
-	size_t	i;
+	t_process	*prev_ps;
+	t_process	*ps;
 
-	if (!(res = (char**)malloc(sizeof(char*) * (row_size + 1))))
-		return (NULL);
-	i = 0;
-	while (i < row_size)
+	prev_ps = NULL;
+	ps = vm->process;
+	while (ps)
 	{
-		if (!(res[i] = ft_strnew(col_size)))
+		if (ps->live_calls == 0)
 		{
-			ft_strdel_table(res);
-			return (NULL);
+			ft_printf("Process n.%d didn't call live\n", ps->number);
+			if (!prev_ps)
+				vm->process = ps->next;
+			else
+				prev_ps->next = ps->next;
+			// FREE PROCESS => ps
 		}
-		i++;
+		else
+			ps->live_calls = 0;
+		prev_ps = ps;
+		ps = ps->next;
 	}
-	res[i] = NULL;
-	return (res);
 }

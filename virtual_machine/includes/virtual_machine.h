@@ -80,6 +80,7 @@ typedef struct			s_vm
 	int					dump;
 	int					cycle;
 	int					cycle_to_die;
+	int					last_decrease;
 	int					live_calls;
 	int					last_live;
 	char				*last_name;

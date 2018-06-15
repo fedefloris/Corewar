@@ -16,7 +16,8 @@
 ** Function fetches correct value based on DIR, IND, REG.
 */
 
-void	get_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter)
+void	get_value(t_vm *vm, t_process *ps, unsigned char encoded,
+													int *parameter)
 {
 	if (encoded == REG_CODE)
 		*parameter = ps->r[*parameter];
