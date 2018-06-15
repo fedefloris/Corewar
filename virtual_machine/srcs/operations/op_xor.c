@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:30 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 03:18:20 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 13:27:17 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void				op_xor(t_vm *vm, t_process *ps)
 	get_value(vm, ps, decode_byte(encoded, 2), &p1);
 	get_next_bytes(vm, ps, &p3, 1);
 	ps->r[p3] = p1 ^ p2;
-	if (!ps->r[p3])
-		ps->carry = 1;
+	modify_carry(ps, ps->r[p3]);
 	iterate_pc(ps);
 }

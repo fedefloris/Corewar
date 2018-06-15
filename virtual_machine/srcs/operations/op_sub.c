@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 00:30:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 13:25:56 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void				op_sub(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &r3, 1);
 	ps->r[r3] = ps->r[r1] - ps->r[r2];
 	iterate_pc(ps);
-	if (!r3)
-		ps->carry = 1;
+	modify_carry(ps, ps->r[r3]);
 }
