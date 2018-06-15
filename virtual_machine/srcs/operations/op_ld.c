@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:02:54 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 13:10:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 13:28:53 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				op_ld(t_vm *vm, t_process *ps)
 	int				p1;
 	int				p2;
 
-	printf("Inside op_ld\n");
+	printf("Inside op_ld\n");//
 	modify_pc_tmp(ps, 1);
 	encoded = vm->memory[ps->pc_tmp];
 	calc_bytes(encoded, 1, &bytes);
@@ -28,6 +28,5 @@ void				op_ld(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &p2, 1);
 	ps->r[p2] = p1;
 	modify_carry(ps, ps->r[p2]);
-	printf("CARRY: %d\n", ps->r[6]);
 	iterate_pc(ps);
 }
