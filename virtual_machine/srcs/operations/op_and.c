@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:02:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 03:09:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/15 03:15:36 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void				op_and(t_vm *vm, t_process *ps)
 	int				p2;
 	int				p3;
 
+	printf("Inside op_and\n");//
 	modify_pc_tmp(ps, 1);
 	encoded = vm->memory[ps->pc_tmp];
 	calc_bytes(encoded, 1, &bytes);
