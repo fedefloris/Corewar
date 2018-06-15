@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/12 16:51:06 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/15 14:42:26 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,21 @@ void	ft_output(int fd, t_frame *f, t_op *op)
 	int		i;
 
 	line = f->lines;
-	ft_output_header(fd, f->header->prog_name, PROG_NAME_LENGTH + 3, COREWAR_EXEC_MAGIC);
+	ft_output_header(fd, f->header->prog_name, PROG_NAME_LENGTH + 3,
+		COREWAR_EXEC_MAGIC);
 	ft_output_header(fd, f->header->comment, COMMENT_LENGTH + 3, f->bytecount);
 	while (line)
 	{
 		i = 0;
 		while (i < line->param_count)
-			ft_get_arg_byte(line, i++, op[line->opcode - 1].half_size, f->request);
+			ft_get_arg_byte(line, i++, op[line->opcode - 1].half_size,
+				f->request);
 		tmp = line->bytecode;
 		while (tmp)
 		{
 			ft_putchar_fd(((char*)tmp->content)[0], fd);
 			tmp = tmp->next;
 		}
-		// ft_putchar_fd(0xaa, fd);
 		line = line->next;
 	}
 }

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/12 16:15:28 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/15 14:43:56 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
-
 
 char	ft_get_acb_byte(t_line *line)
 {
@@ -62,7 +61,7 @@ int		ft_get_nb_bytes(int param_type, int half)
 	else if (param_type == T_REG)
 		return (1);
 	else if (param_type == T_IND)
-		return (half ? 2 : 2);
+		return (2);
 	return (0);
 }
 

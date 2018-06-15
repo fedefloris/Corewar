@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 21:49:31 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/12 16:12:52 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/15 14:43:33 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int		ft_fill_dist(t_label *req, t_label *first, t_error *error)
 			if (!ft_strcmp(req->name, decl->name))
 			{
 				req->dist = decl->dist - req->dist;
-				// ft_printf("%s, %d\n", req->name, req->dist);
 				break ;
 			}
 			decl = decl->next;
 		}
 		if (!decl)
-			ret = ft_error(req->line, ft_strdup("Label requested not declared"),
-					req->line_nb, &error);
+			ret = ft_error(ft_strdup(req->line),
+				ft_strdup("Label requested not declared"),
+				req->line_nb, &error);
 		req = req->next;
 	}
 	return (ret);
