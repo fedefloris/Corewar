@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 22:45:43 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/15 14:39:44 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_valid_line(char *s, t_frame *frame, int nb)
 	else if (*str != '\0')
 	{
 		if (!frame->lines && (!frame->header || !frame->header->prog_name ||
-				!frame->header->comment))
+				!frame->header->comment) && *str != COMMENT_CHAR)
 			ft_error(ft_strdup(s), ft_strdup("No name or comment"), nb,
 					&frame->errors);
 		ret = ft_line(str, frame);

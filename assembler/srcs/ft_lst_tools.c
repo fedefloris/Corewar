@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/12 16:12:37 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/15 14:37:10 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,7 @@ char	*ft_initline(t_line **line)
 {
 	if (!(*line = (t_line*)malloc(sizeof(t_line))))
 		return (ft_strdup("Failed to malloc s_line struct"));
-	(*line)->label = NULL;
-	(*line)->opname = NULL;
-	(*line)->opcode = 0;
-	(*line)->param[0] = NULL;
-	(*line)->param[1] = NULL;
-	(*line)->param[2] = NULL;
-	(*line)->param_type[0] = 0;
-	(*line)->param_type[1] = 0;
-	(*line)->param_type[2] = 0;
-	(*line)->param_count = 0;
-	(*line)->next = NULL;
-	(*line)->last = NULL;
+	ft_bzero(*line, sizeof(t_line));
 	return (NULL);
 }
 
