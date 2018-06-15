@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 16:11:32 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/15 16:47:40 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct	s_op
 
 typedef struct	s_line
 {
-	char			*label;
+	// char			*label;
 	char			*opname;
 	int				opcode;
 	char			*param[3];

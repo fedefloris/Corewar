@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/11 22:13:36 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/15 17:33:00 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_header(char *s, int name, t_frame *frame)
 	return (ft_addheader(&tmp, name, frame));
 }
 
-char	*ft_line(char *s, t_frame *frame)
+char	*ft_line2(char *s, t_frame *frame)
 {
 	t_line	*line;
 	char	*tmp;
@@ -68,15 +68,12 @@ char	*ft_line(char *s, t_frame *frame)
 
 	ret = NULL;
 	line = NULL;
-	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
-		tmp[0] = '\0';
-	if (!(s = ft_strtrim(s)) || *s == '\0')
+	if (!(s = ft_strtrim(s)))
 		return (NULL);
 	if (s[ft_strlen(s) - 1] == SEPARATOR_CHAR)
 		ret = ft_strdup("Separator char at the end of the line");
 	tmp = s;
 	ret = (!ret) ? ft_initline(&line) : ret;
-	ret = (!ret) ? ft_get_label(&s, &line->label) : ret;
 	ret = (!ret) ? ft_get_opname(&s, &line->opname) : ret;
 	ret = (!ret) ? ft_get_arguments(s, line) : ret;
 	ft_strdel(&tmp);
@@ -84,5 +81,26 @@ char	*ft_line(char *s, t_frame *frame)
 		ft_push_line(line, frame);
 	else
 		ft_free_lines(&line);
+	return (ret);
+}
+
+char	*ft_line(char *s, t_frame *frame)
+{
+	char	*tmp;
+	char	*ret;
+	char	*label;
+
+	ret = NULL;
+	label = NULL;
+	if ((tmp = ft_strchr(s, COMMENT_CHAR)))
+		tmp[0] = '\0';
+	ret = ft_get_label(&s, &label);
+	if (label)
+	{
+		ft_push_decl(label, frame->bytecount, &frame);
+		ft_strdel(&label);
+	}
+	if (!ret && *s)
+		ret = ft_line2(s, frame);
 	return (ret);
 }

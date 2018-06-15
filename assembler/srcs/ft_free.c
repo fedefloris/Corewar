@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:31:39 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/15 14:44:17 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/15 17:16:14 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	ft_free_lines(t_line **lines)
 	while (line != NULL)
 	{
 		i = 0;
-		if (line->label)
-			ft_strdel(&line->label);
 		if (line->opname)
 			ft_strdel(&line->opname);
 		while (i < 3)

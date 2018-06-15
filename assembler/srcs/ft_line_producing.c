@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 20:26:41 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/12 12:51:33 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/15 17:25:34 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,38 @@ int		ft_get_opcode(char *opname)
 	return (0);
 }
 
+int		ft_check_empty(char *str)
+{
+	char	*tmp;
+	char	*tmp2;
+	char	*label;
+	char	*ret;
+
+	if (!str)
+		return (1);
+	tmp = ft_strtrim(str);
+	tmp2 = tmp;
+	label = NULL;
+	ret = ft_get_label(&tmp, &label);
+	if (label)
+		ft_strdel(&label);
+	if (ret)
+		ft_strdel(&ret);
+	if (!tmp || !*tmp || *tmp == COMMENT_CHAR)
+	{
+		ft_strdel(&tmp2);
+		return (1);
+	}
+	ft_strdel(&tmp2);
+	return (0);
+}
+
 char	*ft_produce_line(t_frame *f, char *str, int line_nb)
 {
 	t_line	*line;
 	int		i;
-	char	*ret;
 
-	if (!(i = 0) && !f->lines)
+	if ((!(i = 0) && !f->lines) || ft_check_empty(str))
 		return (NULL);
 	line = f->lines->last;
 	if (!line || !(line->opcode = ft_get_opcode(line->opname)))
@@ -73,8 +98,6 @@ char	*ft_produce_line(t_frame *f, char *str, int line_nb)
 			ft_push_request(ft_strchr(line->param[i - 1], LABEL_CHAR) + 1,
 			&f, str, line_nb);
 	}
-	if (line->label && (ret = ft_push_decl(line->label, f->bytecount, &f)))
-		return (ret);
 	if (!ft_line_bytes(line, g_op_tab[line->opcode - 1], f))
 		return (ft_strdup("Failed to allocate bytecode"));
 	return (NULL);

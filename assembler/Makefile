@@ -6,13 +6,13 @@
 #    By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/15 14:06:53 by mfiguera         ###   ########.fr        #
+#    Updated: 2018/06/15 16:24:16 by mfiguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = asm
 
-GCC_FLAGS = -Werror -Wextra -Wall -fsanitize=address
+GCC_FLAGS = -Werror -Wextra -Wall
 
 OBJS_DIR = objs
 SRCS_DIR = srcs

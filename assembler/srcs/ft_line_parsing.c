@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 12:33:17 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/15 17:35:54 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_get_opname(char **s, char **opname)
 		if (**s != SEPARATOR_CHAR)
 			return (NULL);
 	}
+	ft_printf("%d\n", i);
 	return (ft_strdup("Invalid character after operation name"));
 }
 
@@ -65,11 +66,11 @@ char	*ft_get_arguments(char *s, t_line *line)
 		ret = ft_strdup("Too many parameters");
 	else
 		line->param_count = len;
-	while (!ret && len--)
+	while (len--)
 	{
-		if ((line->param_type[len] = ft_valid_arg(arg[len])))
+		if (!ret && (line->param_type[len] = ft_valid_arg(arg[len])))
 			line->param[len] = ft_strtrim(arg[len]);
-		else
+		else if (!ret)
 			ret = ft_strdup("Invalid parameter formatting");
 		ft_strdel(&arg[len]);
 	}
