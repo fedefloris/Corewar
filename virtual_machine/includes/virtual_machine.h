@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 13:10:28 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/16 18:02:12 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct			s_vm
 	char				**argv;
 	int					argc;
 	int					dump;
+	int					aff;
 	int					cycle;
 	int					cycle_to_die;
 	int					last_decrease;
@@ -128,7 +129,7 @@ void					duplicate_process(t_vm *vm, t_process *ps, t_process **new_ps);
 void					insert_sub_process(t_vm *vm, t_process *new_ps);
 void					remove_dead_processes(t_vm *vm);
 
-void					modify_pc(t_process *process, int modify);
+void					modify_pc(t_process *process, int modift pully);
 void					modify_pc_tmp(t_process *process, int modify);
 void					iterate_pc(t_process *ps);
 void					get_address(t_process *ps, int modify, int *address);
