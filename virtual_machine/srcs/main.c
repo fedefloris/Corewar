@@ -33,7 +33,8 @@ int					main(int argc, char **argv)
 	if (argc < 2)
 	{
 		ft_putstr("Provide 1 or more arguments\n");
-		display_usage(vm, 1);
+		display_usage();
+		exit(1);
 	}
 	vm = create_vm(argc, argv);
 	parse_handler(vm);

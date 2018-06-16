@@ -12,26 +12,11 @@
 
 #include "virtual_machine.h"
 
-static void			create_live_hash(t_vm *vm, int largest_num)
-{
-	t_champ			*champ;
-
-	champ = vm->champ;
-	if (!(vm->live_hash = (int *)malloc(sizeof(int) * (largest_num + 1))))
-		error_exit(vm, "Malloc failed (name hash)");
-	ft_bzero(vm->live_hash, largest_num + 1);
-	while (champ)
-	{
-		vm->live_hash[champ->number] = 1;
-		champ = champ->next;
-	}
-}
-
 void				parse_count_champions(t_vm *vm)
 {
-	int				i;
 	int				largest_num;
 	t_champ			*champ;
+	int				i;
 
 	i = 0;
 	largest_num = 0;
@@ -45,5 +30,4 @@ void				parse_count_champions(t_vm *vm)
 	}
 	if (i > MAX_PLAYERS)
 		error_exit(vm, "Too many Champions");
-	create_live_hash(vm, largest_num);
 }

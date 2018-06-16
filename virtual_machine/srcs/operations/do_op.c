@@ -59,6 +59,27 @@ static long			hash_name(char *name)
 	return (hash);
 }
 
+static void			move_to_next_op(t_vm *vm, t_process *ps)
+{
+	int				op_code;
+	t_op			*seek;
+
+	while (1)
+	{
+		get_next_bytes(vm, ps, &op_code, 1);
+		seek = g_op_tab;
+		while (seek->op_code)
+		{
+			if (op_code == seek->op_code)
+			{
+				ps->pc = ps->pc_tmp;
+				return ;
+			}
+			seek++;
+		}
+	}
+}
+
 void				do_op(t_vm *vm, t_process *ps, int op_code)
 {
 	t_op_code		op_function;
@@ -67,8 +88,14 @@ void				do_op(t_vm *vm, t_process *ps, int op_code)
 	seek = g_op_tab;
 	while (seek->op_code && seek->op_code != op_code)
 		seek++;
-	if (!(op_function = get_op(hash_name(seek->name))))//Remove after debug
-		error_exit(vm, "Invalid Op Code in do_op");
-	op_function(vm, ps);
-	ps->sleep_cycles = seek->nb_cycles;
+	if (!(op_function = get_op(hash_name(seek->name))))
+	{
+		move_to_next_op(vm, ps);
+		ps->sleep_cycles = 1;
+	}
+	else
+	{
+		op_function(vm, ps);
+		ps->sleep_cycles = seek->nb_cycles;
+	}
 }

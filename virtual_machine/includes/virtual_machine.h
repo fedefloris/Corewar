@@ -84,7 +84,6 @@ typedef struct			s_vm
 	int					live_calls;
 	int					last_live;
 	char				*last_name;
-	int					*live_hash;
 	char				memory[MEM_SIZE];
 	struct s_name		*name;
 	struct s_champ		*champ;
@@ -109,7 +108,7 @@ typedef void			(*t_op_code)(t_vm *vm, t_process *ps);
 
 void					test_print(t_vm *vm);//Remove
 
-void					display_usage(t_vm *vm, int i);
+void					display_usage();
 
 void					error_exit(t_vm *vm, char *string);
 void					free_vm(t_vm *vm);

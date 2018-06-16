@@ -14,8 +14,8 @@
 
 static int	size(t_vm *vm)
 {
-	t_process *ps;
-	int	count;
+	t_process	*ps;
+	int			count;
 
 	count = 0;
 	ps = vm->process;

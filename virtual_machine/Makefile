@@ -36,6 +36,10 @@ all: $(NAME)
 norm:
 	@norminette $(SRCS_INCLUDES_DIR) $(SRCS_DIR)
 
+$(LIBFT_FILE):
+	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
+	@make -C ../libft
+
 $(NAME): $(LIBFT_FILE) $(OBJS_DIR) $(OBJS_WITH_DIR)
 	@echo "Corewar:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
 	@gcc $(GCC_FLAGS) $(OBJS_WITH_DIR) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)

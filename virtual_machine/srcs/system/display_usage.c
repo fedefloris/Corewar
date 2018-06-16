@@ -52,66 +52,8 @@ static void			do_usage(void)
 	usleep(100000);
 }
 
-//static void			do_stdin(void)
-//{
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("DESCRIPTION\n");
-//	ft_printf(RESET);
-//	ft_printf(PINK);
-//	usleep(100000);
-//	ft_printf("$>./lem-in\n");
-//	usleep(100000);
-//	ft_printf("13\n");
-//	usleep(100000);
-//	ft_printf("##start\n");
-//	usleep(100000);
-//	ft_printf("Room42 21 42\n");
-//	usleep(100000);
-//	ft_printf("#comment\n");
-//	usleep(100000);
-//	ft_printf("##end\n");
-//	usleep(100000);
-//	ft_printf("Room27 27 11\n");
-//	usleep(100000);
-//	ft_printf("Room1-Room42\n");
-//	usleep(100000);
-//	ft_printf("Room42-Room27\n");
-//}
-
-//static void			do_flags(void)
-//{
-//	ft_printf(B_PINK);
-//	usleep(100000);
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("\n");
-//	usleep(100000);
-//	ft_printf("FLAGS\n");
-//	ft_printf(RESET);
-//	ft_printf(PINK);
-//	usleep(100000);
-//	ft_printf("$>./lem-im [-d | -r | -p | -l | -all] [file]\n");
-//	usleep(100000);
-//	ft_printf(" -d   Debug\n");
-//	usleep(100000);
-//	ft_printf(" -r   Rooms\n");
-//	usleep(100000);
-//	ft_printf(" -p   Path\n");
-//	usleep(100000);
-//	ft_printf(" -l   Links\n");
-//	usleep(100000);
-//	ft_printf(" -all Show all\n");
-//}
-
-void				display_usage(t_vm *vm, int i)
+void				display_usage()
 {
 	do_corewar_logo();
 	do_usage();
-//	do_stdin();
-//	do_flags();
-	free_vm(vm);
-	exit(i);
 }

@@ -28,7 +28,7 @@ void		remove_dead_processes(t_vm *vm)
 				vm->process = ps->next;
 			else
 				prev_ps->next = ps->next;
-			// FREE PROCESS => ps
+			//FREE PROCESS => ps
 		}
 		else
 			ps->live_calls = 0;

@@ -12,15 +12,15 @@
 
 #include "virtual_machine.h"
 
-static char			*get_name(t_vm *vm, int player_number)
+static t_process	*get_ps(t_vm *vm, int player_number)
 {
-	t_process 		*ps;
+	t_process		*ps;
 
 	ps = vm->process;
 	while (ps)
 	{
 		if (ps->number == player_number)
-			return (ps->name);
+			return (ps);
 		ps = ps->next;
 	}
 	return (NULL);
@@ -29,15 +29,16 @@ static char			*get_name(t_vm *vm, int player_number)
 void				op_live(t_vm *vm, t_process *ps)
 {
 	int				player_number;
+	t_process		*ps_live;
 
 	ft_printf("Inside op_live\n");
 	get_next_bytes(vm, ps, &player_number, 4);
-	if (vm->live_hash[player_number])
+	if ((ps_live = get_ps(vm, player_number)))
 	{
 		vm->live_calls++;
 		ps->live_calls++;
 		vm->last_live = player_number;
-		vm->last_name = get_name(vm, player_number);
+		vm->last_name = ps_live->name;
 		ft_printf("A process shows that player %d (%s) is alive\n",
 					vm->last_live, vm->last_name);
 	}
