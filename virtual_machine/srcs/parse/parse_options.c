@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 21:20:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/16 19:54:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ static void			parse_dump(t_vm *vm, char **argv, int i)
 	}
 }
 
+static void			parse_a(t_vm *vm, char **argv, int  i)
+{
+	if (!ft_strcmp(argv[i], "-a"))
+		vm->aff = 1;
+}
+
 void				parse_options(t_vm *vm)
 {
 	int				i;
@@ -70,6 +76,7 @@ void				parse_options(t_vm *vm)
 	{
 		parse_dump(vm, argv, i);
 		parse_n(vm, argv, i);
+		parse_a(vm, argv, i);
 		i++;
 	}
 }

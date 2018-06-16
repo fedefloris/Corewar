@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 23:00:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/11 21:23:36 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/16 19:52:28 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void				parse_create_champ(t_vm *vm)
 		if (vm->argc > 1 && (!ft_strcmp(vm->argv[vm->argc - 1], "-dump") ||
 					!ft_strcmp(vm->argv[vm->argc - 1], "-n")))
 			vm->argc -= 1;
+		else if (!ft_strcmp(vm->argv[vm->argc], "-a"))
+			;
 		else
 		{
 			champ = create_champ(vm);
