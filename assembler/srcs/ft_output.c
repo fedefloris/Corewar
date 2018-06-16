@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/15 16:07:00 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:01:08 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
+
+int		ft_write_file(t_frame *f, t_op *op, char *name)
+{
+	int		fd;
+	int		ret;
+	char	*tmp;
+	char	*path;
+
+	ret = 1;
+	path = name;
+	while ((tmp = ft_strchr(name, '/')))
+		name = ++tmp;
+	while ((tmp = ft_strchr(name, '.')))
+		name = ++tmp;
+	*(name - 1) = '\0';
+	name = ft_strjoin(path, ".cor");
+	if (ret && (fd = open(name, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR
+		| S_IRGRP | S_IROTH)) == -1)
+		ret = 0;
+	if (!ret)
+	{
+		ft_strdel(&name);
+		return (0);
+	}
+	ft_output(fd, f, op);
+	ft_printf("Writing to %s\n", name);
+	ft_strdel(&name);
+	return (1);
+}
 
 void	ft_error_output(t_error *error)
 {
