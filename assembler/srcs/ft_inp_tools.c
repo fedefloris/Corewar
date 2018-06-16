@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inp_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/15 17:33:00 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:48:45 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	*ft_addheader(char **tmp, int name, t_frame *frame)
+static char	*ft_addheader(char **tmp, int name, t_frame *frame)
 {
 	t_header *head;
 
@@ -38,7 +38,7 @@ char	*ft_addheader(char **tmp, int name, t_frame *frame)
 	return (NULL);
 }
 
-char	*ft_header(char *s, int name, t_frame *frame)
+char		*ft_header(char *s, int name, t_frame *frame)
 {
 	int		i;
 	char	*tmp;
@@ -60,7 +60,7 @@ char	*ft_header(char *s, int name, t_frame *frame)
 	return (ft_addheader(&tmp, name, frame));
 }
 
-char	*ft_line2(char *s, t_frame *frame)
+static char	*ft_line2(char *s, t_frame *frame)
 {
 	t_line	*line;
 	char	*tmp;
@@ -84,7 +84,7 @@ char	*ft_line2(char *s, t_frame *frame)
 	return (ret);
 }
 
-char	*ft_line(char *s, t_frame *frame)
+char		*ft_line(char *s, t_frame *frame)
 {
 	char	*tmp;
 	char	*ret;

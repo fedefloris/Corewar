@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/15 14:43:56 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:38:22 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	ft_get_acb_byte(t_line *line)
+static char	ft_get_acb_byte(t_line *line)
 {
 	char	byte;
 	int		i;
@@ -31,7 +31,7 @@ char	ft_get_acb_byte(t_line *line)
 	return (byte);
 }
 
-int		ft_get_arg_val(char *param, int param_type, t_label *req)
+static int	ft_get_arg_val(char *param, int param_type, t_label *req)
 {
 	char *label;
 
@@ -54,7 +54,7 @@ int		ft_get_arg_val(char *param, int param_type, t_label *req)
 		return (ft_atoi(param + 1));
 }
 
-int		ft_get_nb_bytes(int param_type, int half)
+static int	ft_get_nb_bytes(int param_type, int half)
 {
 	if (param_type == T_DIR)
 		return (half ? 2 : 4);
@@ -65,7 +65,7 @@ int		ft_get_nb_bytes(int param_type, int half)
 	return (0);
 }
 
-void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
+void		ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 {
 	unsigned int	val;
 	unsigned int	mask;
@@ -86,7 +86,7 @@ void	ft_get_arg_byte(t_line *line, int nb, int half, t_label *req)
 	}
 }
 
-int		ft_line_bytes(t_line *line, t_op op, t_frame *f)
+int			ft_line_bytes(t_line *line, t_op op, t_frame *f)
 {
 	int		bytecount;
 	char	byte;

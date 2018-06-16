@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:23:00 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/10 18:45:41 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:39:53 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-int		ft_initerror(t_error **error)
+static int	ft_initerror(t_error **error)
 {
 	if (!(*error = (t_error*)malloc(sizeof(t_error))))
 		return (0);
@@ -23,7 +23,7 @@ int		ft_initerror(t_error **error)
 	return (1);
 }
 
-int		ft_error(char *line, char *msg, int line_nb, t_error **err_list)
+int			ft_error(char *line, char *msg, int line_nb, t_error **err_list)
 {
 	t_error	*error;
 	t_error *tmp;

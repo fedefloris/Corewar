@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:31:39 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/15 17:16:14 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:49:01 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-void	ft_free_errors(t_error **errors)
+static void	ft_free_errors(t_error **errors)
 {
 	t_error	*tmp;
 	t_error *error;
@@ -31,7 +31,7 @@ void	ft_free_errors(t_error **errors)
 	*errors = NULL;
 }
 
-void	ft_free_lines(t_line **lines)
+void		ft_free_lines(t_line **lines)
 {
 	t_line	*line;
 	t_line	*tmp;
@@ -58,7 +58,7 @@ void	ft_free_lines(t_line **lines)
 	*lines = NULL;
 }
 
-void	ft_free_header(t_header **headers)
+static void	ft_free_header(t_header **headers)
 {
 	t_header	*header;
 
@@ -71,7 +71,7 @@ void	ft_free_header(t_header **headers)
 	*headers = NULL;
 }
 
-void	ft_free_label(t_label **labels)
+void		ft_free_label(t_label **labels)
 {
 	t_label *label;
 	t_label *tmp;
@@ -90,7 +90,7 @@ void	ft_free_label(t_label **labels)
 	*labels = NULL;
 }
 
-void	ft_free_frame(t_frame **frames)
+void		ft_free_frame(t_frame **frames)
 {
 	t_frame	*frame;
 

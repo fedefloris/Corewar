@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 16:55:15 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:49:28 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ typedef struct	s_op
 
 typedef struct	s_line
 {
-	// char			*label;
 	char			*opname;
 	int				opcode;
 	char			*param[3];
@@ -121,6 +120,8 @@ typedef struct	s_frame
 	t_error		*errors;
 }				t_frame;
 
+extern t_op g_op_tab[17];
+
 int				ft_input(int fd, t_frame *frame);
 char			*ft_line(char *s, t_frame *frame);
 char			*ft_header(char *s, int name, t_frame *frame);
@@ -137,13 +138,12 @@ int				ft_valid_arg(char *s);
 int				ft_argno(char **arg);
 char			*ft_produce_line(t_frame *frame, char *str, int nb);
 char			*ft_push_decl(char *name, int dist, t_frame **frame);
-char			*ft_push_request(char *name, t_frame **frame, char *str, int nb);
+char			*ft_push_request(char *name, t_frame **frame, char *str, int b);
 void			ft_free_label(t_label **labels);
 void			ft_free_lines(t_line **lines);
 void			ft_free_frame(t_frame **frames);
 int				ft_line_bytes(t_line *line, t_op op, t_frame *f);
 int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
-void			ft_output(int fd, t_frame *f, t_op *op);
 int				ft_write_file(t_frame *f, t_op *op, char *name);
 void			ft_get_arg_byte(t_line *line, int nb, int half, t_label *req);
 #endif

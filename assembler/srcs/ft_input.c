@@ -6,13 +6,13 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/16 17:24:34 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:42:52 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	*ft_valid_line(char *s, t_frame *frame, int nb)
+static char	*ft_valid_line(char *s, t_frame *frame, int nb)
 {
 	char	*str;
 	char	*ret;
@@ -40,7 +40,7 @@ char	*ft_valid_line(char *s, t_frame *frame, int nb)
 	return (ret);
 }
 
-int		ft_input(int fd, t_frame *frame)
+int			ft_input(int fd, t_frame *frame)
 {
 	char	*str;
 	int		ret;

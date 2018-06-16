@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:49:30 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/15 16:58:25 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 18:44:59 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-char	*ft_initline(t_line **line)
+char		*ft_initline(t_line **line)
 {
 	if (!(*line = (t_line*)malloc(sizeof(t_line))))
 		return (ft_strdup("Failed to malloc s_line struct"));
@@ -20,7 +20,7 @@ char	*ft_initline(t_line **line)
 	return (NULL);
 }
 
-void	ft_push_line(t_line *line, t_frame *frame)
+void		ft_push_line(t_line *line, t_frame *frame)
 {
 	t_line	*tmp;
 
@@ -34,7 +34,7 @@ void	ft_push_line(t_line *line, t_frame *frame)
 	frame->lines->last = line;
 }
 
-char	*ft_init_label(t_label **label, char *name, int dist, char *str)
+static char	*ft_init_label(t_label **label, char *name, int dist, char *str)
 {
 	if (!(*label = (t_label*)malloc(sizeof(t_label))))
 		return (ft_strdup("Failed to malloc label declaration"));
@@ -50,7 +50,7 @@ char	*ft_init_label(t_label **label, char *name, int dist, char *str)
 	return (NULL);
 }
 
-char	*ft_push_decl(char *name, int dist, t_frame **frame)
+char		*ft_push_decl(char *name, int dist, t_frame **frame)
 {
 	t_label	*label;
 	t_label *tmp;
@@ -78,7 +78,7 @@ char	*ft_push_decl(char *name, int dist, t_frame **frame)
 	return (NULL);
 }
 
-char	*ft_push_request(char *name, t_frame **f, char *str, int nb)
+char		*ft_push_request(char *name, t_frame **f, char *str, int nb)
 {
 	t_label	*label;
 	t_label *tmp;
