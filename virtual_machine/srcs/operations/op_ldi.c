@@ -14,5 +14,5 @@
 
 void				op_ldi(t_vm *vm, t_process *ps)
 {
-	printf("Inside op_ldi\n");
+	ft_printf("Inside op_ldi\n");
 }

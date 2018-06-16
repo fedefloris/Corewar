@@ -125,7 +125,10 @@ void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
+void					duplicate_process(t_vm *vm, t_process *ps, t_process **new_ps);
+void					insert_sub_process(t_vm *vm, t_process *new_ps);
 void					remove_dead_processes(t_vm *vm);
+
 void					modify_pc(t_process *process, int modify);
 void					modify_pc_tmp(t_process *process, int modify);
 void					iterate_pc(t_process *ps);

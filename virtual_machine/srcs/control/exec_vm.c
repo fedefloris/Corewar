@@ -56,7 +56,7 @@ void		exec_vm(t_vm *vm)
 		// 	vm->cycle_to_die -= CYCLE_DELTA;
 		// 	vm->last_decrease = vm->cycle;
 		// }
-		// usleep(100000);
+		// usleep(1000000);
 	}
 	ft_printf("Player %d (%s) won\n", vm->last_live, vm->last_name);
 }

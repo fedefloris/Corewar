@@ -18,12 +18,12 @@ void				test_print(t_vm *vm)
 {
 	// while (vm->champ)
 	// {
-		//printf("NUMBER:     %d\n", vm->champ->number);
-		//printf("NAME  :     %s\n", vm->champ->name);
-		//printf("NUMBY :     %d\n", vm->champ->program_size);
+		//ft_printf("NUMBER:     %d\n", vm->champ->number);
+		//ft_printf("NAME  :     %s\n", vm->champ->name);
+		//ft_printf("NUMBY :     %d\n", vm->champ->program_size);
 	// 	while (vm->champ->prog_size--)
 	// 	{
-	// 		printf("%c", *vm->champ->bytes);
+	// 		ft_printf("%c", *vm->champ->bytes);
 	// 		vm->champ->bytes++;
 	// 	}
 	// 	vm->champ = vm->champ->next;

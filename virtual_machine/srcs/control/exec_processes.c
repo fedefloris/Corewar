@@ -14,11 +14,11 @@
 
 static void		exec_process(t_vm *vm, t_process *ps)
 {
-	printf("Executing %x | pc  %d | carry %d | op_code %d\n",
+	ft_printf("Executing %x | pc  %d | carry %d | op_code %d\n",
 			ps->number, ps->pc, ps->carry, (int) vm->memory[ps->pc]);//
 	ps->pc_tmp = ps->pc;
 	do_op(vm, ps, (int) vm->memory[ps->pc]);
-	printf("Finished %x | pc  %d | carry %d | sleep_cycles %d | op_code %d\n",
+	ft_printf("Finished %x | pc  %d | carry %d | sleep_cycles %d | op_code %d\n",
 			ps->number, ps->pc, ps->carry, ps->sleep_cycles, (int) vm->memory[ps->pc]);//
 }
 

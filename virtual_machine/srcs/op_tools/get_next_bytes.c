@@ -16,7 +16,7 @@
 ** n bytes from position pc + 1 will be stored in value
 */
 
-void				get_next_bytes(t_vm *vm, t_process *ps, int *value, int n)
+void			get_next_bytes(t_vm *vm, t_process *ps, int *value, int n)
 {
 	*value = 0;
 	while (n--)

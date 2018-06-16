@@ -14,5 +14,5 @@
 
 void				op_lldi(t_vm *vm, t_process *ps)
 {
-	printf("Inside op_lldi\n");
+	ft_printf("Inside op_lldi\n");
 }

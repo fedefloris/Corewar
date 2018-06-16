@@ -19,7 +19,7 @@ void				op_lld(t_vm *vm, t_process *ps)
 	int				p1;
 	int				p2;
 
-	printf("Inside op_lld\n");//
+	ft_printf("Inside op_lld\n");//
 	modify_pc_tmp(ps, 1);
 	encoded = vm->memory[ps->pc_tmp];
 	calc_bytes(encoded, 1, &bytes);
