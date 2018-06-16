@@ -18,10 +18,11 @@ static t_vm			*create_vm(int argc, char **argv)
 
 	if (!(vm = (t_vm *)malloc(sizeof(t_vm))))
 		error_exit(vm, "Malloc failed, virtual machine creation");
-	ft_bzero(vm, sizeof(*vm));
+	ft_bzero(vm, sizeof(t_vm));
 	vm->argv = argv;
 	vm->argc = argc;
 	vm->dump = -1;
+	vm->cycle = 1;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	return (vm);
 }

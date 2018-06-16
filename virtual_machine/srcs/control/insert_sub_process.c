@@ -29,7 +29,7 @@ void			insert_sub_process(t_vm *vm, t_process *new_ps)
 			}
 			new_ps->next = prev->next;
 			prev->next = new_ps;
-			break ;
+			return ;
 		}
 		ps = ps->next;
 	}
