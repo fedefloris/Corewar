@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 18:31:09 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/16 19:16:39 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int		main(int ac, char **av)
 	int		fd;
 	t_frame	*frame;
 
-	if (ac != 2)
-		return (ft_printf("Usage: %s <sourcefile.s>\n", av[0]));
+	if (ac != 2 && ac != 3)
+		return (ft_printf("Usage: %s <sourcefile.s> [dest path]\n", av[0]));
 	if ((fd = ft_open(av[1])) == -1)
 		return (0);
 	if (!ft_initframe(&frame))
@@ -74,7 +74,7 @@ int		main(int ac, char **av)
 	{
 		if (!frame->lines)
 			return (ft_printf("ERROR <%s> is empty or not a file\n", av[1]));
-		if (!ft_write_file(frame, g_op_tab, av[1]))
+		if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : NULL))
 			return (ft_printf("ERROR creating .cor file stopped\n"));
 	}
 	else

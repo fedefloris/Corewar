@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 18:49:28 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/16 19:00:40 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,6 @@ void			ft_free_lines(t_line **lines);
 void			ft_free_frame(t_frame **frames);
 int				ft_line_bytes(t_line *line, t_op op, t_frame *f);
 int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
-int				ft_write_file(t_frame *f, t_op *op, char *name);
+int				ft_write_file(t_frame *f, t_op *op, char *name, char *dest);
 void			ft_get_arg_byte(t_line *line, int nb, int half, t_label *req);
 #endif
