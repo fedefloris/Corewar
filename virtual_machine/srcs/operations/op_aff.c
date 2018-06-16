@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:02:18 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/16 18:11:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/16 21:55:45 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void				op_aff(t_vm *vm, t_process *ps)
 {
 	int				reg;
+	int				pc;
 
-	reg = vm->memory[ps->pc + 2];
+	get_address(ps, 2, &pc);
+	reg = vm->memory[pc];
 	printf("Inside op_aff\n");
 	if (vm->aff)
 		ft_printf("%sAff r%-2d [%c]%s\n", CYAN,  reg, ps->r[reg] % 256, RESET);
