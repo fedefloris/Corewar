@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 13:07:58 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 17:32:43 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,12 @@ int		ft_open(char *file)
 	char	*tmp;
 	char	*s;
 
-	s = NULL;
-	tmp = file;
-	while ((tmp = ft_strchr(tmp, '.')))
-		s = tmp++;
-	if (!s)
-	{
-		ft_printf("<%s> is not a file\n", file);
-		return (-1);
-	}
-	if (!(s[1] == 's' && s[2] == '\0'))
+	s = file;
+	while ((tmp = ft_strchr(s, '/')))
+		s = ++tmp;
+	while ((tmp = ft_strchr(s, '.')))
+		s = ++tmp;
+	if (ft_strcmp(s, "s"))
 	{
 		ft_printf("<%s> is not a correct file type\n", file);
 		return (-1);
@@ -90,10 +86,6 @@ int		main(int ac, char **av)
 {
 	int		fd;
 	t_frame	*frame;
-	t_line	*tmp;
-		t_label *label1;
-		t_label *label2;
-		t_list	*binary;
 
 	if (ac != 2)
 		return (ft_printf("Usage: %s <sourcefile.s>\n", av[0]));
@@ -105,33 +97,15 @@ int		main(int ac, char **av)
 	ft_fill_dist(frame->request, frame->declare, frame->errors);
 	if (close(fd) == -1)
 		return (ft_printf("Can not process file\n"));
-	tmp = frame->lines;
-	// while (tmp)
-	// {
-		// ft_printf("%s: %s %s,%s,%s %d%d%d\n", tmp->label, tmp->opname, tmp->param[0], tmp->param[1], tmp->param[2], tmp->param_type[0], tmp->param_type[1], tmp->param_type[2]);
-		binary = tmp->bytecode;
-		// while (binary)
-		// {
-			// ft_printf("%c", ((char*)binary->content)[0]);
-			// binary = binary->next;
-		// }
-		tmp = tmp->next;
-	// }
-	label1 = frame->request;
-	// while (label1)
-	// {
-	// 	ft_printf("request:%s\n", label1->name);
-	// 	label1 = label1->next;
-	// }
-	label2 = frame->declare;
-	// while (label2)
-	// {
-	// 	ft_printf("decl:%s\n", label2->name);
-	// 	label2 = label2->next;
-	// }
 	if (!frame->errors)
-		ft_output(1, frame, g_op_tab2);
-	ft_error_output(frame->errors);
+	{
+		if (!frame->lines)
+			return (ft_printf("ERROR <%s> is empty or not a file\n", av[1]));
+		if (!ft_write_file(frame, g_op_tab2, av[1]))
+			return (ft_printf("ERROR creating .cor file stopped\n"));
+	}
+	else
+		ft_error_output(frame->errors);
 	ft_free_frame(&frame);
 	return (0);
 }

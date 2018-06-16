@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/15 16:16:51 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 17:24:34 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ int		ft_input(int fd, t_frame *frame)
 	int		ret;
 	int		line_nb;
 	char	*err_msg;
+	int		nb;
 
 	ret = 1;
 	line_nb = 1;
-	while (get_next(fd, &str, '\n'))
+	while ((nb = get_next(fd, &str, '\n')))
 	{
 		if ((err_msg = ft_valid_line(str, frame, line_nb)))
 			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);

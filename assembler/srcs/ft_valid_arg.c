@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 19:26:08 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/11 16:37:42 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 17:52:44 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	ft_valid_indirect(char *s)
 	int	i;
 
 	i = 0;
-	if (ft_isdigit(s[i]) || s[i] == LABEL_CHAR)
+	if (ft_isdigit(s[i]) || s[i] == LABEL_CHAR || s[i] == '-')
 	{
 		if (s[i] == LABEL_CHAR)
 		{
@@ -66,12 +66,12 @@ static int	ft_valid_indirect(char *s)
 			while (s[i] && ft_strchr(LABEL_CHARS, s[i]))
 				i++;
 		}
-		else if (ft_isdigit(s[i]))
+		else if (ft_isdigit(s[i]) || s[i++] == '-')
 		{
 			while (ft_isdigit(s[i]))
 				i++;
 		}
-		if (!s[i] && i > ((s[1] == LABEL_CHAR) ? 1 : 0))
+		if (!s[i] && i > ((s[1] == LABEL_CHAR || s[1] == '-') ? 1 : 0))
 			return (1);
 	}
 	return (0);

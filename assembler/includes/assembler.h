@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 16:47:40 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/16 16:55:15 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSEMBLER_H
 # define ASSEMBLER_H
+
+# include <sys/types.h>
+# include <sys/stat.h>
 
 # include "libft.h"
 
@@ -141,5 +144,6 @@ void			ft_free_frame(t_frame **frames);
 int				ft_line_bytes(t_line *line, t_op op, t_frame *f);
 int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
 void			ft_output(int fd, t_frame *f, t_op *op);
+int				ft_write_file(t_frame *f, t_op *op, char *name);
 void			ft_get_arg_byte(t_line *line, int nb, int half, t_label *req);
 #endif
