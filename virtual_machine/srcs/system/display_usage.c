@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 11:08:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 01:32:27 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 01:35:20 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void			do_usage(void)
 	ft_printf(RESET);
 	ft_printf(PINK);
 	usleep(100000);
-	ft_printf("$> ./corewar [-c | -d | -x | -X] [-dump nbr_cycles]");
+	ft_printf("$> ./corewar [-a | -d | -x | -X] [-dump nbr_cycles]");
 	ft_printf("[[-n number] champion1.cor] ...\n");
 	usleep(100000);
 }
@@ -63,7 +63,7 @@ static void			do_aff(void)
 	ft_printf(RESET);
 	ft_printf(PINK);
 	usleep(100000);
-	ft_printf("-c      Aff (Character with 256 modulo applied).\n");
+	ft_printf("-a      Aff (Character with 256 modulo applied).\n");
 	usleep(100000);
 	ft_printf("-d      Aff (Displayed as decimal).\n");
 	usleep(100000);
