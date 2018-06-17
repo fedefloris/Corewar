@@ -6,11 +6,21 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:58 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/15 17:17:19 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 00:04:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
+
+static void			load_bytes(t_vm *vm, t_process *ps, int p1, int p2)
+{
+	int				value;
+
+	vm->memory[p2 + 0] = (p1 >> 24) & 0xFF;
+	vm->memory[p2 + 1] = (p1 >> 16) & 0xFF;
+	vm->memory[p2 + 2] = (p1 >> 8) & 0xFF;
+	vm->memory[p2 + 3] = p1 & 0xFF;
+}
 
 void				op_st(t_vm *vm, t_process *ps)
 {
@@ -29,10 +39,12 @@ void				op_st(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &p2, bytes);
 	if (decode_byte(encoded, 2) == IND_CODE)
 	{
-		get_address(ps, p2, &p2);
+		get_address(ps, p2 % IDX_MOD, &p2);
+		load_bytes(vm, ps, p1, p2);
 		vm->memory[p2] = p1;
 	}
 	else if (decode_byte(encoded, 2) == REG_CODE)
 		ps->r[p2] = p1;
 	iterate_pc(ps);
+
 }
