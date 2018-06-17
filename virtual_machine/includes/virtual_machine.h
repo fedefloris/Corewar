@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/17 19:00:47 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/17 23:26:14 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include 				"op.h"
 # include 				<stdio.h>//Remove
 
-# define B_RED		"\x1b[1m\x1b[31m"
-# define B_GREEN	"\x1b[1m\x1b[32m"
-# define B_YELLOW	"\x1b[1m\x1b[33m"
-# define B_BLUE		"\x1b[1m\x1b[34m"
-# define B_PINK		"\x1b[1m\x1b[35m"
-# define B_CYAN    	"\x1b[1m\x1b[36m"
-# define B_WHITE   	"\x1b[1m\x1b[37m"
-# define RED		"\x1b[31m"
-# define GREEN		"\x1b[32m"
-# define YELLOW		"\x1b[33m"
-# define BLUE		"\x1b[34m"
-# define PINK		"\x1b[35m"
-# define CYAN    	"\x1b[36m"
-# define WHITE   	"\x1b[37m"
-# define RESET   	"\x1b[0m"
+# define B_RED			"\x1b[1m\x1b[31m"
+# define B_GREEN		"\x1b[1m\x1b[32m"
+# define B_YELLOW		"\x1b[1m\x1b[33m"
+# define B_BLUE			"\x1b[1m\x1b[34m"
+# define B_PINK			"\x1b[1m\x1b[35m"
+# define B_CYAN    		"\x1b[1m\x1b[36m"
+# define B_WHITE   		"\x1b[1m\x1b[37m"
+# define RED			"\x1b[31m"
+# define GREEN			"\x1b[32m"
+# define YELLOW			"\x1b[33m"
+# define BLUE			"\x1b[34m"
+# define PINK			"\x1b[35m"
+# define CYAN    		"\x1b[36m"
+# define WHITE   		"\x1b[37m"
+# define RESET   		"\x1b[0m"
 
 typedef struct          s_name
 {
@@ -133,6 +133,7 @@ char					decode_byte(unsigned char encoded, int pair);
 void					calc_bytes(unsigned char encoded, int pair, int *bytes);
 void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
 void					get_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter);
+void					get_reg_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter);
 void					modify_carry(t_process *ps, int value);
 void					save_op(t_vm *vm, t_process *ps, int op_code);
 void					op_live(t_vm *vm, t_process *ps);
