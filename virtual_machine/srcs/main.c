@@ -12,25 +12,9 @@
 
 #include "virtual_machine.h"
 
-static t_vm			*create_vm(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_vm			*vm;
-
-	if (!(vm = (t_vm *)malloc(sizeof(t_vm))))
-		error_exit(vm, "Malloc failed, virtual machine creation");
-	ft_bzero(vm, sizeof(t_vm));
-	vm->argv = argv;
-	vm->argc = argc;
-	vm->dump = -1;
-	vm->cycle = 1;
-	vm->tot_cycle = 1;
-	vm->cycle_to_die = CYCLE_TO_DIE;
-	return (vm);
-}
-
-int					main(int argc, char **argv)
-{
-	t_vm			*vm;
+	t_vm			vm;
 
 	if (argc < 2)
 	{
@@ -38,10 +22,9 @@ int					main(int argc, char **argv)
 		display_usage();
 		exit(1);
 	}
-	vm = create_vm(argc, argv);
-	parse_handler(vm);
-	exec_vm(vm);
-	test_print(vm); //Remove
-	free_vm(vm);
+	config_vm(&vm, argc, argv);
+	parse_handler(&vm);
+	exec_vm(&vm);
+	free_vm(&vm);
 	return (0);
 }

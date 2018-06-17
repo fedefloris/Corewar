@@ -18,7 +18,6 @@ static void			create_name(t_vm *vm, int num, int pos)
 
 	if (!(name = (t_name *)malloc(sizeof(t_name))))
 		error_exit(vm, "Malloc failed, num creation");
-	bzero(name, sizeof(*name));
 	name->num = num;
 	name->pos = pos;
 	name->next = vm->name;
