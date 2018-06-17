@@ -6,18 +6,21 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/17 23:26:14 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 01:13:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIRTUAL_MACHINE_H
 # define VIRTUAL_MACHINE_H
 
-# define SIZE_OF_BUFF	64
 # include				"libft.h"
 # include 				"op.h"
 # include 				<stdio.h>//Remove
 
+# define SIZE_OF_BUFF	64
+# define USAGE			1//Set to 0
+
+# define CLEAR			"\x1b[H\x1b[2J"
 # define B_RED			"\x1b[1m\x1b[31m"
 # define B_GREEN		"\x1b[1m\x1b[32m"
 # define B_YELLOW		"\x1b[1m\x1b[33m"
