@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 18:06:54 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/17 19:00:47 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ typedef struct			s_vm
 	int					argc;
 	int					dump;
 	int					aff;
+	int					affd;
+	int					affx;
+	int					affX;
 	int					cycle;
 	int					tot_cycle;
 	int					cycle_to_die;

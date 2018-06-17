@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:05:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/16 19:54:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/17 19:32:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ static void			parse_dump(t_vm *vm, char **argv, int i)
 	}
 }
 
-static void			parse_a(t_vm *vm, char **argv, int  i)
+static void			parse_aff(t_vm *vm, char **argv, int i)
 {
 	if (!ft_strcmp(argv[i], "-a"))
 		vm->aff = 1;
+	if (!ft_strcmp(argv[i], "-d"))
+		vm->affd = 1;
+	if (!ft_strcmp(argv[i], "-x"))
+		vm->affx = 1;
+	if (!ft_strcmp(argv[i], "-X"))
+		vm->affX = 1;
 }
 
 void				parse_options(t_vm *vm)
@@ -75,7 +81,7 @@ void				parse_options(t_vm *vm)
 	{
 		parse_dump(vm, argv, i);
 		parse_n(vm, argv, i);
-		parse_a(vm, argv, i);
+		parse_aff(vm, argv, i);
 		i++;
 	}
 }
