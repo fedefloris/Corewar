@@ -70,6 +70,7 @@ typedef struct			s_process
 	char				carry;
 	int					live_calls;
 	int					sleep_cycles;
+	void				(*op)();
 	struct s_process	*next;
 }						t_process;
 
@@ -80,8 +81,9 @@ typedef struct			s_vm
 	int					dump;
 	int					aff;
 	int					cycle;
+	int					tot_cycle;
 	int					cycle_to_die;
-	int					last_decrease;
+	int					checkups;
 	int					live_calls;
 	int					last_live;
 	char				*last_name;
@@ -139,7 +141,7 @@ void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
 void					get_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter);
 void					modify_carry(t_process *ps, int value);
 
-void					do_op(t_vm *vm, t_process *ps, int op_code);
+void					save_op(t_vm *vm, t_process *ps, int op_code);
 
 void					op_live(t_vm *vm, t_process *ps);
 void					op_ld(t_vm *vm, t_process *ps);

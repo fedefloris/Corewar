@@ -15,6 +15,6 @@
 void				op_lld(t_vm *vm, t_process *ps)
 {
 	ft_printf("Inside op_lld\n");
-	modify_carry(ps, ps->r[p2]);
-	iterate_pc(ps);
+	// modify_carry(ps, ps->r[p2]);
+	// iterate_pc(ps);
 }

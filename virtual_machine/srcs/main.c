@@ -23,6 +23,7 @@ static t_vm			*create_vm(int argc, char **argv)
 	vm->argc = argc;
 	vm->dump = -1;
 	vm->cycle = 1;
+	vm->tot_cycle = 1;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	return (vm);
 }

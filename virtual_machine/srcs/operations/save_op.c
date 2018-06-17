@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_op.c                                            :+:      :+:    :+:   */
+/*   save_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 19:44:29 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/14 22:54:18 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/17 15:25:52 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/17 15:25:53 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,18 @@ static void			move_to_next_op(t_vm *vm, t_process *ps)
 	}
 }
 
-void				do_op(t_vm *vm, t_process *ps, int op_code)
+void				save_op(t_vm *vm, t_process *ps, int op_code)
 {
-	t_op_code		op_function;
 	t_op			*seek;
 
 	seek = g_op_tab;
 	while (seek->op_code && seek->op_code != op_code)
 		seek++;
-	if (!(op_function = get_op(hash_name(seek->name))))
+	if (!(ps->op = get_op(hash_name(seek->name))))
 	{
-		move_to_next_op(vm, ps);
+		ps->op = &move_to_next_op;
 		ps->sleep_cycles = 1;
 	}
 	else
-	{
-		op_function(vm, ps);
-		ps->sleep_cycles = seek->nb_cycles;
-	}
+		ps->sleep_cycles = seek->nb_cycles - 1;
 }

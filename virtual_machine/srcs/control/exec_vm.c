@@ -12,50 +12,29 @@
 
 #include "virtual_machine.h"
 
-static int	size(t_vm *vm)
-{
-	t_process	*ps;
-	int			count;
-
-	count = 0;
-	ps = vm->process;
-	while (ps)
-	{
-		ps = ps->next;
-		count++;
-	}
-	return (count);
-}
-
 void		exec_vm(t_vm *vm)
 {
 	load_processes(vm);
 	while (vm->process && vm->cycle_to_die > 0)
 	{
-		// ft_printf("processes: %d\n", size(vm));
 		exec_processes(vm);
-		ft_printf("Cycle %d | cycle_to_die %d | live_calls %d\n",
-			vm->cycle, vm->cycle_to_die, vm->live_calls);
-		if (vm->cycle % vm->cycle_to_die == 0)
+		if (vm->cycle == vm->cycle_to_die)
 		{
 			ft_printf("Every CYCLE_TO_DIE cycles: cycles = %d\n", vm->cycle);
 			remove_dead_processes(vm);
-			if (vm->live_calls > 0 && vm->live_calls >= NBR_LIVE)
+			vm->checkups++;
+			if (vm->checkups == MAX_CHECKS || vm->live_calls >= NBR_LIVE)
 			{
-				ft_printf("Every NBR_LIVE calls: live_calls = %d\n", vm->live_calls);
+				ft_printf("checkups: %d | live_calls = %d\n", vm->checkups, vm->live_calls);
 				vm->cycle_to_die -= CYCLE_DELTA;
-				vm->last_decrease = vm->cycle;
-				vm->live_calls = 0;
+				vm->checkups = 0;
 			}
+			vm->cycle = 0;
+			vm->live_calls = 0;
 		}
-		if (vm->last_decrease > 0 && (vm->cycle - vm->last_decrease) >= MAX_CHECKS)
-		{
-			ft_printf("CYCLE_TO_DIE wasn’t decreased\n");
-			vm->cycle_to_die -= CYCLE_DELTA;
-			vm->last_decrease = vm->cycle;
-		}
+		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d\n", vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls);
 		vm->cycle++;
-		// usleep(1000000);
+		vm->tot_cycle++;
 	}
 	ft_printf("Player %d (%s) won\n", vm->last_live, vm->last_name);
 }
