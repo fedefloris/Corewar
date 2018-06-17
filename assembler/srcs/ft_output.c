@@ -6,7 +6,7 @@
 /*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/16 19:16:48 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/17 16:50:41 by akaseris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,26 @@ int			ft_write_file(t_frame *f, t_op *op, char *name, char *dest)
 
 void		ft_error_output(t_error *error)
 {
+	t_error *tmp;
+	t_error *err;
+
+	err = error;
+	while (err->next)
+	{
+		if (err->line_nb > err->next->line_nb)
+		{
+			tmp = err;
+			err = err->next;
+			err->next = tmp;
+			err = error;
+			continue;
+		}
+		err = err->next;
+	}
 	while (error)
 	{
-		ft_printf("Error: %s at line %d\n", error->description, error->line_nb);
-		ft_printf("\t\"%s\"\n\n", error->line);
+		ft_printf("$red$Error$eoc$: %s at line $blue$%d$eoc$\n", error->description, error->line_nb);
+		ft_printf("\t$green$\"$eoc$%s$eoc$$green$\"$eoc$\n\n", error->line);
 		error = error->next;
 	}
 }
