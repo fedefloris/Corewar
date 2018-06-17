@@ -6,13 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:08 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/17 05:57:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 00:00:26 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void				load_bytes(t_vm *vm, t_process *ps, int p1, int p3)
+static void			load_bytes(t_vm *vm, t_process *ps, int p1, int p3)
 {
 	int				value;
 
