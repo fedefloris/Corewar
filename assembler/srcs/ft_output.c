@@ -125,7 +125,8 @@ void		ft_error_output(t_error *error)
 	}
 	while (error)
 	{
-		ft_printf("$red$Error$eoc$: %s at line $blue$%d$eoc$\n", error->description, error->line_nb);
+		ft_printf("$red$Error$eoc$: %s at line $blue$%d$eoc$\n",
+			error->description, error->line_nb);
 		ft_printf("\t$green$\"$eoc$%s$eoc$$green$\"$eoc$\n\n", error->line);
 		error = error->next;
 	}

@@ -16,9 +16,12 @@ static t_champ		*create_champ(t_vm *vm)
 {
 	t_champ			*champ;
 
-	if (!(champ = (t_champ *)malloc(sizeof(t_champ))))
+	if (!(champ = (t_champ*)malloc(sizeof(t_champ))))
 		error_exit(vm, "Malloc failed (Create Champ)");
 	ft_bzero(champ, sizeof(*champ));
+	champ->file_name = vm->argv[vm->argc];
+	champ->next = vm->champ;
+	vm->champ = champ;
 	return (champ);
 }
 
@@ -88,9 +91,6 @@ void				parse_create_champ(t_vm *vm)
 		else
 		{
 			champ = create_champ(vm);
-			champ->file_name = vm->argv[vm->argc];
-			champ->next = vm->champ;
-			vm->champ = champ;
 			while (name)
 			{
 				(vm->argc == name->pos) ? champ->number = name->num : 0;

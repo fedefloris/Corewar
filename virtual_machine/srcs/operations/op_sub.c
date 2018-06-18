@@ -18,7 +18,7 @@ void				op_sub(t_vm *vm, t_process *ps)
 	int				r2;
 	int				r3;
 
-	ft_printf("Inside op_sub\n");//
+	ft_printf("Inside op_sub\n");
 	get_next_bytes(vm, ps, &r1, 1);
 	get_next_bytes(vm, ps, &r2, 1);
 	get_next_bytes(vm, ps, &r3, 1);

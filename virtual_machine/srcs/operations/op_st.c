@@ -46,5 +46,4 @@ void				op_st(t_vm *vm, t_process *ps)
 	else if (decode_byte(encoded, 2) == REG_CODE)
 		ps->r[p2] = p1;
 	iterate_pc(ps);
-
 }

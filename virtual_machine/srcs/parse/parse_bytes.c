@@ -24,7 +24,7 @@ void				get_bytes(t_vm *vm, t_champ *champ)
 	byte_code = champ->byte_code;
 	while (byte_code && i++ < PROG_NAME_LENGTH + COMMENT_LENGTH + 16)
 		byte_code = byte_code->next;
-	if (!(champ->bytes = (char *)malloc(sizeof(char) * champ->prog_size)))
+	if (!(champ->bytes = (char*)malloc(sizeof(char) * champ->prog_size)))
 		error_exit(vm, "Malloc failed (champ name)");
 	i = 0;
 	while (byte_code && i < champ->prog_size)
@@ -53,7 +53,7 @@ void				get_name(t_vm *vm, t_champ *champ)
 		byte_code = byte_code->next;
 	}
 	byte_code = start;
-	if (!(champ->name = (char *)malloc(sizeof(char) * name_len)))
+	if (!(champ->name = ft_strnew(name_len)))
 		error_exit(vm, "Malloc failed (champ name)");
 	i = 0;
 	while (byte_code && name_len--)

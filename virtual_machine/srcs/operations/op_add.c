@@ -19,7 +19,7 @@ void				op_add(t_vm *vm, t_process *ps)
 	int				r3;
 	int				num;
 
-	ft_printf("Inside op_add\n");//
+	ft_printf("Inside op_add\n");
 	get_next_bytes(vm, ps, &r1, 1);
 	get_next_bytes(vm, ps, &r2, 1);
 	get_next_bytes(vm, ps, &r3, 1);
