@@ -38,5 +38,8 @@ void		exec_vm(t_vm *vm)
 		vm->cycle++;
 		vm->tot_cycle++;
 	}
-	ft_printf("Player %d (%s) won\n", vm->last_live, vm->last_name);
+	if (vm->last_live && vm->last_name)
+		ft_printf("Player %d (%s) won\n", vm->last_live, vm->last_name);
+	else
+		ft_printf("There are no winners\n");
 }
