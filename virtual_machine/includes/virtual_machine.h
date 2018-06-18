@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/18 01:13:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 12:22:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void					modify_pc(t_process *process, int modift);
 void					modify_pc_tmp(t_process *process, int modify);
 void					iterate_pc(t_process *ps);
 void					get_address(t_process *ps, int modify, int *address);
+int						return_address(t_process *ps, int modify);
 char					decode_byte(unsigned char encoded, int pair);
 void					calc_bytes(unsigned char encoded, int pair, int *bytes);
 void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
