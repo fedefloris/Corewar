@@ -19,8 +19,8 @@ void				op_aff(t_vm *vm, t_process *ps)
 
 	get_address(ps, 2, &pc);
 	reg = vm->memory[pc];
-	printf("Inside op_aff\n");
-	if (vm->aff || vm->affd || vm->affx || vm->affX)
+	ft_printf("Inside op_aff\n");
+	if (vm->aff || vm->affd || vm->affx || vm->affx2)
 	{
 		ft_printf(CYAN);
 		ft_printf("Aff r%-2d [", reg);
@@ -30,7 +30,7 @@ void				op_aff(t_vm *vm, t_process *ps)
 			ft_printf("%d", ps->r[reg]);
 		else if (vm->affx)
 			ft_printf("%x", ps->r[reg]);
-		else if (vm->affX)
+		else if (vm->affx2)
 			ft_printf("%X", ps->r[reg]);
 		ft_printf("]\n");
 		ft_printf(RESET);

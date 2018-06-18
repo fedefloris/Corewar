@@ -13,13 +13,10 @@
 #ifndef VIRTUAL_MACHINE_H
 # define VIRTUAL_MACHINE_H
 
-# include				"libft.h"
-# include 				"op.h"
-# include 				<stdio.h>//Remove
-
+# include "libft.h"
+# include "op.h"
 # define SIZE_OF_BUFF	64
-# define USAGE			1//Set to 0
-
+# define USAGE			1
 # define CLEAR			"\x1b[H\x1b[2J"
 # define B_RED			"\x1b[1m\x1b[31m"
 # define B_GREEN		"\x1b[1m\x1b[32m"
@@ -37,12 +34,12 @@
 # define WHITE   		"\x1b[37m"
 # define RESET   		"\x1b[0m"
 
-typedef struct          s_name
+typedef struct			s_name
 {
 	int					num;
 	int					pos;
 	struct s_name		*next;
-}                       t_name;
+}						t_name;
 typedef struct			s_byte_code
 {
 	char				byte;
@@ -55,7 +52,7 @@ typedef struct			s_champ
 	int					number;
 	char				*name;
 	char				*bytes;
-	struct s_byte_code	*byte_code;
+	t_byte_code			*byte_code;
 	struct s_champ		*next;
 }						t_champ;
 typedef struct			s_process
@@ -79,7 +76,7 @@ typedef struct			s_vm
 	int					aff;
 	int					affd;
 	int					affx;
-	int					affX;
+	int					affx2;
 	int					cycle;
 	int					tot_cycle;
 	int					cycle_to_die;
@@ -125,7 +122,8 @@ void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
-void					duplicate_process(t_vm *vm, t_process *ps, t_process **new_ps);
+void					duplicate_process(t_vm *vm, t_process *ps,
+													t_process **new_ps);
 void					insert_sub_process(t_vm *vm, t_process *new_ps);
 void					remove_dead_processes(t_vm *vm);
 void					modify_pc(t_process *process, int modift);
@@ -135,9 +133,12 @@ void					get_address(t_process *ps, int modify, int *address);
 int						return_address(t_process *ps, int modify);
 char					decode_byte(unsigned char encoded, int pair);
 void					calc_bytes(unsigned char encoded, int pair, int *bytes);
-void					get_next_bytes(t_vm *vm, t_process *ps, int *value, int n);
-void					get_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter);
-void					get_reg_value(t_vm *vm, t_process *ps, unsigned char encoded, int *parameter);
+void					get_next_bytes(t_vm *vm, t_process *ps, int *value,
+																int n);
+void					get_value(t_vm *vm, t_process *ps,
+									unsigned char encoded, int *parameter);
+void					get_reg_value(t_vm *vm, t_process *ps,
+									unsigned char encoded, int *parameter);
 void					modify_carry(t_process *ps, int value);
 void					save_op(t_vm *vm, t_process *ps, int op_code);
 void					op_live(t_vm *vm, t_process *ps);

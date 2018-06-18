@@ -96,7 +96,7 @@ static void			do_mandatory(void)
 	ft_printf("        Corewar can only accept 1 -dump argument.\n");
 }
 
-void				display_usage()
+void				display_usage(void)
 {
 	if (USAGE)
 	{

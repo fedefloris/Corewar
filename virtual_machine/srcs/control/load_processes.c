@@ -32,6 +32,7 @@ static void		move_last_process_to_top(t_vm *vm)
 	t_process	*last;
 	t_process	*prev;
 
+	prev = NULL;
 	last = vm->process;
 	while (last->next)
 	{

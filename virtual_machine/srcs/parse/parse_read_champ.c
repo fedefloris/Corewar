@@ -11,16 +11,14 @@
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
-#include <fcntl.h>
-#include <unistd.h>
 
 static t_byte_code	*create_byte_code(t_vm *vm)
 {
 	t_byte_code		*byte_code;
 
-	if (!(byte_code = (t_byte_code *)malloc(sizeof(t_byte_code))))
+	if (!(byte_code = (t_byte_code*)malloc(sizeof(t_byte_code))))
 		error_exit(vm, "Malloc failed, Byte Code creation.");
-	ft_bzero(byte_code, sizeof(*byte_code));
+	ft_bzero(byte_code, sizeof(t_byte_code));
 	return (byte_code);
 }
 

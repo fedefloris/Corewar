@@ -14,5 +14,12 @@
 
 void		free_processes(t_process *processes)
 {
-	
+	t_process	*prev;
+
+	while (processes)
+	{
+		prev = processes;
+		processes = processes->next;
+		free(prev);
+	}
 }

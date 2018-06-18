@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 19:16:39 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/18 16:24:24 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int		ft_open(char *file)
 		s = ++tmp;
 	if (ft_strcmp(s, "s"))
 	{
-		ft_printf("<%s> is not a correct file type\n", file);
+		ft_printf("^2^<%s> is not a correct file type\n", file);
 		return (-1);
 	}
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
-		ft_printf("Can not open file <%s>\n", file);
+		ft_printf("^2^Can not open file <%s>\n", file);
 		return (-1);
 	}
 	return (fd);
@@ -65,17 +65,17 @@ int		main(int ac, char **av)
 	if ((fd = ft_open(av[1])) == -1)
 		return (0);
 	if (!ft_initframe(&frame))
-		return (ft_printf("ERROR\n"));
+		return (ft_printf("^2^ERROR\n"));
 	ft_input(fd, frame);
 	ft_fill_dist(frame->request, frame->declare, frame->errors);
 	if (close(fd) == -1)
-		return (ft_printf("Can not process file\n"));
+		return (ft_printf("^2^Can not process file\n"));
 	if (!frame->errors)
 	{
 		if (!frame->lines)
-			return (ft_printf("ERROR <%s> is empty or not a file\n", av[1]));
+			return (ft_printf("^2^ERROR <%s> is empty or not a file\n", av[1]));
 		if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : NULL))
-			return (ft_printf("ERROR creating .cor file stopped\n"));
+			return (ft_printf("^2^ERROR creating .cor file stopped\n"));
 	}
 	else
 		ft_error_output(frame->errors);

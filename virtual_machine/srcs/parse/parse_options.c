@@ -67,7 +67,7 @@ static void			parse_aff(t_vm *vm, char **argv, int i)
 	if (!ft_strcmp(argv[i], "-x"))
 		vm->affx = 1;
 	if (!ft_strcmp(argv[i], "-X"))
-		vm->affX = 1;
+		vm->affx2 = 1;
 }
 
 void				parse_options(t_vm *vm)

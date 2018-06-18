@@ -14,5 +14,12 @@
 
 void		free_names(t_name *names)
 {
-	
+	t_name		*prev;
+
+	while (names)
+	{
+		prev = names;
+		names = names->next;
+		free(prev);
+	}
 }
