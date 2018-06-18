@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:00:12 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/15 17:35:54 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/18 16:12:29 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*ft_get_opname(char **s, char **opname)
 		if (**s != SEPARATOR_CHAR)
 			return (NULL);
 	}
-	ft_printf("%d\n", i);
 	return (ft_strdup("Invalid character after operation name"));
 }
 

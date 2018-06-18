@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 19:26:08 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/16 18:47:14 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/18 16:20:26 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,19 @@ static int	ft_valid_direct(char *s)
 	i = 0;
 	if (s[i] == DIRECT_CHAR)
 	{
-		if (s[++i] == LABEL_CHAR)
+		s++;
+		if (s[i] == LABEL_CHAR)
 		{
-			i++;
+			s++;
 			while (s[i] && ft_strchr(LABEL_CHARS, s[i]))
 				i++;
 		}
-		else if (ft_isdigit(s[i]) || s[i++] == '-')
+		else if (ft_isdigit(s[i]) || *s++ == '-')
 		{
 			while (ft_isdigit(s[i]))
 				i++;
 		}
-		if (!s[i] && i > ((s[1] == LABEL_CHAR) ? 2 : 1))
+		if (!s[i] && i)
 			return (1);
 	}
 	return (0);
