@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:58 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 00:04:44 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/18 15:03:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void				op_st(t_vm *vm, t_process *ps)
 	else if (decode_byte(encoded, 2) == REG_CODE)
 		ps->r[p2] = p1;
 	iterate_pc(ps);
-
 }
