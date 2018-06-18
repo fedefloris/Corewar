@@ -16,7 +16,6 @@
 # include "libft.h"
 # include "op.h"
 # define SIZE_OF_BUFF	64
-# define USAGE			1
 # define CLEAR			"\x1b[H\x1b[2J"
 # define B_RED			"\x1b[1m\x1b[31m"
 # define B_GREEN		"\x1b[1m\x1b[32m"

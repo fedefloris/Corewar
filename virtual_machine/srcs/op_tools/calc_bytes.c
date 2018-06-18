@@ -14,6 +14,7 @@
 
 void				calc_bytes(unsigned char encoded, int pair, int *bytes)
 {
+	*bytes = 0;
 	if (decode_byte(encoded, pair) == REG_CODE)
 		*bytes = 1;
 	if (decode_byte(encoded, pair) == DIR_CODE)

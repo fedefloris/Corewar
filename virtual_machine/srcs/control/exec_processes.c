@@ -16,7 +16,7 @@ static void		exec_process(t_vm *vm, t_process *ps)
 {
 	if (ps->op)
 	{
-		ft_printf("Exec_ps %x | pc  %d | carry %d | op_code %d\n",
+		ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d\n",
 			ps->number, ps->pc, ps->carry, (int)vm->memory[ps->pc]);
 		ps->op(vm, ps);
 	}

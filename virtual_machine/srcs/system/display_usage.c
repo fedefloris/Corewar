@@ -98,12 +98,9 @@ static void			do_mandatory(void)
 
 void				display_usage(void)
 {
-	if (USAGE)
-	{
-		ft_printf(CLEAR);
-		do_corewar_logo();
-		do_usage();
-		do_aff();
-		do_mandatory();
-	}
+	ft_printf(CLEAR);
+	do_corewar_logo();
+	do_usage();
+	do_aff();
+	do_mandatory();
 }

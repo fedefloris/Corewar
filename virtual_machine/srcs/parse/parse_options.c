@@ -48,7 +48,7 @@ static void			parse_dump(t_vm *vm, char **argv, int i)
 	if (!ft_strcmp(argv[i], "-dump"))
 	{
 		if (vm->dump != -1)
-			error_exit(vm, "Declare -dump once only. See usage with -u");
+			error_exit(vm, "Declare -dump once only");
 		if (argv[i + 1])
 			vm->dump = ft_atoi(argv[i + 1]);
 		else
