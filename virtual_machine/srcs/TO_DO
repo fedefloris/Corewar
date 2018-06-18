@@ -6,5 +6,5 @@
 { }null dereference
 {x}norminette
 {x}FREE
-
-
+{ }Segfault with bigzork
+{ }-dump
