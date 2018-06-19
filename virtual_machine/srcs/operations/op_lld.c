@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:31 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 12:57:58 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:37:30 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void			load_bytes(t_vm *vm, t_process *ps, int reg, int start)
 	int				i;
 
 	i = 0;
-	ps->r[reg] = 0;
+	ps->r[get_r(reg)] = 0;
 	while (i < REG_SIZE)
 	{
-		ps->r[reg] <<= 8;
-		ps->r[reg] |= (unsigned char)vm->memory[(start + i) % MEM_SIZE];
+		ps->r[get_r(reg)] <<= 8;
+		ps->r[get_r(reg)] |= (unsigned char)vm->memory[(start + i) % MEM_SIZE];
 		i++;
 	}
 }
@@ -40,12 +40,12 @@ void				op_lld(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &p1, bytes);
 	get_next_bytes(vm, ps, &p2, 1);
 	if (decode_byte(encoded, 1) == DIR_CODE)
-		ps->r[p2] = p1;
+		ps->r[get_r(p2)] = p1;
 	else
 	{
 		get_address(ps, p1, &p1);
 		load_bytes(vm, ps, p2, p1);
 	}
-	modify_carry(ps, ps->r[p2]);
+	modify_carry(ps, ps->r[get_r(p2)]);
 	iterate_pc(ps);
 }

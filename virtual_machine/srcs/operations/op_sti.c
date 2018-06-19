@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:04:08 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 00:00:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:39:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void			load_bytes(t_vm *vm, t_process *ps, int p1, int p3)
 {
 	int				value;
 
-	value = ps->r[p1];
+	value = ps->r[get_r(p1)];
 	vm->memory[p3 + 0] = (value >> 24) & 0xFF;
 	vm->memory[p3 + 1] = (value >> 16) & 0xFF;
 	vm->memory[p3 + 2] = (value >> 8) & 0xFF;

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:38 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/17 23:41:57 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:39:05 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void			load_bytes(t_vm *vm, t_process *ps, int reg, int start)
 	int				i;
 
 	i = 0;
-	ps->r[reg] = 0;
+	ps->r[get_r(reg)] = 0;
 	while (i < REG_SIZE)
 	{
-		ps->r[reg] <<= 8;
-		ps->r[reg] |= (unsigned char)vm->memory[(start + i) % MEM_SIZE];
+		ps->r[get_r(reg)] <<= 8;
+		ps->r[get_r(reg)] |= (unsigned char)vm->memory[(start + i) % MEM_SIZE];
 		i++;
 	}
 }
@@ -49,6 +49,6 @@ void				op_lldi(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &p3, 1);
 	get_address(ps, p1 + p2, &p2);
 	load_bytes(vm, ps, p3, p2);
-	modify_carry(ps, ps->r[p3]);
+	modify_carry(ps, ps->r[get_r(p3)]);
 	iterate_pc(ps);
 }

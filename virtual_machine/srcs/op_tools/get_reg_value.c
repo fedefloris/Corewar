@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 19:58:20 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/17 23:22:07 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:00:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	get_reg_value(t_vm *vm, t_process *ps, unsigned char encoded,
 		int *parameter)
 {
 	if (encoded == REG_CODE)
-		*parameter = ps->r[*parameter % 256];
+		*parameter = ps->r[get_r(*parameter % 256)];
 }

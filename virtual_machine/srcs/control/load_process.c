@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 14:06:06 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/12 14:06:07 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/19 15:02:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		add_process(t_vm *vm, t_champ *champ, size_t pc)
 	ft_bzero(ps, sizeof(t_process));
 	ps->number = champ->number;
 	ps->name = champ->name;
-	ps->r[1] = ps->number;
+	ps->r[get_r(1)] = ps->number;
 	ps->pc = pc;
 	if (vm->process)
 		append_process(vm, ps);

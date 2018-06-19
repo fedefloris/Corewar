@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 23:03:48 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 17:24:56 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:39:24 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				op_or(t_vm *vm, t_process *ps)
 	get_next_bytes(vm, ps, &p2, bytes);
 	get_value(vm, ps, decode_byte(encoded, 2), &p2);
 	get_next_bytes(vm, ps, &p3, 1);
-	ps->r[p3] = p1 | p2;
-	modify_carry(ps, ps->r[p3]);
+	ps->r[get_r(p3)] = p1 | p2;
+	modify_carry(ps, ps->r[get_r(p3)]);
 	iterate_pc(ps);
 }
