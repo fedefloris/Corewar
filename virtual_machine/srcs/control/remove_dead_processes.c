@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 17:16:27 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 17:16:28 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/19 15:26:34 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ void		remove_dead_processes(t_vm *vm)
 		{
 			ft_printf("Process n.%d didn't call live\n", ps->number);
 			if (!prev_ps)
+			{
 				vm->process = ps->next;
+				ft_memdel((void*)&ps);
+				ps = vm->process;
+			}
 			else
+			{
 				prev_ps->next = ps->next;
-			ft_memdel((void*)(&ps));
+				ft_memdel((void*)&ps);
+				ps = prev_ps->next;
+			}
 		}
 		else
 		{
