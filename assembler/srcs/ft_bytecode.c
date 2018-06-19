@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 00:08:25 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/16 18:38:22 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/19 18:47:09 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ static int	ft_get_arg_val(char *param, int param_type, t_label *req)
 static int	ft_get_nb_bytes(int param_type, int half)
 {
 	if (param_type == T_DIR)
-		return (half ? 2 : 4);
+		return (half ? IND_SIZE : DIR_SIZE);
 	else if (param_type == T_REG)
 		return (1);
 	else if (param_type == T_IND)
-		return (2);
+		return (IND_SIZE);
 	return (0);
 }
 
