@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/16 19:00:40 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/19 14:30:31 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,4 +146,6 @@ int				ft_line_bytes(t_line *line, t_op op, t_frame *f);
 int				ft_fill_dist(t_label *req, t_label *first, t_error *error);
 int				ft_write_file(t_frame *f, t_op *op, char *name, char *dest);
 void			ft_get_arg_byte(t_line *line, int nb, int half, t_label *req);
+void			ft_sort_errors(t_error **error);
+
 #endif
