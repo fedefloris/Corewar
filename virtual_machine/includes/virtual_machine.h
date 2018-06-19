@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/19 14:51:16 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/19 14:57:17 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void					get_value(t_vm *vm, t_process *ps,
 									unsigned char encoded, int *parameter);
 void					get_reg_value(t_vm *vm, t_process *ps,
 									unsigned char encoded, int *parameter);
-int						get_reg_number(int reg);
+int						get_r(int reg);
 void					modify_carry(t_process *ps, int value);
 void					save_op(t_vm *vm, t_process *ps, int op_code);
 void					op_live(t_vm *vm, t_process *ps);
