@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:23:00 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/16 18:39:53 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/19 14:31:04 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,33 @@ int			ft_error(char *line, char *msg, int line_nb, t_error **err_list)
 		tmp->next = error;
 	}
 	return (0);
+}
+
+void		ft_sort_errors(t_error **error)
+{
+	t_error *tmp;
+	t_error *err;
+	t_error *prev;
+
+	err = *error;
+	prev = NULL;
+	while (err->next)
+	{
+		if (err->line_nb > err->next->line_nb)
+		{
+			tmp = err;
+			if (prev)
+				prev->next = err->next;
+			else
+				*error = err->next;
+			err = err->next;
+			tmp->next = err->next;
+			err->next = tmp;
+			err = *error;
+			prev = NULL;
+			continue;
+		}
+		prev = err;
+		err = err->next;
+	}
 }
