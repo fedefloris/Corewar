@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/18 16:23:33 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/19 14:18:00 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,27 @@ void		ft_error_output(t_error *error)
 {
 	t_error *tmp;
 	t_error *err;
+	t_error *prev;
 
 	err = error;
+	prev = NULL;
 	while (err->next)
 	{
 		if (err->line_nb > err->next->line_nb)
 		{
 			tmp = err;
+			if (prev)
+				prev->next = err->next;
+			else
+				error = err->next;
 			err = err->next;
+			tmp->next = err->next;
 			err->next = tmp;
 			err = error;
+			prev = NULL;
 			continue;
 		}
+		prev = err;
 		err = err->next;
 	}
 	while (error)
