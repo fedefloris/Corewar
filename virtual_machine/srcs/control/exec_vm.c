@@ -32,8 +32,6 @@ void		exec_vm(t_vm *vm)
 	load_processes(vm);
 	while (vm->process && vm->cycle_to_die > 0)
 	{
-		ft_printf("processes: %d\n", size(vm));
-		exec_processes(vm);
 		if (vm->cycle == vm->cycle_to_die)
 		{
 			ft_printf("Every CYCLE_TO_DIE cycles: cycles = %d\n", vm->cycle);
@@ -49,9 +47,10 @@ void		exec_vm(t_vm *vm)
 			vm->cycle = 0;
 			vm->live_calls = 0;
 		}
-		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d\n",
-				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls);
-		if (vm->cycle == vm->dump)
+		exec_processes(vm);
+		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d | processes %d\n",
+				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls, size(vm));
+		if (vm->tot_cycle == vm->dump)
 			dump_memory(vm, 4);
 		vm->cycle++;
 		vm->tot_cycle++;

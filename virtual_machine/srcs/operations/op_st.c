@@ -18,6 +18,12 @@ static void			load(t_vm *vm, t_process *ps, int p1, int p2)
 	vm->memory[return_address(ps, p2 + 1)] = (p1 >> 16) & 0xFF;
 	vm->memory[return_address(ps, p2 + 2)] = (p1 >> 8) & 0xFF;
 	vm->memory[return_address(ps, p2 + 3)] = p1 & 0xFF;
+
+	ft_printf("p3: %d\n", p2);
+	ft_printf("%d\n", return_address(ps, p2 + 0));
+	ft_printf("%d\n", return_address(ps, p2 + 1));
+	ft_printf("%d\n", return_address(ps, p2 + 2));
+	ft_printf("%d\n", return_address(ps, p2 + 3));
 }
 
 void				op_st(t_vm *vm, t_process *ps)

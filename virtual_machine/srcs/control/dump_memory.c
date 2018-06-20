@@ -42,10 +42,10 @@ static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
 			match_pc(vm, pane);
 			ft_printf("%.2x %s", (unsigned char)bytes[pane++], RESET);
 		}
-		ft_printf(" ");
+		ft_putchar(' ');
 		j++;
 	}
-	ft_printf("\n");
+	ft_putchar('\n');
 }
 
 void				dump_memory(t_vm *vm, int byte_width)

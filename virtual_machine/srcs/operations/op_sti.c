@@ -41,7 +41,6 @@ void				op_sti(t_vm *vm, t_process *ps)
 	bytes = (decode_byte(encoded, 3) == REG_SIZE) ? 1 : 2;
 	get_next_bytes(vm, ps, &p3, bytes);
 	get_value(vm, ps, (bytes == 2) ? 2 : 1, &p3);
-	get_address(ps, p2 + p3, &p3);
-	load(vm, ps, p1, p3);
+	load(vm, ps, p1, p2 + p3);
 	iterate_pc(ps);
 }
