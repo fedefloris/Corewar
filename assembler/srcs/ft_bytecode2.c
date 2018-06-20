@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bytecode2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 21:49:31 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/16 18:38:53 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/20 14:52:03 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_push_bytecode(t_list **bytecode, char c)
 	return (1);
 }
 
-int		ft_fill_dist(t_label *req, t_label *first, t_error *error)
+int		ft_fill_dist(t_label *req, t_label *first, t_error **error)
 {
 	t_label	*decl;
 	int		ret;
@@ -55,7 +55,7 @@ int		ft_fill_dist(t_label *req, t_label *first, t_error *error)
 		if (!decl)
 			ret = ft_error(ft_strdup(req->line),
 				ft_strdup("Label requested not declared"),
-				req->line_nb, &error);
+				req->line_nb, error);
 		req = req->next;
 	}
 	return (ret);
