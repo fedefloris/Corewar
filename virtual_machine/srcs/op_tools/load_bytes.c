@@ -22,7 +22,7 @@ void		load_bytes(t_vm *vm, t_process *ps, int reg, int start)
 	while (i < REG_SIZE)
 	{
 		value <<= 8;
-		value |= vm->memory[(start + i) % MEM_SIZE];
+		value |= vm->memory[return_address(ps, start + i)];
 		i++;
 	}
 	ps->r[get_r(reg)] = value;

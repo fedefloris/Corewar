@@ -14,10 +14,10 @@
 
 static void			load(t_vm *vm, t_process *ps, int p1, int p2)
 {
-	vm->memory[p2 + 0] = (p1 >> 24);
-	vm->memory[p2 + 1] = (p1 >> 16) & 0xFF;
-	vm->memory[p2 + 2] = (p1 >> 8) & 0xFF;
-	vm->memory[p2 + 3] = p1 & 0xFF;
+	vm->memory[return_address(ps, p2)] = (p1 >> 24);
+	vm->memory[return_address(ps, p2 + 1)] = (p1 >> 16) & 0xFF;
+	vm->memory[return_address(ps, p2 + 2)] = (p1 >> 8) & 0xFF;
+	vm->memory[return_address(ps, p2 + 3)] = p1 & 0xFF;
 }
 
 void				op_st(t_vm *vm, t_process *ps)
