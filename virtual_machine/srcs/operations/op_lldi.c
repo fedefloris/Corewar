@@ -12,20 +12,6 @@
 
 #include "virtual_machine.h"
 
-static void			load_bytes(t_vm *vm, t_process *ps, int reg, int start)
-{
-	int				i;
-
-	i = 0;
-	ps->r[get_r(reg)] = 0;
-	while (i < REG_SIZE)
-	{
-		ps->r[get_r(reg)] <<= 8;
-		ps->r[get_r(reg)] |= (unsigned char)vm->memory[(start + i) % MEM_SIZE];
-		i++;
-	}
-}
-
 void				op_lldi(t_vm *vm, t_process *ps)
 {
 	unsigned char	encoded;

@@ -12,11 +12,9 @@
 
 #include "virtual_machine.h"
 
-static void			load_bytes(t_vm *vm, t_process *ps, int p1, int p2)
+static void			load(t_vm *vm, t_process *ps, int p1, int p2)
 {
-	int				value;
-
-	vm->memory[p2 + 0] = (p1 >> 24) & 0xFF;
+	vm->memory[p2 + 0] = (p1 >> 24);
 	vm->memory[p2 + 1] = (p1 >> 16) & 0xFF;
 	vm->memory[p2 + 2] = (p1 >> 8) & 0xFF;
 	vm->memory[p2 + 3] = p1 & 0xFF;
@@ -40,8 +38,7 @@ void				op_st(t_vm *vm, t_process *ps)
 	if (decode_byte(encoded, 2) == IND_CODE)
 	{
 		get_address(ps, p2 % IDX_MOD, &p2);
-		load_bytes(vm, ps, p1, p2);
-		vm->memory[p2] = p1;
+		load(vm, ps, p1, p2);
 	}
 	else if (decode_byte(encoded, 2) == REG_CODE)
 		ps->r[get_r(p2)] = p1;

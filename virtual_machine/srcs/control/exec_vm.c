@@ -12,11 +12,27 @@
 
 #include "virtual_machine.h"
 
+static int	size(t_vm *vm)	
+{	
+	t_process	*ps;	
+	int			count;	
+	
+	count = 0;	
+	ps = vm->process;
+	while (ps)	
+	{	
+		ps = ps->next;	
+		count++;	
+	}	
+	return (count);	
+}
+
 void		exec_vm(t_vm *vm)
 {
 	load_processes(vm);
 	while (vm->process && vm->cycle_to_die > 0)
 	{
+		ft_printf("processes: %d\n", size(vm));
 		exec_processes(vm);
 		if (vm->cycle == vm->cycle_to_die)
 		{
