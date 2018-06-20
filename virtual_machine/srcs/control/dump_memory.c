@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/20 14:00:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/20 15:29:18 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ void				dump_memory(t_vm *vm, int byte_width)
 		print_line(vm, bytes, pane, byte_width);
 		pane += (byte_width * 8);
 	}
+	free_vm(vm);
+	exit(0);
 }

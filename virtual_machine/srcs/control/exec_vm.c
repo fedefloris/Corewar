@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 01:14:43 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/20 15:45:53 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		exec_vm(t_vm *vm)
 			if (vm->checkups == MAX_CHECKS || vm->live_calls >= NBR_LIVE)
 			{
 				ft_printf("checkups: %d | live_calls = %d\n", vm->checkups,
-					vm->live_calls);
+						vm->live_calls);
 				vm->cycle_to_die -= CYCLE_DELTA;
 				vm->checkups = 0;
 			}
@@ -34,7 +34,9 @@ void		exec_vm(t_vm *vm)
 			vm->live_calls = 0;
 		}
 		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d\n",
-			vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls);
+				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls);
+		if (vm->cycle == vm->dump)
+			dump_memory(vm, 4);
 		vm->cycle++;
 		vm->tot_cycle++;
 	}
