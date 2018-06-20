@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_bytes.c                                   :+:      :+:    :+:   */
+/*   load_bytes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 21:19:36 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/14 23:59:36 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/20 12:21:06 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/20 12:21:10 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-/*
-** n bytes from position pc + 1 will be stored in value
-*/
-
-void			get_next_bytes(t_vm *vm, t_process *ps, int *value, int n)
+void		load_bytes(t_vm *vm, t_process *ps, int reg, int start)
 {
-	int		val;
+	int		value;
+	int		i;
 
-	val = 0;
-	while (n--)
+	i = 0;
+	value = 0;
+	while (i < REG_SIZE)
 	{
-		modify_pc_tmp(ps, 1);
-		val <<= 8;
-		val |= vm->memory[ps->pc_tmp];
+		value <<= 8;
+		value |= vm->memory[return_address(ps, start + i)];
+		i++;
 	}
-	*value = val;
+	ps->r[get_r(reg)] = value;
 }
