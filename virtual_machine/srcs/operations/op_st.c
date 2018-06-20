@@ -14,16 +14,10 @@
 
 static void			load(t_vm *vm, t_process *ps, int p1, int p2)
 {
-	vm->memory[return_address(ps, p2)] = (p1 >> 24);
+	vm->memory[return_address(ps, p2)] = (p1 >> 24) & 0xFF;
 	vm->memory[return_address(ps, p2 + 1)] = (p1 >> 16) & 0xFF;
 	vm->memory[return_address(ps, p2 + 2)] = (p1 >> 8) & 0xFF;
 	vm->memory[return_address(ps, p2 + 3)] = p1 & 0xFF;
-
-	ft_printf("p3: %d\n", p2);
-	ft_printf("%d\n", return_address(ps, p2 + 0));
-	ft_printf("%d\n", return_address(ps, p2 + 1));
-	ft_printf("%d\n", return_address(ps, p2 + 2));
-	ft_printf("%d\n", return_address(ps, p2 + 3));
 }
 
 void				op_st(t_vm *vm, t_process *ps)
@@ -42,10 +36,7 @@ void				op_st(t_vm *vm, t_process *ps)
 	calc_bytes(encoded, 2, &bytes);
 	get_next_bytes(vm, ps, &p2, bytes);
 	if (decode_byte(encoded, 2) == IND_CODE)
-	{
-		get_address(ps, p2 % IDX_MOD, &p2);
-		load(vm, ps, p1, p2);
-	}
+		load(vm, ps, p1, p2 % IDX_MOD);
 	else if (decode_byte(encoded, 2) == REG_CODE)
 		ps->r[get_r(p2)] = p1;
 	iterate_pc(ps);
