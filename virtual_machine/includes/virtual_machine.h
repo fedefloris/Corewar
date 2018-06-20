@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/19 14:57:17 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/20 13:52:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_op					g_op_tab[17];
 typedef void			(*t_op_code)(t_vm *vm, t_process *ps);
 
 void					display_usage();
+void					dump_memory(t_vm *vm, int byte_width);
 void					error_exit(t_vm *vm, char *string);
 void					config_vm(t_vm *vm, int argc, char **argv);
 void					free_vm(t_vm *vm);
