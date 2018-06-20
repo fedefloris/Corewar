@@ -39,11 +39,13 @@ typedef struct			s_name
 	int					pos;
 	struct s_name		*next;
 }						t_name;
+
 typedef struct			s_byte_code
 {
 	char				byte;
 	struct s_byte_code	*next;
 }						t_byte_code;
+
 typedef struct			s_champ
 {
 	char				*file_name;
@@ -54,6 +56,7 @@ typedef struct			s_champ
 	t_byte_code			*byte_code;
 	struct s_champ		*next;
 }						t_champ;
+
 typedef struct			s_process
 {
 	char				*name;
@@ -67,6 +70,7 @@ typedef struct			s_process
 	void				(*op)();
 	struct s_process	*next;
 }						t_process;
+
 typedef struct			s_vm
 {
 	char				**argv;
@@ -88,6 +92,7 @@ typedef struct			s_vm
 	t_champ				*champ;
 	t_process			*process;
 }						t_vm;
+
 typedef struct			s_op
 {
 	char				*name;
@@ -108,16 +113,19 @@ void					display_usage();
 void					dump_memory(t_vm *vm, int byte_width);
 void					error_exit(t_vm *vm, char *string);
 void					config_vm(t_vm *vm, int argc, char **argv);
+
 void					free_vm(t_vm *vm);
 void					free_names(t_name *names);
 void					free_champs(t_champ *champs);
 void					free_processes(t_process *processes);
+
 void					parse_handler(t_vm *vm);
 void					parse_options(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 void					parse_bytes(t_vm *vm);
 void					parse_count_champions(t_vm *vm);
+
 void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
@@ -133,6 +141,7 @@ void					get_address(t_process *ps, int modify, int *address);
 int						return_address(t_process *ps, int modify);
 char					decode_byte(unsigned char encoded, int pair);
 void					calc_bytes(unsigned char encoded, int pair, int *bytes);
+void					load_bytes(t_vm *vm, t_process *ps, int reg, int start);
 void					get_next_bytes(t_vm *vm, t_process *ps, int *value,
 																int n);
 void					get_value(t_vm *vm, t_process *ps,
@@ -141,6 +150,7 @@ void					get_reg_value(t_vm *vm, t_process *ps,
 									unsigned char encoded, int *parameter);
 int						get_r(int reg);
 void					modify_carry(t_process *ps, int value);
+
 void					save_op(t_vm *vm, t_process *ps, int op_code);
 void					op_live(t_vm *vm, t_process *ps);
 void					op_ld(t_vm *vm, t_process *ps);

@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/19 13:45:14 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/20 14:51:54 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		main(int ac, char **av)
 	if (!ft_initframe(&frame))
 		return (ft_printf("^2^ERROR\n"));
 	ft_input(fd, frame);
-	ft_fill_dist(frame->request, frame->declare, frame->errors);
+	ft_fill_dist(frame->request, frame->declare, &frame->errors);
 	if (close(fd) == -1)
 		return (ft_printf("^2^Can not process file\n"));
 	if (!frame->errors)
