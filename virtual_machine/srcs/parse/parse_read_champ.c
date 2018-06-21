@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/20 16:53:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 01:03:49 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void			fill(t_vm *vm, t_champ *champ, char *buf, int read_val)
 	}
 }
 
-static void			do_read_champ(t_vm *vm, t_champ *champ)
+static int			do_read_champ(t_vm *vm, t_champ *champ)
 {
 	int				len;
 	int				fd;
@@ -72,6 +72,7 @@ static void			do_read_champ(t_vm *vm, t_champ *champ)
 			break ;
 		fill(vm, champ, buf, read_val);
 	}
+	return (len);
 }
 
 void				parse_read_champ(t_vm *vm)
@@ -83,7 +84,8 @@ void				parse_read_champ(t_vm *vm)
 	{
 		if (!ft_strstr(champ->file_name, ".cor"))
 			error_exit(vm, "Files must be .cor");
-		do_read_champ(vm, champ);
+		if (do_read_champ(vm, champ) < 4)
+			error_exit(vm, "File too small");
 		champ = champ->next;
 	}
 }
