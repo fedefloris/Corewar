@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/21 18:07:59 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 23:23:08 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ static char	*ft_addheader(char *tmp, int name, t_frame *frame)
 	t_header *head;
 
 	head = frame->header;
-	if (!ft_strlen(tmp))
-		return (ft_strdup("Name or comment is blank"));
 	if (name)
 	{
 		if (ft_strlen(tmp) > PROG_NAME_LENGTH || head->prog_name[0])
 			return (ft_strdup("Name is duplicated or too big"));
 		ft_strcpy(head->prog_name, tmp);
+		frame->name = 1;
 	}
 	else
 	{
 		if (ft_strlen(tmp) > COMMENT_LENGTH || head->comment[0])
 			return (ft_strdup("Comment is duplicated or too big"));
 		ft_strcpy(head->comment, tmp);
+		frame->comt = 1;
 	}
 	return (NULL);
 }

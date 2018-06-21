@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 22:52:43 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 23:21:33 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct	s_frame
 	t_label		*declare;
 	size_t		bytecount;
 	t_error		*errors;
+	int			name;
+	int			comt;
 }				t_frame;
 
 int				ft_input(int fd, t_frame *frame);

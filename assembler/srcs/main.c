@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 22:52:19 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 23:23:15 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_initframe(t_frame **frame)
 	(*frame)->declare = NULL;
 	(*frame)->errors = NULL;
 	(*frame)->bytecount = 0;
+	(*frame)->name = 0;
+	(*frame)->comt = 0;
 	return (1);
 }
 
