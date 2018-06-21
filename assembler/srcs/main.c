@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/20 14:51:54 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 14:24:39 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		main(int ac, char **av)
 	if ((fd = ft_open(av[1])) == -1)
 		return (0);
 	if (!ft_initframe(&frame))
-		return (ft_printf("^2^ERROR\n"));
+		return (ft_printf("^2^$red$Error$eoc$: Failed to initialize frame\n"));
 	ft_input(fd, frame);
 	ft_fill_dist(frame->request, frame->declare, &frame->errors);
 	if (close(fd) == -1)
