@@ -6,36 +6,31 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/21 16:37:08 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 18:07:59 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
 
-static char	*ft_addheader(char **tmp, int name, t_frame *frame)
+static char	*ft_addheader(char *tmp, int name, t_frame *frame)
 {
 	t_header *head;
 
 	head = frame->header;
+	if (!ft_strlen(tmp))
+		return (ft_strdup("Name or comment is blank"));
 	if (name)
 	{
-		if (ft_strlen(*tmp) > PROG_NAME_LENGTH || head->prog_name[0])
-		{
-			ft_strdel(tmp);
+		if (ft_strlen(tmp) > PROG_NAME_LENGTH || head->prog_name[0])
 			return (ft_strdup("Name is duplicated or too big"));
-		}
-		ft_strcpy(head->prog_name, *tmp);
+		ft_strcpy(head->prog_name, tmp);
 	}
 	else
 	{
-		if (ft_strlen(*tmp) > COMMENT_LENGTH || head->comment[0])
-		{
-			ft_strdel(tmp);
+		if (ft_strlen(tmp) > COMMENT_LENGTH || head->comment[0])
 			return (ft_strdup("Comment is duplicated or too big"));
-		}
-		ft_strcpy(head->comment, *tmp);
+		ft_strcpy(head->comment, tmp);
 	}
-	ft_strdel(tmp);
 	return (NULL);
 }
 
@@ -57,8 +52,8 @@ char		*ft_header(char *s, int name, t_frame *frame)
 		tmp++;
 	if (*tmp != '\0' && *tmp != COMMENT_CHAR)
 		return (ft_strdup("Invalid characters at the end of the line"));
-	tmp = ft_strsub(s, 0, ft_strlen(s) - ft_strlen(ft_strchr(s, '"')));
-	return (ft_addheader(&tmp, name, frame));
+	s[ft_strlen(s) - ft_strlen(ft_strchr(s, '"'))] = '\0';
+	return (ft_addheader(s, name, frame));
 }
 
 static char	*ft_line2(char *s, t_frame *frame)

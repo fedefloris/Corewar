@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/21 16:18:45 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 18:08:55 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ static void	ft_output_header(int fd, char *s, int len, int n_val)
 	}
 	while (len >= 0)
 	{
-		if (*s)
-			ft_putchar_fd(*s++, fd);
-		else
-			ft_putchar_fd(0, fd);
+		ft_putchar_fd(*s++, fd);
 		len--;
 	}
 }
@@ -100,7 +97,7 @@ int			ft_write_file(t_frame *f, t_op *op, char *name, char *dest)
 		return (0);
 	}
 	ft_output(fd, f, op);
-	ft_printf("Writing to %s\n", name);
+	ft_printf("Writing to $green$%s$eoc$\n", name);
 	ft_strdel(&name);
 	return (1);
 }
