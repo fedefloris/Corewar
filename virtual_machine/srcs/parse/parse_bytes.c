@@ -17,7 +17,6 @@ void				get_bytes(t_vm *vm, t_champ *champ)
 	int				i;
 	int				bytes_len;
 	t_byte_code		*byte_code;
-	t_byte_code		*start;
 
 	i = 0;
 	bytes_len = 0;

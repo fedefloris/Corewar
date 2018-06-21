@@ -20,8 +20,6 @@ LIBFT_FILE = $(LIBFT_DIR)/$(LIBFT_NAME)
 
 ASM_DIR = assembler
 COREWAR_DIR = virtual_machine
-GREEN_COLOR = "\033[0;32m"
-DEFAULT_COLOR = "\033[0m"
 
 all: comp_libft comp_asm comp_corewar $(NAME)
 

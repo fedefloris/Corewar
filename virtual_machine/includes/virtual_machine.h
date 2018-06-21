@@ -146,7 +146,7 @@ void					get_next_bytes(t_vm *vm, t_process *ps, int *value,
 																int n);
 void					get_value(t_vm *vm, t_process *ps,
 									unsigned char encoded, int *parameter);
-void					get_reg_value(t_vm *vm, t_process *ps,
+void					get_reg_value(t_process *ps,
 									unsigned char encoded, int *parameter);
 int						get_r(int reg);
 void					modify_carry(t_process *ps, int value);
