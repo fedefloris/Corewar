@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/21 22:54:09 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 23:03:41 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ void		ft_error_output(t_frame **frame)
 		count++;
 	}
 	if (count == 20)
-		ft_printf("^2^Stopped at 20 errors. Please review your assembly skills\n");
+		ft_printf("^2^Stopped at 20 errors. Please, $magenta$%s$eoc$.\n",
+			"learn assembly before you write");
 }
