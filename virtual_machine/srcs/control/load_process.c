@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 14:06:06 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/19 15:02:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 21:19:28 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void		append_process(t_vm *vm, t_process *ps)
 	head = vm->process;
 	while (vm->process->next)
 		vm->process = vm->process->next;
+	ps->id = vm->process->id + 1;
 	vm->process->next = ps;
 	vm->process = head;
 }
@@ -49,7 +50,10 @@ static void		add_process(t_vm *vm, t_champ *champ, size_t pc)
 	if (vm->process)
 		append_process(vm, ps);
 	else
+	{
+		ps->id = 1;
 		vm->process = ps;
+	}
 }
 
 void			load_process(t_vm *vm, t_champ *champ, size_t pc)

@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 17:08:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 21:17:10 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct			s_champ
 typedef struct			s_process
 {
 	char				*name;
+	int					id;
 	int					number;
 	intmax_t			r[256];
 	int					pc;
