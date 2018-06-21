@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/20 13:52:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 16:08:53 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct			s_vm
 	char				**argv;
 	int					argc;
 	int					dump;
+	int					debug;
 	int					aff;
 	int					affd;
 	int					affx;
@@ -121,6 +122,11 @@ void					free_processes(t_process *processes);
 
 void					parse_handler(t_vm *vm);
 void					parse_options(t_vm *vm);
+void					parse_dump(t_vm *vm, char **argv, int i);
+void					parse_debug(t_vm *vm, char **argv, int i);
+void					parse_aff(t_vm *vm, char **argv, int i);
+void					parse_num(t_vm *vm, char **argv, int i);
+void					parse_check_dump_debug(t_vm *vm);
 void					parse_create_champ(t_vm *vm);
 void					parse_read_champ(t_vm *vm);
 void					parse_bytes(t_vm *vm);
