@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/21 23:05:37 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 00:11:07 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void			match_pc(t_vm *vm, int i, int *ps_id)
 	while (ps)
 	{
 		if (i == ps->pc)
-		{	
+		{
 			*ps_id = ps->id;
 			break ;
 		}
@@ -35,7 +35,8 @@ static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
 	int				ps_id;
 
 	j = 0;
-	ft_printf("%.8x  ", pane);
+	ft_printf(B_BLUE);
+	ft_printf("%s%.8x  %s",B_BLUE, pane, RESET);
 	while (j < byte_width)
 	{
 		k = 0;
@@ -72,9 +73,8 @@ static void			print_cycle_info(t_vm *vm)
 	ft_printf("CYCLE[%6d]   ", vm->cycle);
 	ft_printf("CYCLE_TO_DIE[%6d]   ", vm->cycle_to_die);
 	ft_printf("CHECKS[%6d]\n\n", vm->checkups);
-	while (player_num++ < MAX_PLAYERS)
+	while (player_num++ < MAX_PLAYERS && (ps = vm->process))
 	{
-		ps = vm->process;
 		while (ps)
 		{
 			if (ps->id == player_num)
@@ -85,7 +85,7 @@ static void			print_cycle_info(t_vm *vm)
 				(ps->id == 4) ? ft_printf(B_YELLOW) : 0;
 				ft_printf("Player %d (%s)\n", ps->number, ps->name);
 				ft_printf(RESET);
-					break ;
+				break ;
 			}
 			ps = ps->next;
 		}
@@ -110,5 +110,4 @@ void				dump_memory(t_vm *vm, int byte_width, int exit_flag)
 		exit(0);
 	}
 	print_cycle_info(vm);
-
 }
