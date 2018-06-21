@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/20 15:29:18 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 17:09:06 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
 	ft_putchar('\n');
 }
 
-void				dump_memory(t_vm *vm, int byte_width)
+void				dump_memory(t_vm *vm, int byte_width, int exit_flag)
 {
 	char			*bytes;
 	int				pane;
@@ -60,6 +60,9 @@ void				dump_memory(t_vm *vm, int byte_width)
 		print_line(vm, bytes, pane, byte_width);
 		pane += (byte_width * 8);
 	}
-	free_vm(vm);
-	exit(0);
+	if (exit_flag)
+	{
+		free_vm(vm);
+		exit(0);
+	}
 }
