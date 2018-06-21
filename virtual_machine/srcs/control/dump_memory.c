@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/21 22:34:25 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 22:51:09 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,12 @@ static void			print_cycle_info(t_vm *vm)
 		{
 			if (ps->id == player_num)
 			{
+				(ps->id == 1) ? ft_printf(B_RED) : 0;
+				(ps->id == 2) ? ft_printf(B_GREEN) : 0;
+				(ps->id == 3) ? ft_printf(B_CYAN) : 0;
+				(ps->id == 4) ? ft_printf(B_YELLOW) : 0;
 				ft_printf("Player %d (%s)\n", ps->number, ps->name);
+				ft_printf(CLEAR);
 					break ;
 			}
 			ps = ps->next;
