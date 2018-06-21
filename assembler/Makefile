@@ -28,7 +28,6 @@ FILES = main ft_input ft_inp_tools ft_lst_tools ft_line_parsing ft_free \
 		ft_bytecode2 op
 
 OBJS_WITH_DIR = $(patsubst %, $(OBJS_DIR)/%.o, $(FILES))
-SRCS = $(addsuffix .c, $(FILES))
 
 GREEN_COLOR = "\033[0;32m"
 DEFAULT_COLOR = "\033[0m"
@@ -40,7 +39,7 @@ norm:
 
 $(LIBFT_FILE):
 	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
-	@make -C ../libft all
+	@make -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT_FILE) $(OBJS_DIR) $(OBJS_WITH_DIR)
 	@echo "Asm:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
@@ -54,10 +53,12 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@gcc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 clean:
+	@make -C $(LIBFT_DIR)/ clean
 	@rm -rf $(OBJS_DIR)
 
-fclean: clean
-	@rm -rf $(NAME)
+fclean:
+	@make -C $(LIBFT_DIR)/ fclean
+	@rm -rf $(OBJS_DIR) $(NAME)
 
 re: fclean all
 

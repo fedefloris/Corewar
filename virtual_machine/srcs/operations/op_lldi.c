@@ -28,10 +28,10 @@ void				op_lldi(t_vm *vm, t_process *ps)
 	encoded = vm->memory[ps->pc_tmp];
 	bytes = (decode_byte(encoded, 1) == REG_CODE) ? 1 : 2;
 	get_next_bytes(vm, ps, &p1, bytes);
-	get_reg_value(vm, ps, decode_byte(encoded, 1), &p1);
+	get_reg_value(ps, decode_byte(encoded, 1), &p1);
 	bytes = (decode_byte(encoded, 2) == REG_CODE) ? 1 : 2;
 	get_next_bytes(vm, ps, &p2, bytes);
-	get_reg_value(vm, ps, decode_byte(encoded, 2), &p2);
+	get_reg_value(ps, decode_byte(encoded, 2), &p2);
 	get_next_bytes(vm, ps, &p3, 1);
 	get_address(ps, p1 + p2, &p2);
 	load_bytes(vm, ps, p3, p2);

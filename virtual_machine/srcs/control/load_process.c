@@ -14,7 +14,7 @@
 
 static void		copy_program(t_vm *vm, t_champ *champ, size_t pc)
 {
-	size_t		i;
+	int			i;
 
 	i = 0;
 	while (i < champ->prog_size)

@@ -52,7 +52,6 @@ void				dump_memory(t_vm *vm, int byte_width)
 {
 	char			*bytes;
 	int				pane;
-	int				i;
 
 	bytes = vm->memory;
 	pane = 0;
