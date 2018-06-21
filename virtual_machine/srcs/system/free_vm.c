@@ -17,4 +17,5 @@ void				free_vm(t_vm *vm)
 	free_names(vm->name);
 	free_champs(vm->champ);
 	free_processes(vm->process);
+	free_ops_queue(vm->ops_queue);
 }
