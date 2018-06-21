@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 17:17:55 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 22:52:19 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int		main(int ac, char **av)
 		return (0);
 	if (!ft_initframe(&frame))
 		return (ft_printf("^2^$red$Error$eoc$: Failed to initialize frame\n"));
-	ft_input(fd, frame);
-	ft_fill_dist(frame->request, frame->declare, &frame->errors);
+	if (ft_input(fd, frame) < 20)
+		ft_fill_dist(frame->request, frame->declare, &frame->errors);
 	if (close(fd) == -1)
 		return (ft_printf("^2^$red$Error$eoc$: Could not process file\n"));
 	if (!frame->errors)
@@ -80,7 +80,7 @@ int		main(int ac, char **av)
 			return (ft_printf("^2^$red$Error$eoc$: Creating .cor stopped\n"));
 	}
 	else
-		ft_error_output(frame->errors);
+		ft_error_output(&frame);
 	ft_free_frame(&frame);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/21 18:08:55 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 22:54:09 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,24 @@ int			ft_write_file(t_frame *f, t_op *op, char *name, char *dest)
 	return (1);
 }
 
-void		ft_error_output(t_error *error)
+void		ft_error_output(t_frame **frame)
 {
-	ft_sort_errors(&error);
-	while (error)
+	int		count;
+	t_error	*error;
+
+	count = 0;
+	if (!frame)
+		return ;
+	ft_sort_errors(&((*frame)->errors));
+	error = (*frame)->errors;
+	while (error && count < 20)
 	{
 		ft_printf("^2^$red$Error$eoc$: %s at line $blue$%d$eoc$\n",
 			error->description, error->line_nb);
 		ft_printf("^2^\t$green$\"$eoc$%s$eoc$$green$\"$eoc$\n\n", error->line);
 		error = error->next;
+		count++;
 	}
+	if (count == 20)
+		ft_printf("^2^Stopped at 20 errors. Please review your assembly skills\n");
 }

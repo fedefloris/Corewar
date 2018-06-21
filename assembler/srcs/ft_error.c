@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:23:00 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/19 14:31:04 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 22:54:43 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int			ft_error(char *line, char *msg, int line_nb, t_error **err_list)
 {
 	t_error	*error;
 	t_error *tmp;
+	int		count;
 
+	count = 0;
 	if (!ft_initerror(&error))
 		return (0);
 	error->line = line;
@@ -39,10 +41,13 @@ int			ft_error(char *line, char *msg, int line_nb, t_error **err_list)
 	{
 		tmp = *err_list;
 		while (tmp->next)
+		{
+			count++;
 			tmp = tmp->next;
+		}
 		tmp->next = error;
 	}
-	return (0);
+	return (1);
 }
 
 void		ft_sort_errors(t_error **error)

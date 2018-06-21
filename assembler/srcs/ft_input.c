@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:51:26 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/21 17:48:13 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 22:33:22 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,22 @@ int			ft_input(int fd, t_frame *frame)
 	char	*err_msg;
 	int		nb;
 
-	ret = 1;
+	ret = 0;
 	line_nb = 1;
 	while ((nb = get_next(fd, &str, '\n')))
 	{
 		if ((err_msg = ft_valid_line(str, frame, line_nb)))
-			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
+			ret += ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
 		else if (str && (err_msg = ft_produce_line(frame, str, line_nb)))
-			ret = ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
+			ret += ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);
 		ft_strdel(&str);
 		line_nb++;
+		if (ret > 19)
+			return (ret);
 	}
-	if (str)
-	{
-		if (str[0] != '\0' && !(ret = 0))
-			ft_error(ft_strdup(str), ft_strdup("No empty line at end of file"),
-				line_nb, &frame->errors);
-		ft_strdel(&str);
-	}
+	if (str && str[0] != '\0' && ++ret)
+		ft_error(ft_strdup(str), ft_strdup("No empty line at end of file"),
+			line_nb, &frame->errors);
+	ft_strdel(&str);
 	return (ret);
 }
