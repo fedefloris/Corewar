@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 18:18:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 23:47:47 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ static void	dump_control(t_vm *vm)
 		dump_memory(vm, 4, 1);
 	if (vm->debug && vm->debug <= vm->tot_cycle)
 	{
-		ft_printf(CLEAR);
+		if (!(vm->tot_cycle % 20))
+			ft_printf(CLEAR);
+		ft_printf("\033[H");
 		dump_memory(vm, 8, 0);
 		usleep(100000);
 	}
