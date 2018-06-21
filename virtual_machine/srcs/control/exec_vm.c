@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 17:09:23 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 18:18:08 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	size(t_vm *vm)
 {	
 	t_process	*ps;	
 	int			count;	
-	
+
 	count = 0;	
 	ps = vm->process;
 	while (ps)	
@@ -25,6 +25,18 @@ static int	size(t_vm *vm)
 		count++;	
 	}	
 	return (count);	
+}
+
+static void	dump_control(t_vm *vm)
+{
+	if (vm->dump == vm->tot_cycle)
+		dump_memory(vm, 4, 1);
+	if (vm->debug && vm->debug <= vm->tot_cycle)
+	{
+		ft_printf(CLEAR);
+		dump_memory(vm, 8, 0);
+		usleep(100000);
+	}
 }
 
 void		exec_vm(t_vm *vm)
@@ -50,6 +62,7 @@ void		exec_vm(t_vm *vm)
 		exec_processes(vm);
 		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d | processes %d\n",
 				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls, size(vm));
+		dump_control(vm);
 		if (vm->tot_cycle == vm->dump)
 			dump_memory(vm, 4, 1);
 		vm->cycle++;
