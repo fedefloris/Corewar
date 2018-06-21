@@ -17,7 +17,6 @@ void				op_add(t_vm *vm, t_process *ps)
 	int				r1;
 	int				r2;
 	int				r3;
-	int				num;
 
 	ft_printf("Inside op_add\n");
 	modify_pc_tmp(ps, 1);

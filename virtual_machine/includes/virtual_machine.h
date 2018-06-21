@@ -105,7 +105,7 @@ typedef struct			s_op
 	int					has_idx;
 }						t_op;
 
-t_op					g_op_tab[17];
+extern t_op				g_op_tab[17];
 
 typedef void			(*t_op_code)(t_vm *vm, t_process *ps);
 
@@ -151,7 +151,7 @@ void					get_reg_value(t_process *ps,
 int						get_r(int reg);
 void					modify_carry(t_process *ps, int value);
 
-void					save_op(t_vm *vm, t_process *ps, int op_code);
+void					save_op(t_process *ps, int op_code);
 void					op_live(t_vm *vm, t_process *ps);
 void					op_ld(t_vm *vm, t_process *ps);
 void					op_st(t_vm *vm, t_process *ps);

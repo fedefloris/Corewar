@@ -12,8 +12,7 @@
 
 NAME = corewar
 
-GCC_FLAGS = 
-# -Werror -Wextra -Wall
+# GCC_FLAGS = -Werror -Wextra -Wall
 
 OBJS_DIR = objs
 SRCS_DIR = srcs

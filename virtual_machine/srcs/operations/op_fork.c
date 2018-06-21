@@ -16,16 +16,12 @@ void				op_fork(t_vm *vm, t_process *ps)
 {
 	t_process		*new_ps;
 	int				offset;
-	t_op			*seek;
 
 	ft_printf("Inside op_fork\n");
 	get_next_bytes(vm, ps, &offset, 2);
 	duplicate_process(vm, ps, &new_ps);
 	insert_sub_process(vm, new_ps);
 	get_address(ps, offset % IDX_MOD, &new_ps->pc);
-	seek = g_op_tab;
-	while (seek->op_code && ft_strcmp(seek->name, "fork") != 0)
-		seek++;
-	new_ps->sleep_cycles = (seek) ? seek->nb_cycles : 800;
+	new_ps->sleep_cycles = 1;
 	iterate_pc(ps);
 }

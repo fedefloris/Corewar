@@ -59,7 +59,7 @@ static long			hash_name(char *name)
 	return (hash);
 }
 
-void				save_op(t_vm *vm, t_process *ps, int op_code)
+void				save_op(t_process *ps, int op_code)
 {
 	t_op			*seek;
 
