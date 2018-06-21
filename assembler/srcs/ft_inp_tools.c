@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inp_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 14:29:35 by akaseris          #+#    #+#             */
-/*   Updated: 2018/06/16 18:48:45 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/21 16:37:08 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,23 @@ static char	*ft_addheader(char **tmp, int name, t_frame *frame)
 	head = frame->header;
 	if (name)
 	{
-		if (ft_strlen(*tmp) > PROG_NAME_LENGTH || head->prog_name != NULL)
+		if (ft_strlen(*tmp) > PROG_NAME_LENGTH || head->prog_name[0])
 		{
 			ft_strdel(tmp);
 			return (ft_strdup("Name is duplicated or too big"));
 		}
-		head->prog_name = *tmp;
+		ft_strcpy(head->prog_name, *tmp);
 	}
 	else
 	{
-		if (ft_strlen(*tmp) > COMMENT_LENGTH || head->comment != NULL)
+		if (ft_strlen(*tmp) > COMMENT_LENGTH || head->comment[0])
 		{
 			ft_strdel(tmp);
 			return (ft_strdup("Comment is duplicated or too big"));
 		}
-		head->comment = *tmp;
+		ft_strcpy(head->comment, *tmp);
 	}
+	ft_strdel(tmp);
 	return (NULL);
 }
 

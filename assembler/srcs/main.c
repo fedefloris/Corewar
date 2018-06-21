@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 15:29:57 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 16:25:32 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int		ft_initframe(t_frame **frame)
 		free(*frame);
 		return (0);
 	}
-	(*frame)->header->prog_name = NULL;
-	(*frame)->header->comment = NULL;
+	ft_bzero(&((*frame)->header->prog_name), PROG_NAME_LENGTH);
+	ft_bzero(&((*frame)->header->prog_name), COMMENT_LENGTH);
+	(*frame)->header->magic = COREWAR_EXEC_MAGIC;
 	(*frame)->lines = NULL;
 	(*frame)->request = NULL;
 	(*frame)->declare = NULL;
