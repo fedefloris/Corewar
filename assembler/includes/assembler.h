@@ -13,7 +13,8 @@
 #ifndef ASSEMBLER_H
 # define ASSEMBLER_H
 
-#include "op.h"
+# include "libft.h"
+# include "op.h"
 
 typedef struct	s_op
 {
@@ -26,6 +27,8 @@ typedef struct	s_op
 	int			acb;
 	int			half_size;
 }				t_op;
+
+extern t_op		g_op_tab[17];
 
 typedef struct	s_line
 {
@@ -66,8 +69,6 @@ typedef struct	s_frame
 	size_t		bytecount;
 	t_error		*errors;
 }				t_frame;
-
-extern t_op g_op_tab[17];
 
 int				ft_input(int fd, t_frame *frame);
 char			*ft_line(char *s, t_frame *frame);

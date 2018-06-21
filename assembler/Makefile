@@ -16,16 +16,21 @@ GCC_FLAGS = -Werror -Wextra -Wall
 
 OBJS_DIR = objs
 SRCS_DIR = srcs
-SRCS_INCLUDES_DIR = includes/
+SRCS_INCLUDES_DIR = includes
 
 LIBFT_DIR = ../libft
 LIBFT_FILE = $(LIBFT_DIR)/libft.a
-LIBFT_INCLUDES_DIR = $(LIBFT_DIR)/includes/
-INCLUDE_DIRS = -I$(SRCS_INCLUDES_DIR) -I$(LIBFT_INCLUDES_DIR)
+LIBFT_INCLUDES_DIR = $(LIBFT_DIR)/includes
+
+SHARED_DIR = ../shared
+SHARED_INCLUDES_DIR = $(SHARED_DIR)/includes
+
+INCLUDE_DIRS = -I $(SRCS_INCLUDES_DIR) -I $(LIBFT_INCLUDES_DIR) \
+	-I $(SHARED_INCLUDES_DIR)
 
 FILES = main ft_input ft_inp_tools ft_lst_tools ft_line_parsing ft_free \
-		ft_error ft_output ft_valid_arg ft_line_producing ft_bytecode \
-		ft_bytecode2 op
+	ft_error ft_output ft_valid_arg ft_line_producing ft_bytecode \
+	ft_bytecode2 op
 
 OBJS_WITH_DIR = $(patsubst %, $(OBJS_DIR)/%.o, $(FILES))
 

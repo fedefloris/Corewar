@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_processes.c                                   :+:      :+:    :+:   */
+/*   exec_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 14:54:49 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 02:34:13 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/21 17:44:02 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/21 17:44:03 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void			exec_processes(t_vm *vm)
+void		exec_process(t_vm *vm, t_process *ps)
 {
-	t_process	*ps;
-
-	ps = vm->process;
-	while (ps)
-	{
-		if (!ps->sleep_cycles)
-		{
-			add_op_to_queue(vm, ps);
-			exec_process(vm, ps);
-		}	
-		else
-			ps->sleep_cycles--;
-		ps = ps->next;
-	}
-	exec_ops_queue(vm);
+	ps->op = NULL;
+	ps->pc_tmp = ps->pc;
+	save_op(ps, (int)vm->memory[ps->pc]);
 }

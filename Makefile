@@ -21,12 +21,16 @@ LIBFT_FILE = $(LIBFT_DIR)/$(LIBFT_NAME)
 ASM_DIR = assembler
 COREWAR_DIR = virtual_machine
 
+SHARED_DIR = shared
+SHARED_INCLUDES_DIR = $(SHARED_DIR)/includes
+
 all: comp_libft comp_asm comp_corewar $(NAME)
 
 norm:
 	@make -C $(LIBFT_DIR)/ norm
 	@make -C $(ASM_DIR)/ norm
 	@make -C $(COREWAR_DIR)/ norm
+	@norminette $(SHARED_INCLUDES_DIR)/
 
 comp_libft:
 	@make -C $(LIBFT_DIR)/

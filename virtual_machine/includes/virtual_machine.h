@@ -71,6 +71,12 @@ typedef struct			s_process
 	struct s_process	*next;
 }						t_process;
 
+typedef struct			s_ps_op
+{
+	t_byte_code			op;
+	struct s_ps_op		*next;
+}						t_ps_op;
+
 typedef struct			s_vm
 {
 	char				**argv;
@@ -92,6 +98,7 @@ typedef struct			s_vm
 	t_name				*name;
 	t_champ				*champ;
 	t_process			*process;
+	t_ps_op				*ops_queue;
 }						t_vm;
 
 typedef struct			s_op
@@ -136,10 +143,14 @@ void					exec_vm(t_vm *vm);
 void					load_processes(t_vm *vm);
 void					load_process(t_vm *vm, t_champ *champ, size_t pos);
 void					exec_processes(t_vm *vm);
+void					exec_process(t_vm *vm, t_process *ps);
+void					add_op_to_queue(t_vm *vm, t_process *ps);
+void					exec_ops_queue(t_vm *vm);
 void					duplicate_process(t_vm *vm, t_process *ps,
 													t_process **new_ps);
 void					insert_sub_process(t_vm *vm, t_process *new_ps);
 void					remove_dead_processes(t_vm *vm);
+
 void					modify_pc(t_process *process, int modift);
 void					modify_pc_tmp(t_process *process, int modify);
 void					iterate_pc(t_process *ps);

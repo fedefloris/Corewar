@@ -16,8 +16,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# include "libft.h"
-
 # define IND_SIZE 2
 # define REG_SIZE 4
 # define DIR_SIZE REG_SIZE
@@ -49,7 +47,7 @@
 # define NBR_LIVE 21
 # define MAX_CHECKS 10
 
-typedef char	t_arg_type;
+typedef char		t_arg_type;
 
 # define T_REG 1
 # define T_DIR 2
@@ -60,12 +58,12 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH (2048)
 # define COREWAR_EXEC_MAGIC 0xea83f3
 
-typedef struct	s_header
+typedef struct		s_header
 {
 	unsigned int	magic;
-	char			prog_name[PROG_NAME_LENGTH];
+	char			prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH];
-}				t_header;
+	char			comment[COMMENT_LENGTH + 1];
+}					t_header;
 
 #endif
