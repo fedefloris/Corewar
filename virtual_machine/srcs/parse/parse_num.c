@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 15:34:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/21 16:38:04 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/21 17:00:43 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void				parse_num(t_vm *vm, char **argv, int i)
 		if (argv[i + 1] && (argv[i + 2] &&
 					(ft_strcmp(argv[i + 2], "-dump") &&
 					ft_strcmp(argv[i + 2], "-n"))))
+		{
 			num = ft_atoi(argv[i + 1]);
+			if (num < 1)
+				error_exit(vm, "Declare player number greater than 0");
+			if (num)
+				create_num(vm, num, i + 2);
+		}
 		else
 			error_exit(vm, "Incorrect format. [[-n number] champion1.cor]");
-		if (num < 1)
-			error_exit(vm, "Declare player number greater than 0");
-		if (num)
-			create_num(vm, num, i + 2);
 	}
 }
