@@ -4,7 +4,5 @@
 { }linked lists
 { }mallocs
 { }null dereference
-{x}norminette
-{x}FREE
-{ }Segfault with bigzork
-{ }-dump
+{ }norminette
+{ }The instructions ending at the same cycle will execute themselves in in decreasing order of the processes' number

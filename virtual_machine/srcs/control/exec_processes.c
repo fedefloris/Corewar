@@ -19,6 +19,7 @@ static void		exec_process(t_vm *vm, t_process *ps)
 		ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d\n",
 			ps->number, ps->pc, ps->carry, (int)vm->memory[ps->pc]);
 		ps->op(vm, ps);
+		ps->op = NULL;
 	}
 	ps->pc_tmp = ps->pc;
 	save_op(vm, ps, (int)vm->memory[ps->pc]);
