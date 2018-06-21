@@ -6,13 +6,13 @@
 #    By: ffloris <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/21 16:26:32 by dhojt            ###   ########.fr        #
+#    Updated: 2018/06/21 16:56:46 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = corewar
 
-# GCC_FLAGS = -Werror -Wextra -Wall
+GCC_FLAGS = -Werror -Wextra -Wall
 
 OBJS_DIR = objs
 SRCS_DIR = srcs
