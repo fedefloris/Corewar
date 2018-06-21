@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_processes.c                                   :+:      :+:    :+:   */
+/*   exec_ops_queue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 14:54:49 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 02:34:13 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/21 18:01:56 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/21 18:01:57 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void			exec_processes(t_vm *vm)
+void		exec_ops_queue(t_vm *vm)
 {
-	t_process	*ps;
-
-	ps = vm->process;
-	while (ps)
-	{
-		if (!ps->sleep_cycles)
-		{
-			add_op_to_queue(vm, ps);
-			exec_process(vm, ps);
-		}	
-		else
-			ps->sleep_cycles--;
-		ps = ps->next;
-	}
-	exec_ops_queue(vm);
+	// vm->ops_queue;
+	(void)vm;
 }

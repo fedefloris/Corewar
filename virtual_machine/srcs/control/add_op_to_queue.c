@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_processes.c                                   :+:      :+:    :+:   */
+/*   add_op_to_queue.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 14:54:49 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 02:34:13 by dhojt            ###   ########.fr       */
+/*   Created: 2018/06/21 18:03:37 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/21 18:03:44 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void			exec_processes(t_vm *vm)
+void		add_op_to_queue(t_vm *vm, t_process *ps)
 {
-	t_process	*ps;
-
-	ps = vm->process;
-	while (ps)
-	{
-		if (!ps->sleep_cycles)
-		{
-			add_op_to_queue(vm, ps);
-			exec_process(vm, ps);
-		}	
-		else
-			ps->sleep_cycles--;
-		ps = ps->next;
-	}
-	exec_ops_queue(vm);
+	if (!ps->op)
+		return ;
+	ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d\n",
+			ps->number, ps->pc, ps->carry, (int)vm->memory[ps->pc]);
+	ps->op(vm, ps);
 }

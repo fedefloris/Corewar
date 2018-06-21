@@ -28,9 +28,9 @@ SHARED_INCLUDES_DIR = $(SHARED_DIR)/includes
 INCLUDE_DIRS = -I $(SRCS_INCLUDES_DIR) -I $(LIBFT_INCLUDES_DIR) \
 	-I $(SHARED_INCLUDES_DIR)
 
-CONTROL_FILES = dump_memory duplicate_process exec_processes \
-	exec_vm insert_sub_process load_process \
-	load_processes remove_dead_processes
+CONTROL_FILES = dump_memory duplicate_process exec_process exec_processes \
+	add_op_to_queue exec_ops_queue exec_vm insert_sub_process \
+	load_process load_processes remove_dead_processes
 
 OP_TOOLS_FILES = calc_bytes decode_byte get_address get_next_bytes \
 	get_r get_reg_value get_value iterate_pc load_bytes \
