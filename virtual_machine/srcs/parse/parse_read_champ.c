@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 11:42:09 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/22 01:03:49 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 01:14:02 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ static int			do_read_champ(t_vm *vm, t_champ *champ)
 		error_exit(vm, "Failed to open file");
 	while (1)
 	{
-		if (len++ > max_bytes)
-			error_exit(vm, "File is too big.");
 		ft_bzero(buf, SIZE_OF_BUFF);
 		read_val = read(fd, buf, SIZE_OF_BUFF);
 		if (read_val < 0)
 			error_exit(vm, "Failed to open file");
+		if ((len += read_val) > max_bytes)
+			error_exit(vm, "File is too big.");
 		if (!read_val)
 			break ;
 		fill(vm, champ, buf, read_val);
