@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 11:08:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/18 18:01:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 00:50:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void			do_usage(void)
 	ft_printf("USAGE\n");
 	ft_printf(RESET);
 	ft_printf(PINK);
-	ft_printf("$> ./corewar [-a | -d | -x | -X] [-dump nbr_cycles]");
-	ft_printf("[[-n number] champion1.cor] ...\n");
+	ft_printf("$> ./corewar [-a | -d | -x | -X] [[-dump | -debug] nbr_cycles]");
+	ft_printf(" [[-n number] champion1.cor] ...\n");
 }
 
 static void			do_aff(void)
@@ -65,8 +65,12 @@ static void			do_mandatory(void)
 	ft_printf("-dump   Dump memory.\n");
 	ft_printf("        Example: > ./corewar -dump 27 dav.cor federico.cor\n");
 	ft_printf("        Here, Corewar will dump memory after 42 cycles.\n");
-	ft_printf("        Corewar does not accept Bitcoin Cash LOL.\r");
-	ft_printf("        Corewar can only accept 1 -dump argument.\n");
+	ft_printf("        Corewar can only accept 1 -dump argument.\n\n");
+	ft_printf("-debug  Debug Mode.\n");
+	ft_printf("        Example: > ./corewar -debug 27 dav.cor federico.cor\n");
+	ft_printf("        Dumps memory in animation mode for debug purposes.\n");
+	ft_printf("        Corewar does not accept Bitcoin Cash LOL.\n");
+	ft_printf("        Corewar can only accept 1 -debug argument.\n");
 }
 
 void				display_usage(void)
