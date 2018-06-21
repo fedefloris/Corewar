@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:31:39 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/16 18:49:01 by akaseris         ###   ########.fr       */
+/*   Updated: 2018/06/21 16:31:58 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,6 @@ void		ft_free_lines(t_line **lines)
 	*lines = NULL;
 }
 
-static void	ft_free_header(t_header **headers)
-{
-	t_header	*header;
-
-	header = *headers;
-	if (header->prog_name)
-		ft_strdel(&header->prog_name);
-	if (header->comment)
-		ft_strdel(&header->comment);
-	free(header);
-	*headers = NULL;
-}
-
 void		ft_free_label(t_label **labels)
 {
 	t_label *label;
@@ -96,7 +83,7 @@ void		ft_free_frame(t_frame **frames)
 
 	frame = *frames;
 	if (frame->header)
-		ft_free_header(&frame->header);
+		free(frame->header);
 	if (frame->lines)
 		ft_free_lines(&frame->lines);
 	if (frame->errors)

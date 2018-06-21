@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 18:07:57 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/19 14:29:44 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 16:18:45 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_output(int fd, t_frame *f, t_op *op)
 
 	line = f->lines;
 	ft_output_header(fd, f->header->prog_name, PROG_NAME_LENGTH + 3,
-		COREWAR_EXEC_MAGIC);
+		f->header->magic);
 	ft_output_header(fd, f->header->comment, COMMENT_LENGTH + 3, f->bytecount);
 	while (line)
 	{
