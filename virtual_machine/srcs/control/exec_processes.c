@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 14:54:49 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/15 02:34:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 00:39:40 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			exec_processes(t_vm *vm)
 		{
 			add_op_to_queue(vm, ps);
 			exec_process(vm, ps);
-		}	
+		}
 		else
 			ps->sleep_cycles--;
 		ps = ps->next;

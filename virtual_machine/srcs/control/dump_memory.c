@@ -6,13 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/22 00:11:07 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 00:36:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-static void			match_pc(t_vm *vm, int i, int *ps_id)
+static int			match_pc(t_vm *vm, int i)
 {
 	t_process		*ps;
 
@@ -21,11 +21,12 @@ static void			match_pc(t_vm *vm, int i, int *ps_id)
 	{
 		if (i == ps->pc)
 		{
-			*ps_id = ps->id;
+			return (ps->id);
 			break ;
 		}
 		ps = ps->next;
 	}
+	return (0);
 }
 
 static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
@@ -35,30 +36,24 @@ static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
 	int				ps_id;
 
 	j = 0;
-	ft_printf(B_BLUE);
-	ft_printf("%s%.8x  %s",B_BLUE, pane, RESET);
-	while (j < byte_width)
+	ft_printf("%s%.8x  %s", B_BLUE, pane, RESET);
+	while (j++ < byte_width && !(k = 0))
 	{
-		k = 0;
-		while (k++ < 8)
+		while (k++ < 8 && !(ps_id = 0))
 		{
 			ft_printf(BLUE);
-			ps_id = 0;
 			if (pane >= MEM_SIZE)
 				return ;
-			match_pc(vm, pane, &ps_id);
-			if (ps_id)
+			if ((ps_id = match_pc(vm, pane)))
 			{
 				(ps_id == 1) ? ft_printf(B_RED) : 0;
 				(ps_id == 2) ? ft_printf(B_GREEN) : 0;
 				(ps_id == 3) ? ft_printf(B_CYAN) : 0;
 				(ps_id == 4) ? ft_printf(B_YELLOW) : 0;
 			}
-			ft_printf("%.2x ", (unsigned char)bytes[pane++]);
-			ft_printf(RESET);
+			ft_printf("%.2x %s", (unsigned char)bytes[pane++], RESET);
 		}
 		ft_putchar(' ');
-		j++;
 	}
 	ft_putchar('\n');
 }
