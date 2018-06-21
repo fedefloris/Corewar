@@ -73,7 +73,8 @@ typedef struct			s_process
 
 typedef struct			s_ps_op
 {
-	t_byte_code			op;
+	t_process			*ps;
+	void				(*op)();
 	struct s_ps_op		*next;
 }						t_ps_op;
 
@@ -126,6 +127,7 @@ void					free_vm(t_vm *vm);
 void					free_names(t_name *names);
 void					free_champs(t_champ *champs);
 void					free_processes(t_process *processes);
+void					free_ops_queue(t_ps_op *ops_queue);
 
 void					parse_handler(t_vm *vm);
 void					parse_options(t_vm *vm);

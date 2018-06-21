@@ -45,7 +45,7 @@ PARSE_FILES = parse_bytes parse_count_champions parse_create_champ \
 	parse_check_dump_debug parse_debug parse_dump parse_num
 
 SYSTEM_FILES = config_vm display_usage error_exit free_champs free_names \
-	free_processes free_vm main
+	free_processes free_ops_queue free_vm main
 
 CONTROL_OBJS = $(addsuffix .o, $(CONTROL_FILES))
 OP_TOOLS_OBJS = $(addsuffix .o, $(OP_TOOLS_FILES))

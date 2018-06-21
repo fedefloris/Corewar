@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_ops_queue.c                                   :+:      :+:    :+:   */
+/*   free_ops_queue.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/21 18:01:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 18:01:57 by ffloris          ###   ########.fr       */
+/*   Created: 2018/06/21 18:27:21 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/21 18:27:22 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void		exec_ops_queue(t_vm *vm)
+void			free_ops_queue(t_ps_op *ops_queue)
 {
 	t_ps_op		*prev;
 
-	while (vm->ops_queue)
+	while (ops_queue)
 	{
-		prev = vm->ops_queue;
-		vm->ops_queue = vm->ops_queue->next;
-		ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d\n",
-			prev->ps->number, prev->ps->pc,
-			prev->ps->carry, (int)vm->memory[prev->ps->pc]);
-		prev->op(vm, prev->ps);
+		prev = ops_queue;
+		ops_queue = ops_queue->next;
 		free(prev);
 	}
 }
