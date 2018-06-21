@@ -6,7 +6,7 @@
 #    By: ffloris <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/05/03 10:16:27 by ffloris          ###   ########.fr        #
+#    Updated: 2018/06/21 16:26:32 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ OPERATIONS_FILES = op op_add op_aff op_and op_fork op_ld op_ldi \
 	op_xor op_zjmp save_op
 
 PARSE_FILES = parse_bytes parse_count_champions parse_create_champ \
-	parse_handler parse_options parse_read_champ
+	parse_handler parse_options parse_read_champ parse_aff \
+	parse_check_dump_debug parse_debug parse_dump parse_num
 
 SYSTEM_FILES = config_vm display_usage error_exit free_champs free_names \
 	free_processes free_vm main
