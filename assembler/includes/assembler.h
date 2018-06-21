@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:57:57 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 16:14:44 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 22:52:43 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int				ft_push_bytecode(t_list **bytecode, char c);
 char			*ft_get_arguments(char *s, t_line *line);
 int				ft_error(char *line, char *msg, int line_nb,
 					t_error **err_list);
-void			ft_error_output(t_error *error);
+void			ft_error_output(t_frame **frame);
 int				ft_valid_arg(char *s);
 int				ft_argno(char **arg);
 char			*ft_produce_line(t_frame *frame, char *str, int nb);

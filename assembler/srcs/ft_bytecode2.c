@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 21:49:31 by mfiguera          #+#    #+#             */
-/*   Updated: 2018/06/20 14:52:03 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 21:21:01 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_fill_dist(t_label *req, t_label *first, t_error **error)
 	t_label	*decl;
 	int		ret;
 
-	ret = 1;
+	ret = 0;
 	while (req)
 	{
 		decl = first;
@@ -53,9 +53,11 @@ int		ft_fill_dist(t_label *req, t_label *first, t_error **error)
 			decl = decl->next;
 		}
 		if (!decl)
-			ret = ft_error(ft_strdup(req->line),
+			ret += ft_error(ft_strdup(req->line),
 				ft_strdup("Label requested not declared"),
 				req->line_nb, error);
+		if (ret > 19)
+			return (ret);
 		req = req->next;
 	}
 	return (ret);
