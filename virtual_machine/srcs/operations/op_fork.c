@@ -22,6 +22,7 @@ void				op_fork(t_vm *vm, t_process *ps)
 	duplicate_process(vm, ps, &new_ps);
 	insert_sub_process(vm, new_ps);
 	get_address(ps, offset % IDX_MOD, &new_ps->pc);
-	new_ps->sleep_cycles = 1;
+	new_ps->sleep_cycles = 0;
+	new_ps->op = NULL;
 	iterate_pc(ps);
 }
