@@ -6,7 +6,7 @@
 /*   By: mfiguera <mfiguera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:35:56 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 16:25:32 by mfiguera         ###   ########.fr       */
+/*   Updated: 2018/06/21 17:11:39 by mfiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ int		main(int ac, char **av)
 	if (!frame->errors)
 	{
 		if (!frame->lines)
-			return (ft_printf("^2^$red$Error$eoc$: <%s> is empty or not a file\n", av[1]));
-		if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : NULL))
-			return (ft_printf("^2^$red$Error$eoc$: Creating .cor file stopped\n"));
+			return (ft_printf("^2^$red$Error$eoc$: <%s> %s\n", av[1],
+				"is empty or not a file"));
+			if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : 0))
+			return (ft_printf("^2^$red$Error$eoc$: Creating .cor stopped\n"));
 	}
 	else
 		ft_error_output(frame->errors);
