@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 18:03:37 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/22 14:06:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 14:14:25 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,10 @@ static void		insertion_sort(t_vm *vm, t_ps_op *op)
 	}
 	else
 	{
-		while (queue->next && op->ps->number > queue->ps->number)
+		while (queue->next && op->ps->number <= queue->next->ps->number)
 			queue = queue->next;
 		op->next = queue->next;
 		queue->next = op;
-	}
-	while (vm->tot_cycle > 26 && vm->ops_queue)
-	{
-		ft_printf("OPS %d\n", vm->ops_queue->ps->number);
-		vm->ops_queue = vm->ops_queue->next;
-		if (!vm->ops_queue)
-			exit (1);
 	}
 }
 
