@@ -72,5 +72,5 @@ void				save_op(t_process *ps, int op_code)
 		ps->sleep_cycles = 1;
 	}
 	else
-		ps->sleep_cycles = seek->nb_cycles - 1;
+		ps->sleep_cycles = seek->nb_cycles - 2;
 }
