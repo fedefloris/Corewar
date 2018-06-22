@@ -20,10 +20,7 @@ static int			match_pc(t_vm *vm, int i)
 	while (ps)
 	{
 		if (i == ps->pc)
-		{
 			return (ps->id);
-			break ;
-		}
 		ps = ps->next;
 	}
 	return (0);

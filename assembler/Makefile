@@ -52,14 +52,14 @@ $(LIBFT_FILE):
 
 $(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIR) $(OBJS_WITH_DIR)
 	@echo "Asm:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
-	@gcc $(GCC_FLAGS) $(OBJS_WITH_DIR) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
+	@cc $(GCC_FLAGS) $(OBJS_WITH_DIR) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo "Asm:" $(GREEN_COLOR) $< $(DEFAULT_COLOR)
-	@gcc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
+	@cc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 clean:
 	@make -C $(LIBFT_DIR)/ clean
