@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 18:03:37 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 18:03:44 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:06:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,28 @@
 
 static void		insertion_sort(t_vm *vm, t_ps_op *op)
 {
-	// t_ps_op		*ops;
+	t_ps_op		*queue;
 
-	// ops = vm->ops_queue;
-	// while (ops && ops->ps->number > op->ps->number)
-	op->next = vm->ops_queue;
-	vm->ops_queue = op;
+	queue = vm->ops_queue;
+	if (!vm->ops_queue || op->ps->number > vm->ops_queue->ps->number)
+	{
+		op->next = vm->ops_queue;
+		vm->ops_queue = op;
+	}
+	else
+	{
+		while (queue->next && op->ps->number > queue->ps->number)
+			queue = queue->next;
+		op->next = queue->next;
+		queue->next = op;
+	}
+	while (vm->tot_cycle > 26 && vm->ops_queue)
+	{
+		ft_printf("OPS %d\n", vm->ops_queue->ps->number);
+		vm->ops_queue = vm->ops_queue->next;
+		if (!vm->ops_queue)
+			exit (1);
+	}
 }
 
 void			add_op_to_queue(t_vm *vm, t_process *ps)
