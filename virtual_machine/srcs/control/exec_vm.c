@@ -49,7 +49,9 @@ void		exec_vm(t_vm *vm)
 		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d | processes %d\n",
 				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls, size(vm));
 		exec_processes(vm);
-		if (vm->cycle == vm->cycle_to_die && vm->cycle != vm->tot_cycle)
+		if (vm->tot_cycle == CYCLE_TO_DIE)
+			vm->cycle = 0;
+		if (vm->cycle == vm->cycle_to_die)
 		{
 			ft_printf("Every CYCLE_TO_DIE cycles: cycles = %d\n", vm->cycle);
 			remove_dead_processes(vm);
