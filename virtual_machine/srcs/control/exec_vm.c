@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 23:47:47 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 09:15:32 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void		exec_vm(t_vm *vm)
 		ft_printf("Cycle %d | cycle_to_die %d | tot_cycle %d | live_calls %d | processes %d\n",
 				vm->cycle, vm->cycle_to_die, vm->tot_cycle, vm->live_calls, size(vm));
 		dump_control(vm);
-		if (vm->tot_cycle == vm->dump)
-			dump_memory(vm, 4, 1);
 		vm->cycle++;
 		vm->tot_cycle++;
 	}
