@@ -18,7 +18,6 @@ void				op_add(t_vm *vm, t_process *ps)
 	int				r2;
 	int				r3;
 
-	ft_printf("Inside op_add\n");
 	modify_pc_tmp(ps, 1);
 	get_next_bytes(vm, ps, &r1, 1);
 	get_next_bytes(vm, ps, &r2, 1);

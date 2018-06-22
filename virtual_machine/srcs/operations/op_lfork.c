@@ -17,7 +17,6 @@ void				op_lfork(t_vm *vm, t_process *ps)
 	t_process		*new_ps;
 	int				offset;
 
-	ft_printf("Inside op_lfork\n");
 	get_next_bytes(vm, ps, &offset, 2);
 	duplicate_process(vm, ps, &new_ps);
 	insert_sub_process(vm, new_ps);

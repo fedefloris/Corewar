@@ -98,7 +98,7 @@ $(LIBFT_OBJS_DIRS):
 	
 $(LIBFT_OBJS_DIR)/%.o: $(LIBFT_SRCS_DIR)/%.c
 	@echo "Libft: \033[0;32m" $< "\033[0m"
-	@gcc $(GCC_FLAGS) -c $< -o $@ -I $(LIBFT_INCLUDES_DIR)/
+	@cc $(GCC_FLAGS) -c $< -o $@ -I $(LIBFT_INCLUDES_DIR)/
 
 clean:
 	@rm -rf $(OBJS) $(LIBFT_OBJS_DIR)

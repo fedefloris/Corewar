@@ -19,7 +19,6 @@ void				op_ld(t_vm *vm, t_process *ps)
 	int				p1;
 	int				p2;
 
-	ft_printf("Inside op_ld\n");
 	modify_pc_tmp(ps, 1);
 	encoded = vm->memory[ps->pc_tmp];
 	calc_bytes(encoded, 1, &bytes);

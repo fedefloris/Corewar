@@ -85,14 +85,14 @@ $(LIBFT_FILE):
 
 $(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIRS) $(OBJS)
 	@echo "Corewar:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
-	@gcc $(GCC_FLAGS) $(OBJS) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
+	@cc $(GCC_FLAGS) $(OBJS) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
 $(OBJS_DIRS):
 	@mkdir -p $(OBJS_DIRS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo "Corewar:" $(GREEN_COLOR) $< $(DEFAULT_COLOR)
-	@gcc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
+	@cc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 clean:
 	@make -C $(LIBFT_DIR)/ clean

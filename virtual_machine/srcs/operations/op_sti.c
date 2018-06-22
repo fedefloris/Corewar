@@ -31,7 +31,6 @@ void				op_sti(t_vm *vm, t_process *ps)
 	int				p2;
 	int				p3;
 
-	ft_printf("Inside op_sti\n");
 	modify_pc_tmp(ps, 1);
 	encoded = vm->memory[ps->pc_tmp];
 	get_next_bytes(vm, ps, &p1, 1);

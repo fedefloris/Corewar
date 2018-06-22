@@ -12,35 +12,40 @@
 
 #include "virtual_machine.h"
 
+static void	remove_dead_process(t_vm *vm, t_process **ps, t_process *prev)
+{
+	if (!prev)
+	{
+		vm->process = (*ps)->next;
+		ft_memdel((void*)ps);
+		*ps = vm->process;
+	}
+	else
+	{
+		prev->next = (*ps)->next;
+		ft_memdel((void*)ps);
+		*ps = prev->next;
+	}
+}
+
 void		remove_dead_processes(t_vm *vm)
 {
-	t_process	*prev_ps;
+	t_process	*prev;
 	t_process	*ps;
 
-	prev_ps = NULL;
+	prev = NULL;
 	ps = vm->process;
 	while (ps)
 	{
 		if (ps->live_calls == 0)
 		{
 			ft_printf("Process n.%d didn't call live\n", ps->number);
-			if (!prev_ps)
-			{
-				vm->process = ps->next;
-				ft_memdel((void*)&ps);
-				ps = vm->process;
-			}
-			else
-			{
-				prev_ps->next = ps->next;
-				ft_memdel((void*)&ps);
-				ps = prev_ps->next;
-			}
+			remove_dead_process(vm, &ps, prev);
 		}
 		else
 		{
 			ps->live_calls = 0;
-			prev_ps = ps;
+			prev = ps;
 			ps = ps->next;
 		}
 	}

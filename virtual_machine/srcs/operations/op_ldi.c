@@ -20,7 +20,6 @@ void				op_ldi(t_vm *vm, t_process *ps)
 	int				p2;
 	int				p3;
 
-	ft_printf("Inside op_ldi\n");
 	p1 = 0;
 	p2 = 0;
 	p3 = 0;
