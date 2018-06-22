@@ -89,7 +89,7 @@ all: $(NAME)
 norm:
 	@norminette $(LIBFT_INCLUDES_DIR) $(LIBFT_SRCS_DIR)
 
-$(NAME): $(LIBFT_OBJS_DIRS) $(LIBFT_HEADERS) $($(OBJS)
+$(NAME): $(LIBFT_OBJS_DIRS) $(LIBFT_HEADERS) $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
