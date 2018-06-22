@@ -22,14 +22,11 @@ void			exec_processes(t_vm *vm)
 		if (!ps->sleep_cycles)
 		{
 			add_op_to_queue(vm, ps);
-			exec_process(vm, ps);
+			if (!ps->op)
+				exec_process(vm, ps);
 		}
 		else
 			ps->sleep_cycles--;
-			ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d | sleep_cycles %d\n",
-			ps->number, ps->pc,
-			ps->carry, (int)vm->memory[ps->pc],
-			ps->sleep_cycles);
 		ps = ps->next;
 	}
 	exec_ops_queue(vm);
