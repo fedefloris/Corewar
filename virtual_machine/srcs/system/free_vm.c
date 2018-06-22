@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 13:55:52 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/06 13:59:59 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 13:32:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void				free_vm(t_vm *vm)
 {
+	ft_printf(SHOW_CURSOR);
 	free_names(vm->name);
 	free_champs(vm->champ);
 	free_processes(vm->process);
