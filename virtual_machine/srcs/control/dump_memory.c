@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 21:05:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/06/22 00:36:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 11:19:07 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ static void			print_line(t_vm *vm, char *bytes, int pane, int byte_width)
 	ft_putchar('\n');
 }
 
+static void			print_player_info(t_process *ps)
+{
+	ft_printf("Player %d (%s) ", ps->number, ps->name);
+	ft_printf("%s ", (ps->live_calls) ? "seen alive" : "is missing");
+	ft_printf("and will sleep for cycles of %-20d\n", ps->sleep_cycles);
+	ft_printf(RESET);
+}
+
 static void			print_cycle_info(t_vm *vm)
 {
 	t_process		*ps;
@@ -78,8 +86,7 @@ static void			print_cycle_info(t_vm *vm)
 				(ps->id == 2) ? ft_printf(B_GREEN) : 0;
 				(ps->id == 3) ? ft_printf(B_CYAN) : 0;
 				(ps->id == 4) ? ft_printf(B_YELLOW) : 0;
-				ft_printf("Player %d (%s)\n", ps->number, ps->name);
-				ft_printf(RESET);
+				print_player_info(ps);
 				break ;
 			}
 			ps = ps->next;
