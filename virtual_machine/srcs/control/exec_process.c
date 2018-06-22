@@ -14,7 +14,6 @@
 
 void		exec_process(t_vm *vm, t_process *ps)
 {
-	ps->op = NULL;
 	ps->pc_tmp = ps->pc;
 	save_op(ps, (int)vm->memory[ps->pc]);
 }

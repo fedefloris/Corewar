@@ -28,6 +28,10 @@ SHARED_INCLUDES_DIR = $(SHARED_DIR)/includes
 INCLUDE_DIRS = -I $(SRCS_INCLUDES_DIR) -I $(LIBFT_INCLUDES_DIR) \
 	-I $(SHARED_INCLUDES_DIR)
 
+INCLUDES_FILES = virtual_machine
+HEADERS = $(addsuffix .h, $(patsubst %, $(SRCS_INCLUDES_DIR)/%, $(INCLUDES_FILES)))
+HEADERS += $(SHARED_INCLUDES_DIR)/op.h
+
 CONTROL_FILES = dump_memory duplicate_process exec_process exec_processes \
 	add_op_to_queue exec_ops_queue exec_vm insert_sub_process \
 	load_process load_processes remove_dead_processes
@@ -79,7 +83,7 @@ $(LIBFT_FILE):
 	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT_FILE) $(OBJS_DIRS) $(OBJS)
+$(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIRS) $(OBJS)
 	@echo "Corewar:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
 	@gcc $(GCC_FLAGS) $(OBJS) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
