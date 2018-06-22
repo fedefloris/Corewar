@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 16:52:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/22 11:29:36 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 14:41:57 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	dump_control(t_vm *vm)
 			ft_printf(CLEAR);
 		ft_printf(CUR_RESET);
 		dump_memory(vm, 8, 0);
-		usleep(100000);
+		usleep(10000);
 	}
 }
 
