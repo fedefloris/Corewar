@@ -28,6 +28,10 @@ SHARED_INCLUDES_DIR = $(SHARED_DIR)/includes
 INCLUDE_DIRS = -I $(SRCS_INCLUDES_DIR) -I $(LIBFT_INCLUDES_DIR) \
 	-I $(SHARED_INCLUDES_DIR)
 
+INCLUDES_FILES = assembler
+HEADERS = $(addsuffix .h, $(patsubst %, $(SRCS_INCLUDES_DIR)/%, $(INCLUDES_FILES)))
+HEADERS += $(SHARED_INCLUDES_DIR)/op.h
+
 FILES = main ft_input ft_inp_tools ft_lst_tools ft_line_parsing ft_free \
 	ft_error ft_output ft_valid_arg ft_line_producing ft_bytecode \
 	ft_bytecode2 op
@@ -46,7 +50,7 @@ $(LIBFT_FILE):
 	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT_FILE) $(OBJS_DIR) $(OBJS_WITH_DIR)
+$(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIR) $(OBJS_WITH_DIR)
 	@echo "Asm:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
 	@gcc $(GCC_FLAGS) $(OBJS_WITH_DIR) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
