@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 20:58:52 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/21 21:17:10 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/06/22 11:33:24 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "op.h"
 # define SIZE_OF_BUFF	64
 # define CLEAR			"\x1b[H\x1b[2J"
+# define CUR_RESET		"\x1b[H\x1b[?25l"
 # define B_RED			"\x1b[1m\x1b[31m"
 # define B_GREEN		"\x1b[1m\x1b[32m"
 # define B_YELLOW		"\x1b[1m\x1b[33m"
