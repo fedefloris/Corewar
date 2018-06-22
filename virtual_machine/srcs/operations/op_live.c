@@ -31,9 +31,7 @@ void				op_live(t_vm *vm, t_process *ps)
 	int				player_number;
 	t_process		*ps_live;
 
-	ft_printf("Inside op_live\n");
 	get_next_bytes(vm, ps, &player_number, 4);
-	ft_printf("Player-nbr: %d, %d\n", ps->number, player_number);
 	if ((ps_live = get_ps(vm, player_number)))
 	{
 		vm->live_calls++;

@@ -19,7 +19,6 @@ void				op_aff(t_vm *vm, t_process *ps)
 
 	get_address(ps, 2, &pc);
 	reg = vm->memory[pc];
-	ft_printf("Inside op_aff\n");
 	if (vm->aff || vm->affd || vm->affx || vm->affx2)
 	{
 		ft_printf(CYAN);

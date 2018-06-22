@@ -16,7 +16,6 @@ void				op_zjmp(t_vm *vm, t_process *ps)
 {
 	int				modify;
 
-	ft_printf("Inside op_zjmp carry: %d\n", ps->carry);
 	if (ps->carry)
 	{
 		get_next_bytes(vm, ps, &modify, 2);

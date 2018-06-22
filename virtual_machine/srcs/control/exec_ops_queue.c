@@ -20,9 +20,6 @@ void		exec_ops_queue(t_vm *vm)
 	{
 		prev = vm->ops_queue;
 		vm->ops_queue = vm->ops_queue->next;
-		ft_printf("Exec_ps %d | pc  %d | carry %d | op_code %d\n",
-			prev->ps->number, prev->ps->pc,
-			prev->ps->carry, (int)vm->memory[prev->ps->pc]);
 		prev->op(vm, prev->ps);
 		prev->ps->op = NULL;
 		free(prev);
