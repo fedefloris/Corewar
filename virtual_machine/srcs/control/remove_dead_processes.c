@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 17:16:27 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/19 15:26:34 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/06/23 09:37:23 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void		remove_dead_processes(t_vm *vm)
 		{
 			ft_printf("Process n.%d didn't call live\n", ps->number);
 			remove_dead_process(vm, &ps, prev);
+			if (vm->debug && vm->debug <= vm->tot_cycle)
+				system("say Death reported");
 		}
 		else
 		{
