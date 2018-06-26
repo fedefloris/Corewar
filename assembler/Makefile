@@ -50,14 +50,14 @@ $(LIBFT_FILE):
 	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIR) $(OBJS_WITH_DIR)
+$(NAME): $(LIBFT_FILE) $(OBJS_DIR) $(OBJS_WITH_DIR)
 	@echo "Asm:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) $(OBJS_WITH_DIR) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
 	@echo "Asm:" $(GREEN_COLOR) $< $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 

@@ -83,14 +83,14 @@ $(LIBFT_FILE):
 	@echo "Libft:" $(GREEN_COLOR) Compiling Libft $(DEFAULT_COLOR)
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT_FILE) $(HEADERS) $(OBJS_DIRS) $(OBJS)
+$(NAME): $(LIBFT_FILE) $(OBJS_DIRS) $(OBJS)
 	@echo "Corewar:" $(GREEN_COLOR) $(NAME) $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) $(OBJS) -o $(NAME) $(LIBFT_FILE) $(INCLUDE_DIRS)
 
 $(OBJS_DIRS):
 	@mkdir -p $(OBJS_DIRS)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c  $(HEADERS)
 	@echo "Corewar:" $(GREEN_COLOR) $< $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
