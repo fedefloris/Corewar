@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-long	ft_atoi_n(const char *str, size_t n)
+int		ft_atoi_n(const char *str, size_t n)
 {
-	unsigned long	nbr;
+	unsigned int	nbr;
 	int				neg;
 
 	while (ft_isspace(*str))
@@ -36,5 +36,5 @@ long	ft_atoi_n(const char *str, size_t n)
 		nbr = nbr * 10 + (*str - '0');
 		str++;
 	}
-	return (neg) ? -(long)nbr : (long)nbr;
+	return (neg) ? -(int)nbr : (int)nbr;
 }

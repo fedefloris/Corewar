@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/26 10:21:35 by ffloris           #+#    #+#             */
-/*   Updated: 2018/06/26 10:21:39 by ffloris          ###   ########.fr       */
+/*   Created: 2018/06/26 13:51:59 by ffloris           #+#    #+#             */
+/*   Updated: 2018/06/26 13:52:00 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinfree(char *ret, char *s1, char *s2)
+long long		ft_atoll(const char *str)
 {
-	char *str;
+	unsigned long long	nbr;
+	int					neg;
 
-	if (!s1 && !s2)
-		return (NULL);
-	str = ft_strjoin(s1, s2);
-	if (ret)
-		free(ret);
-	return (str);
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
+	{
+		neg = 1;
+		str++;
+	}
+	else
+	{
+		neg = 0;
+		if (*str == '+')
+			str++;
+	}
+	nbr = 0;
+	while (ft_isdigit(*str))
+	{
+		nbr = nbr * 10 + (*str - '0');
+		str++;
+	}
+	return (neg) ? -(long long)nbr : (long long)nbr;
 }

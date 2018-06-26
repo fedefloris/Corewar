@@ -12,29 +12,7 @@
 
 #include "libft.h"
 
-long	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
-	unsigned long	nbr;
-	int				neg;
-
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-')
-	{
-		neg = 1;
-		str++;
-	}
-	else
-	{
-		neg = 0;
-		if (*str == '+')
-			str++;
-	}
-	nbr = 0;
-	while (ft_isdigit(*str))
-	{
-		nbr = nbr * 10 + (*str - '0');
-		str++;
-	}
-	return (neg) ? -(long)nbr : (long)nbr;
+	return ((int)ft_atoll(str));
 }

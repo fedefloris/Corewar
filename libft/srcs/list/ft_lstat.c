@@ -14,14 +14,10 @@
 
 t_list		*ft_lstat(t_list *lst, size_t nbr)
 {
-	if (lst)
+	while (nbr > 0 && lst != NULL)
 	{
-		while (nbr > 0 && lst != NULL)
-		{
-			lst = lst->next;
-			nbr--;
-		}
-		return ((nbr == 0) ? lst : NULL);
+		lst = lst->next;
+		nbr--;
 	}
-	return (NULL);
+	return ((nbr == 0) ? lst : NULL);
 }
