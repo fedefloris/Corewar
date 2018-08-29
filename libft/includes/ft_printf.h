@@ -61,6 +61,7 @@ typedef struct			s_printf
 	va_list				*params;
 	int					chrs_written;
 }						t_printf;
+
 typedef struct			s_fmt_ops
 {
 	t_printf			*tp;
@@ -77,6 +78,7 @@ typedef struct			s_fmt_ops
 	int					intmax_type;
 	int					size_t_type;
 }						t_fmt_ops;
+
 typedef struct			s_nbr
 {
 	uintmax_t			nbr;
@@ -86,16 +88,21 @@ typedef struct			s_nbr
 	int					neg;
 	int					sign;
 }						t_nbr;
+
 typedef struct			s_fmt_type
 {
 	char				*id;
 	void				(*put_type)(t_fmt_ops *ops);
 }						t_fmt_type;
+
 typedef struct			s_fmt
 {
 	char				*id;
 	void				(*put)(t_printf *tp);
 }						t_fmt;
+
+extern t_fmt_type			g_types[];
+
 void					setup_ops(t_printf *tp, t_fmt_ops *ops);
 void					set_flags(t_fmt_ops *ops);
 void					set_width(t_fmt_ops *ops);

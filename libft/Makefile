@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akaseris <akaseris@student.42.fr>          +#+  +:+       +#+         #
+#    By: ffloris <ffloris@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/06/26 10:15:55 by ffloris          ###   ########.fr        #
+#    Updated: 2018/08/22 16:10:17 by ffloris          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 GCC_FLAGS = -Werror -Wextra -Wall
 
-LIBFT_IN_OBJS = get_next_line.o get_next.o
+LIBFT_IN_OBJS = ft_get_next_line.o ft_get_next.o
 
 LIBFT_LIST_OBJS = ft_lstnew.o ft_lstcpy.o ft_lstappend.o ft_lstremove.o \
 	ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstfind.o \
@@ -42,7 +42,8 @@ LIBFT_OUT_OBJS = ft_putchar.o ft_putwchar.o \
 	ft_printf_putnbr.o ft_printf_putonbr.o ft_printf_puthexanbr.o \
 	ft_printf_nbrs.o ft_printf_putaddr.o ft_printf_padding.o \
 	ft_printf_colors.o ft_printf_chars_written.o \
-	ft_printf_fd.o ft_printf_putbinary.o ft_printf_setup_ops.o
+	ft_printf_fd.o ft_printf_putbinary.o ft_printf_setup_ops.o \
+	ft_printf_types.o
 
 LIBFT_STRING_OBJS = ft_strlen.o ft_strdup.o ft_strcpy.o \
 	ft_strncpy.o ft_strcat.o ft_strncat.o ft_strlcat.o \
@@ -72,7 +73,7 @@ LIBFT_OBJS_DIRS = $(LIBFT_IN_OBJS_DIR) $(LIBFT_LIST_OBJS_DIR) \
 LIBFT_SRCS_DIR = srcs
 
 LIBFT_INCLUDES_DIR = includes
-LIBFT_INCLUDES_FILES = ft_printf ft_printf_colors ft_printf_put libft
+LIBFT_INCLUDES_FILES = ft_printf ft_printf_colors libft
 LIBFT_HEADERS = $(addsuffix .h, $(patsubst %, $(LIBFT_INCLUDES_DIR)/%, $(LIBFT_INCLUDES_FILES)))
 
 OBJS = $(addprefix $(LIBFT_IN_OBJS_DIR)/, $(LIBFT_IN_OBJS))
@@ -98,9 +99,9 @@ $(NAME): $(LIBFT_OBJS_DIRS) $(OBJS) $(LIBFT_HEADERS)
 
 $(LIBFT_OBJS_DIRS):
 	@mkdir -p $(LIBFT_OBJS_DIRS)
-	
+
 $(LIBFT_OBJS_DIR)/%.o: $(LIBFT_SRCS_DIR)/%.c $(LIBFT_HEADERS)
-	@echo "Libft: " $(GREEN_COLOR) $< $(DEFAULT_COLOR) 
+	@echo "Libft: " $(GREEN_COLOR) $< $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) -c $< -o $@ -I $(LIBFT_INCLUDES_DIR)/
 
 clean:

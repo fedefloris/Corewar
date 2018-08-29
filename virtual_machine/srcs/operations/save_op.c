@@ -12,7 +12,7 @@
 
 #include "virtual_machine.h"
 
-static void			setup_ops(t_op_code *table)
+static void			setup(t_op_code *table)
 {
 	table[454501] = &op_live;
 	table[1764] = &op_ld;
@@ -39,7 +39,7 @@ static t_op_code	get_op(long op_code)
 	if (op_code < 1 || op_code > 7237483)
 		return (NULL);
 	if (!table[1764])
-		setup_ops(table);
+		setup(table);
 	return (table[op_code]);
 }
 

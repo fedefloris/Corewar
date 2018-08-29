@@ -50,7 +50,7 @@ int			ft_input(int fd, t_frame *frame)
 
 	ret = 0;
 	line_nb = 1;
-	while ((nb = get_next(fd, &str, '\n')))
+	while ((nb = ft_get_next(fd, &str, '\n')))
 	{
 		if ((err_msg = ft_valid_line(str, frame, line_nb)))
 			ret += ft_error(ft_strdup(str), err_msg, line_nb, &frame->errors);

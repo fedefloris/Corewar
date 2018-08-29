@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next.c                                         :+:      :+:    :+:   */
+/*   ft_get_next.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void		get(char buff, char **line, size_t size)
+static void	get(char buff, char **line, size_t size)
 {
 	char	*temp;
 
@@ -25,7 +25,7 @@ static void		get(char buff, char **line, size_t size)
 		free(temp);
 }
 
-int				get_next(const int fd, char **line, char c)
+int		ft_get_next(const int fd, char **line, char c)
 {
 	char		buff;
 	ssize_t		res;

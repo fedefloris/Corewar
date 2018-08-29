@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_put.h                                    :+:      :+:    :+:   */
+/*   ft_printf_types.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 17:06:06 by ffloris           #+#    #+#             */
-/*   Updated: 2018/04/25 10:17:24 by ffloris          ###   ########.fr       */
+/*   Created: 2018/04/24 12:32:58 by ffloris           #+#    #+#             */
+/*   Updated: 2018/04/26 11:29:47 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_PUT_H
-# define FT_PRINTF_PUT_H
+#include "libft.h"
+#include "ft_printf.h"
 
 t_fmt_type	g_types[] =
 {
@@ -34,5 +34,3 @@ t_fmt_type	g_types[] =
 	{PUT_ID, &ft_printf_putid},
 	{NULL, NULL}
 };
-
-#endif
