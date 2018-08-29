@@ -78,7 +78,7 @@ int		main(int ac, char **av)
 		if (!frame->lines)
 			return (ft_printf("^2^$red$Error$eoc$: <%s> %s\n", av[1],
 				"is empty or not a file"));
-			if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : 0))
+		if (!ft_write_file(frame, g_op_tab, av[1], (ac == 3) ? av[2] : 0))
 			return (ft_printf("^2^$red$Error$eoc$: Creating .cor stopped\n"));
 	}
 	else

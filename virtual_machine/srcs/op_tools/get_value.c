@@ -21,8 +21,6 @@ void	get_value(t_vm *vm, t_process *ps, unsigned char encoded,
 {
 	if (encoded == REG_CODE)
 		*parameter = ps->r[get_r(*parameter % 256)];
-	if (encoded == DIR_CODE)
-		;
 	if (encoded == IND_CODE)
 		*parameter = vm->memory[return_address(ps, *parameter)];
 }

@@ -15,11 +15,9 @@
 void				get_bytes(t_vm *vm, t_champ *champ)
 {
 	int				i;
-	int				bytes_len;
 	t_byte_code		*byte_code;
 
 	i = 0;
-	bytes_len = 0;
 	byte_code = champ->byte_code;
 	while (byte_code && i++ < PROG_NAME_LENGTH + COMMENT_LENGTH + 16)
 		byte_code = byte_code->next;
