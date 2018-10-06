@@ -6,7 +6,7 @@
 #    By: ffloris <ffloris@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/13 09:39:19 by ffloris           #+#    #+#              #
-#    Updated: 2018/08/22 16:10:17 by ffloris          ###   ########.fr        #
+#    Updated: 2018/10/06 15:27:33 by ffloris          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,23 +85,26 @@ OBJS += $(addprefix $(LIBFT_STRING_OBJS_DIR)/, $(LIBFT_STRING_OBJS))
 
 SRCS = $(patsubst $(LIBFT_OBJS_DIR)/%.o, $(LIBFT_SRCS_DIR)/%.c, $(OBJS))
 
+CLEAR_LINE = "\033[1A\033[K"
 GREEN_COLOR = "\033[0;32m"
 DEFAULT_COLOR = "\033[0m"
+FINAL_TEXT = $(NAME) "created!"
 
-all: $(NAME)
+all: init_print $(NAME)
 
-norm:
-	@norminette $(LIBFT_INCLUDES_DIR) $(LIBFT_SRCS_DIR)
+init_print:
+	@echo
 
 $(NAME): $(LIBFT_OBJS_DIRS) $(OBJS) $(LIBFT_HEADERS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@echo $(FINAL_TEXT)
 
 $(LIBFT_OBJS_DIRS):
 	@mkdir -p $(LIBFT_OBJS_DIRS)
 
 $(LIBFT_OBJS_DIR)/%.o: $(LIBFT_SRCS_DIR)/%.c $(LIBFT_HEADERS)
-	@echo "Libft: " $(GREEN_COLOR) $< $(DEFAULT_COLOR)
+	@echo $(CLEAR_LINE)Creating '$(NAME)': $(GREEN_COLOR) $< $(DEFAULT_COLOR)
 	@cc $(GCC_FLAGS) -c $< -o $@ -I $(LIBFT_INCLUDES_DIR)/
 
 clean:
@@ -112,4 +115,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all norm clean fclean re
+.PHONY: all init_print clean fclean re

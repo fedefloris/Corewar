@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void	save_next(t_buff *buff, char **line, char *occ)
+static void		save_next(t_buff *buff, char **line, char *occ)
 {
 	char	*temp1;
 	char	*temp2;
@@ -29,7 +29,7 @@ static void	save_next(t_buff *buff, char **line, char *occ)
 	buff->content = temp1;
 }
 
-static int	get(t_buff *buff, char **line)
+static int		get_next(t_buff *buff, char **line)
 {
 	char	*temp1;
 	char	*occ;
@@ -91,7 +91,7 @@ static t_buff	*get_buff(t_buff **buffs, const int fd)
 	return (setup_buff(buffs, fd, buff));
 }
 
-int		ft_get_next_line(const int fd, char **line)
+int						ft_get_next_line(const int fd, char **line)
 {
 	static	t_buff	*buffs = NULL;
 	t_buff			*buff;
@@ -103,10 +103,13 @@ int		ft_get_next_line(const int fd, char **line)
 	*line = NULL;
 	if (!(buff = get_buff(&buffs, fd)))
 		return (-1);
-	if (!(gt = get(buff, line)))
+	if (!(gt = get_next(buff, line)))
 	{
-		while ((rs = read(fd, buff->content, 1)) > 0)
-			get(buff, line);
+		while ((rs = read(fd, buff->content, BUFF_SIZE)) > 0)
+		{
+			if (get_next(buff, line))
+				return (1);
+		}
 		if (*line && **line && !rs)
 		{
 			free(buff->content);
