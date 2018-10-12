@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 13:34:35 by ffloris           #+#    #+#             */
-/*   Updated: 2018/04/13 18:03:57 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/10/06 21:34:13 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static t_buff	*get_buff(t_buff **buffs, const int fd)
 	return (setup_buff(buffs, fd, buff));
 }
 
-int						ft_get_next_line(const int fd, char **line)
+int				ft_get_next_line(const int fd, char **line)
 {
 	static	t_buff	*buffs = NULL;
 	t_buff			*buff;

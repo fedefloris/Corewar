@@ -1,5 +1,5 @@
 # Libft - 42Born2Code
-My implementation of some of the Standard C Library functions + some additional ones.
+My personal C library used at 42Born2Code.
 
 ## What is libft?
 The goal of this project is to re-implement some standard C library functions + some additional ones that we gonna use in every 42 project written in C.

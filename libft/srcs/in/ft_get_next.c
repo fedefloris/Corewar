@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 13:34:35 by ffloris           #+#    #+#             */
-/*   Updated: 2018/05/27 20:40:40 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/10/06 21:33:52 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	get(char buff, char **line, size_t size)
 		free(temp);
 }
 
-int		ft_get_next(const int fd, char **line, char c)
+int			ft_get_next(const int fd, char **line, char c)
 {
 	char		buff;
 	ssize_t		res;

@@ -88,17 +88,21 @@ SRCS = $(patsubst $(LIBFT_OBJS_DIR)/%.o, $(LIBFT_SRCS_DIR)/%.c, $(OBJS))
 CLEAR_LINE = "\033[1A\033[K"
 GREEN_COLOR = "\033[0;32m"
 DEFAULT_COLOR = "\033[0m"
-FINAL_TEXT = $(NAME) "created!"
+CREATED_TEXT = $(NAME) "created!\n"
+FINAL_TEXT = "Done"
 
-all: init_print $(NAME)
+all: init_print $(NAME) end_print
 
 init_print:
 	@echo
 
+end_print:
+	@echo $(CLEAR_LINE)$(FINAL_TEXT)
+
 $(NAME): $(LIBFT_OBJS_DIRS) $(OBJS) $(LIBFT_HEADERS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo $(FINAL_TEXT)
+	@echo $(CREATED_TEXT)
 
 $(LIBFT_OBJS_DIRS):
 	@mkdir -p $(LIBFT_OBJS_DIRS)
@@ -115,4 +119,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all init_print clean fclean re
+.PHONY: all init_print end_print clean fclean re

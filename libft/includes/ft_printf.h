@@ -6,7 +6,7 @@
 /*   By: ffloris <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 12:44:17 by ffloris           #+#    #+#             */
-/*   Updated: 2018/04/26 11:34:14 by ffloris          ###   ########.fr       */
+/*   Updated: 2018/10/06 21:24:15 by ffloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,14 @@ typedef struct			s_fmt
 	void				(*put)(t_printf *tp);
 }						t_fmt;
 
-extern t_fmt_type			g_types[];
+extern t_fmt_type		g_types[];
 
 void					setup_ops(t_printf *tp, t_fmt_ops *ops);
 void					set_flags(t_fmt_ops *ops);
 void					set_width(t_fmt_ops *ops);
 void					set_precision(t_fmt_ops *ops);
 void					set_length(t_fmt_ops *ops);
+
 int						ft_printf_parse(t_printf *tp);
 void					ft_printf_colors(t_printf *tp);
 void					ft_printf_fd(t_printf *tp);
@@ -129,6 +130,7 @@ void					ft_printf_put_uintmax_nbr(uintmax_t n, int fd,
 									uintmax_t base, int hexa_uppercase);
 uintmax_t				ft_printf_get_unbr(t_fmt_ops *ops);
 uintmax_t				ft_printf_get_nbr(t_fmt_ops *ops, int *neg);
+
 void					padding_with(t_fmt_ops *ops, size_t params_size,
 														char value);
 void					padding_with_prec(t_fmt_ops *ops, size_t params_size,
