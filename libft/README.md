@@ -2,20 +2,20 @@
 My personal C library used at 42Born2Code.
 
 ## What is libft?
-The goal of this project is to re-implement some standard C library functions + some additional ones that we gonna use in every 42 project written in C.
+Libft is a 42 project where we have to re-implement some standard C library functions + some additional ones.
 
 For more details look at the [subject](subject.pdf).
 
 ## How do I use the library?
-```
+```console
 git clone https://github.com/fedefloris/Libft.git && cd Libft && make
 ```
-Now you should see a '*libft.a*' file in the root folder.
-```
+Now you should see a **libft.a** file in the root folder.
+```console
 gcc your_file.c libft.a -I includes
 ```
-Example of '*your_file.c*':
-```
+Example of **your_file.c**:
+```c
 #include "libft.h"
 
 int main(void)
