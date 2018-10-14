@@ -2,7 +2,7 @@
 A game where little programs fight inside a virtual machine. 
 
 ## What is Corewar?
-It's a 42 project based on the famous [Corewar](https://en.wikipedia.org/wiki/Core_War) created by D. G. Jones and A. K. Dewdney.
+It's a 42 project inspired by the famous [Corewar](https://en.wikipedia.org/wiki/Core_War).
 
 For more details look at the [subject](subject.pdf).
 
