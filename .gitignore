@@ -4,10 +4,10 @@
 # Executable && lib
 *.a
 a.out
-./asm
-./corewar
-./assembler/asm
-./virtual_machine/corewar
+asm
+corewar
+assembler/asm
+virtual_machine/corewar
 
 # Compiled sources
 *obj
