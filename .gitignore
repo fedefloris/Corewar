@@ -1,0 +1,21 @@
+# Pollution
+.DS_Store
+
+# Executable && lib
+*.a
+a.out
+/ft_ls
+
+# Compiled sources
+*obj
+*.o
+
+# Valgrind folder
+ft_ls.dSYM
+
+# Secure malloc tool residues
+.sym_logs
+*.infected
+
+# VIM
+*.swp
