@@ -8,7 +8,7 @@ For more details look at the [subject](subject.pdf).
 
 ## How do I use it?
 ```console
-git clone https://github.com/fedefloris/Corewar.git && cd Corewar && make
+git clone --recursive https://github.com/fedefloris/Corewar.git && cd Corewar && make
 ```
 ```console
 ./asm champion/451.s && ./asm resources/champs/examples/zork.s
