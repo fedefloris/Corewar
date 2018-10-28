@@ -4,7 +4,8 @@
 # Executable && lib
 *.a
 a.out
-/ft_ls
+/asm
+/corewar
 
 # Compiled sources
 *obj
