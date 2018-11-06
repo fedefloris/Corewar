@@ -6,15 +6,14 @@
 a.out
 asm
 corewar
-assembler/asm
-virtual_machine/corewar
 
 # Compiled sources
 *obj
 *.o
 
 # Valgrind folder
-ft_ls.dSYM
+asm.dSYM
+corewar.dSYM
 
 # Secure malloc tool residues
 .sym_logs
