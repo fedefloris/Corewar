@@ -1,23 +1,54 @@
-# Pollution
-.DS_Store
+# Prerequisites
+*.d
 
-# Executable && lib
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
 *.a
-a.out
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
 asm
 corewar
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
-# Compiled sources
-*obj
-*.o
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
 
-# Valgrind folder
-asm.dSYM
-corewar.dSYM
-
-# Secure malloc tool residues
-.sym_logs
-*.infected
-
-# VIM
-*.swp
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
