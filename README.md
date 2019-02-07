@@ -1,5 +1,5 @@
 # Corewar - 42Born2Code
-A game where little programs fight inside a virtual machine. 
+![](https://img.shields.io/github/license/fedefloris/Corewar.svg)
 
 ## What is Corewar?
 It's a 42 project inspired by the famous [Corewar](https://en.wikipedia.org/wiki/Core_War).
