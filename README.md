@@ -1,16 +1,17 @@
 # Corewar - 42Born2Code
 ![](https://img.shields.io/github/license/fedefloris/Corewar.svg)
 
+### Challenge 
+
 <p align="center">
 	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_ansi.png">
 </p>
 
-### Challenge 
 To create a `corewar` (virtual machine), `asm` (assembler) and `champion` (fighting program).  
 Four-person group project. `corewar` completed by [dhojt](https://github.com/davhojt) and [ffloris](https://github.com/fedefloris). `asm` completed by [mfiguera](https://github.com/mfigueras11) and [akaseris](https://github.com/akaseris).  
   
 Given our collective experience to date, the Corewar project is incredibly complexed. We considered the following materials:
-- [42 Project](./corewar.en.pdf)
+- [42 Project](./subject.pdf)
 - [Epitech Project](./images/corewar_en.pdf)
 - [Corewar Cheat Sheet](./images/Corewar_Cheat_Sheet.pdf) (French).
 - [Prayer](https://en.wikipedia.org/wiki/Prayer)
