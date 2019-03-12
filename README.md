@@ -1,5 +1,4 @@
 # Corewar - 42Born2Code
-![](https://img.shields.io/github/license/fedefloris/Corewar.svg)
 
 ## Challenge 
 
