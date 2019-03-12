@@ -1,7 +1,9 @@
 # Corewar - 42Born2Code
 ![](https://img.shields.io/github/license/fedefloris/Corewar.svg)
 
-![corewar_logo](./images/corewar_ansi.png) 
+<p align="center">
+	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_ansi.png">
+</p>
 
 ### Challenge 
 To create a `corewar` (virtual machine), `asm` (assembler) and `champion` (fighting program).  
@@ -13,8 +15,11 @@ Given our collective experience to date, the Corewar project is incredibly compl
 - [Corewar Cheat Sheet](./images/Corewar_Cheat_Sheet.pdf) (French).
 - [Prayer](https://en.wikipedia.org/wiki/Prayer)
   
-A `champion` is written in `assembly` syntax. A `champion` is compiled by the `asm` (assembler), into a binary file. The compiled `champion` is then loaded into `corewar` (virtual machine) as a process, with other `champion`s; and their bytecode is loaded into virtual circular memory.  
-![-debug](./images/corewar_debug.gif)  
+A `champion` is written in `assembly` syntax. A `champion` is compiled by the `asm` (assembler), into a binary file. The compiled `champion` is then loaded into `corewar` (virtual machine) as a process, with other `champion`s; and their bytecode is loaded into virtual circular memory.
+
+<p align="center">
+	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_debug.gif">
+</p>
   
 Each `champion` then battles with various strategies to be crowned the winner. `corewar` will end after *some time* or when all the processes have died. The winner is the last `champion` to have been reported alive.  
   
@@ -251,10 +256,16 @@ FLAGS
         Corewar can only accept 1 -debug argument.
 ```
 `-dump` is a mandatory flag. We decided to illustrate the position of program counters in the memory dump:  
-![-dump](./images/corewar_dump.png)  
+  
+<p align="center">
+	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_dump.png">
+</p>
   
 We created a debugger, which developed unintentionally into a visualizer. Its syntax is the same as -dump and will start the visualization from that cycle. **Note**, each time a process is killed, a sound will be played.  
-![-debug](./images/corewar_debug.gif)
+
+<p align="center">
+	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_debug.gif">
+</p>
   
 ##### champion
 Within the scope of the project, we needed to submit one champion. There follows a separate project, Corewar Championship. We chose not to display our best `champion`s to retain our competitive edge.  .  
