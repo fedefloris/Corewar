@@ -1,10 +1,10 @@
 # Corewar - 42Born2Code
-
-## Challenge 
-
+---
 <p align="center">
 	<img src="https://github.com/fedefloris/Corewar/blob/master/images/corewar_ansi.png">
 </p>
+
+## Challenge 
 
 To create a `corewar` (virtual machine), `asm` (assembler) and `champion` (fighting program).  
 Four-person group project. `corewar` completed by [dhojt](https://github.com/davhojt) and [ffloris](https://github.com/fedefloris). `asm` completed by [mfiguera](https://github.com/mfigueras11) and [akaseris](https://github.com/akaseris).  
